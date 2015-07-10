@@ -1,3 +1,4 @@
 .DS_Store
 
 static/css
+node_modules/
