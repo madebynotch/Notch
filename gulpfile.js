@@ -1,16 +1,27 @@
-// Load plugins
+// Load Gulp Requirements
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-// var browserSync = require('browser-sync').create();
+var browserSync = require('browser-sync').create();
 
 
-// Variables
+// Custom Variables
 var SASSinput = 'static/sass/*.sass';
 var HTMLinput = 'templates/*.html';
 var SASSoutput = 'static/css';
 
 
-// Styles Task - Converting SASS to CSS
+// Static server
+gulp.task('browser-sync', function() {
+    browserSync.init({
+        server: {
+            baseDir: "./",
+            index: "templates/index.html"
+        }
+    });
+});
+
+
+// SASS to CSS Converstion
 gulp.task('sass', function () {
   return gulp
     // Find all '.sass' files from the 'SASSinput' folder
@@ -20,26 +31,25 @@ gulp.task('sass', function () {
     // Write the resulting CSS in the output folder
     .pipe(gulp.dest(SASSoutput))
     // Reload browsers
-    // .pipe(browserSync.stream());
+    .pipe(browserSync.stream());
 });
 
 
-// Static server
-// gulp.task('browser-sync', function() {
-//     browserSync.init({
-//         server: {
-//             baseDir: "templates"
-//         }
-//     });
-// });
-
-
-gulp.task('watch', function() {
+// SASS Watch
+gulp.task('watch-sass', function() {
   return gulp
-    // Watch SASSinput and templates folder for change
-    .watch([SASSinput, HTMLinput], ['sass'])
-    // When there is a change, log a message in the console
-    .on('change', function(event) {
-      console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-    });
+    // Watch SASS folder (SASSinput) for change
+    .watch(SASSinput, ['sass']);
 });
+
+
+// HTML Watch
+gulp.task('watch-html', function() {
+  return gulp
+    // Watch templates folder (HTMLinput) for change
+    .watch('templates/*.html').on('change', browserSync.reload);
+});
+
+
+// Main Task to run all sub-tasks
+gulp.task('connect', ['browser-sync', 'sass', 'watch-sass', 'watch-html']);
