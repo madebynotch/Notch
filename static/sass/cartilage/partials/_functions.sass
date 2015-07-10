@@ -1,0 +1,89 @@
+// Clearfix mixin
+@mixin wrap()
+	&:after
+		content: ''
+		display: table
+		clear: both
+
+@function merge-list($input,$separator)
+	$merged: ''
+	@if type-of($input) == list
+		@for $i from 1 through length($input)
+			$merged: $merged + nth($input,$i)
+			@if $i != length($input)
+				$merged: $merged + $separator
+	@else
+		$merged: $input
+	@return unquote($merged)
+
+@function strip-unit($num)
+	@return $num / ($num * 0 + 1)
+
+/// Make-String
+// Helper function to convert the $input to a string.
+// Used in the "is-pixel" helper function, conversion to strings allows
+// slicing to check the units at the end of the number since all numbers,
+// without or without units, are consider to be of type "number" in Sass.
+@function make-string($input)
+	@if type-of($input) != string
+	@return '#{unquote($input)}'
+
+/// Is-Pixel
+// Helper function to check if a number has the pixel unit.
+// Converts the $input to a string in order to slice and check the last
+// two characters.
+// NOTE: this is pointless, due to the existence of the Sass "unit()" function.
+// This function is also not being used anywhere, and so should be removed from
+// the package before any sort of public launch.
+@function is-pixel($input)
+	@if str-slice(make-string($input),-2) == 'px'
+		@return true
+	@else
+		@return false
+
+/// Has-Item
+// Helper function to check for the existence of an $item in a $list; if the $list is not a
+// list, checks if the $list is equal to the $item
+@function has-item($list,$item)
+	@if type-of($list) == list
+		@each $i in $list
+			@if $i == $item
+				@return $i
+		@debug "no match found"
+		@return false
+	@else
+		@if $list == $item
+			@return $list
+		@return false
+
+@mixin rem($rule,$val)
+	@if type-of($val) == list
+		$rem-list: ()
+		@each $v in $val
+			@if type-of($v) == number
+				$rem-val: strip-unit($v) / 16 * 1rem
+				$rem-list: append($rem-list,$rem-val)
+			@else
+				$rem-list: append($rem-list,$v)
+		#{$rule}: merge-list($val,' ')
+		#{$rule}: merge-list($rem-list,' ')
+	@else
+		$rem-val: strip-unit($val) / 16 * 1rem
+		#{$rule}: $val
+		#{$rule}: $rem-val
+
+
+@function multi-media($args)
+	$output: ""
+	$first: true
+	@each $arg in $args
+		@if $first == false
+			$output: $output + ', '
+		$output: $output + $arg
+		$first: false
+	@return unquote($output)
+
+@mixin transition($args)
+	-webkit-transition: merge-list($args,', ')
+	-moz-transition: merge-list($args,', ')
+	transition: merge-list($args,', ')

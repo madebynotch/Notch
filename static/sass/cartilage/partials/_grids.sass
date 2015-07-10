@@ -1,0 +1,135 @@
+// @import "functions"
+
+// Settings variables
+$column-number: 12 !default
+$gutter-width: 30px !default
+$active-media: false
+
+// Other variables
+$breakpoints: ()
+$word-ratios: ('half':0.5,'one-half':0.5,'third':0.3333333,'one-third':0.3333333,'two-thirds':0.6666667,'quarter':0.25,'one-quarter':0.25,'two-quarters':0.5,'three-quarters':0.75,'full':1,'whole':1)
+
+// Function to loop through a $list and return the $nth item that is of $type
+@function nth-of-type($list,$type,$nth: 1)
+    $i: 0
+    @if length($list) > 0
+        @each $item in $list
+            @if type-of($item) == $type
+                $i: $i + 1
+                @if $i == $nth
+                    @return $item
+    @return false
+
+// Function to loop through a $list and check for the existence of
+// the $value in the $list
+@function list-has-value($list,$value)
+    @if length($list) > 0
+        @each $item in $list
+            @if $item == $value
+                @return true
+    @return false
+
+// Function to loop through a map and return the key associated with
+// a matching value.
+@function map-has-value($map,$input)
+    // Loop through the keys and values in the map
+    @each $key, $value in $map
+        // If the input is equal to the value in the loop
+        @if $input == $value
+            @return $key
+    // If the loop completes without finding a match, return false
+    @return false
+
+// Function to loop through any list of maps ($maps) and find the first one that
+// has $key with $value, returns index of matching list
+@function maps-match($maps,$key,$value)
+    @each $map in $maps
+        @if map-get($map, $key) == $value
+            @return index($maps, $map)
+    @return false
+
+// Function to return a decimal ratio of the $part to the $whole
+@function get-ratio($part, $whole)
+    // If the $part is greater that the $whole, return 1 (ratio of 100%)
+    // Otherwise, return the part divided by the whole
+    @if $part >= $whole
+        @return 1
+    @else
+        @return $part / $whole
+
+@mixin set-col-width($width)
+    @debug type-of($width)
+    $ratio: 0
+    @if type-of($width) == number
+        $ratio: get-ratio($width, $column-number)
+    @else if type-of($width) == list
+        $ratio: nth-of-type($width,number) / nth-of-type($width,number,2)
+    @else if type-of($width) == string
+        $ratio: map-get($word-ratios,$width)
+    width: $ratio * 100%
+
+
+@mixin set-breakpoint($prefix, $prefix-break: 0, $prefix-width: none)
+    @debug $prefix
+    @debug $prefix-break
+    @debug $prefix-width
+    $breakpoint: ('prefix': $prefix, 'breakpoint-width': $prefix-break, 'wrapper-width': $prefix-width)
+    $breakpoints: append($breakpoints, $breakpoint, comma) !global
+    @if $prefix-break > 0
+        @debug "create wrapper placeholder (with media)"
+        @media screen and (min-width: $prefix-break)
+            %wrapper
+                max-width: $prefix-width
+    @else
+        @debug "create wrapper placeholder"
+        %wrapper
+            max-width: $prefix-width
+
+@mixin media($prefix)
+    $index: maps-match($breakpoints,'prefix',$prefix)
+    @if $index == false
+        @error 'Cartilage Error: No breakpoint has been defined with the prefix "#{$prefix}".'
+    $breakpoint: nth($breakpoints,$index)
+    $breakpoint-width: map-get($breakpoint,'breakpoint-width')
+    $breakpoint-wrapper: map-get($breakpoint, 'wrapper-width')
+    $active-media: true !global
+    @media screen and (min-width: $breakpoint-width)
+        @content
+    $active-media: false !global
+
+@mixin wrapper()
+    @extend %wrapper !optional
+
+@mixin row($params...)
+    // Set styling rules for row element
+    @include wrap
+    display: block
+    width: 100%
+    margin-left: auto
+    margin-right: auto
+    // If 'full' is passed as a parameter, ignore wrapper min-widths
+    // Otherwise, default row behavior is to have the min-widths for wrappers
+    @if list-has-value($params,'full')
+        max-width: none
+    @else if $active-media == false
+        @include wrapper
+    @else if $active-media
+        @warn "Cartilage Warning: Selectors don't need the row mixin within the media mixin. Instead, you should only include the row mixin with the selector outside of the media mixin."
+
+@mixin column-base()
+    float: left
+    padding-left: $gutter-width / 2
+    padding-right: $gutter-width / 2
+
+@mixin column($width,$params...)
+    display: block
+    @include column-base
+    // If 'center' is passed as a parameter, don't float the column and apply auto side margins
+    @if list-has-value($params,'center')
+        float: none
+        margin-left: auto
+        margin-right: auto
+    @include set-col-width($width)
+
+@mixin offset($num)
+    margin-left: ($num / $column-number) * 100%
