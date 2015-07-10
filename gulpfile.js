@@ -21,7 +21,7 @@ gulp.task('browser-sync', function() {
 });
 
 
-// SASS to CSS Converstion
+// Compile SASS to CSS
 gulp.task('sass', function () {
   return gulp
     // Find all '.sass' files from the 'SASSinput' folder
@@ -44,7 +44,7 @@ gulp.task('watch-sass', function() {
 
 
 // HTML Watch
-gulp.task('watch-html', function() {
+gulp.task('watch-html', ['browser-sync'], function() {
   return gulp
     // Watch templates folder (HTMLinput) for change
     .watch('templates/*.html').on('change', browserSync.reload);
@@ -52,4 +52,4 @@ gulp.task('watch-html', function() {
 
 
 // Main Task to run all sub-tasks
-gulp.task('connect', ['browser-sync', 'sass', 'watch-sass', 'watch-html']);
+gulp.task('connect', ['sass', 'watch-sass', 'watch-html']);
