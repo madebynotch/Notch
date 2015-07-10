@@ -1,19 +1,26 @@
 @import fonts
 @import cartilage/cartilage
 
+@include set-breakpoint('xs')
 @include set-breakpoint('md',640px,600px)
-@include set-breakpoint('lg',960px,900px)
-@include set-breakpoint('xl',1280px,1200px)
 
-$main-body-grey: #efefef
-$color-red: #F46263
-$color-blue: #64BFF2
-$color-grey-dark: #878787
-$color-grey-medium: #8C8C8C
-$color-grey-light: #BFBFBF
+// Colors
+$notch-blue: #2aaed9
+$grey-lighter: #e4e4e4
+$grey-light: #c2c2c2
+$grey-medium: #626365
+$grey-dark: #27282a
+$nav-bg: rgba($notch-blue,0.9)
+$body-text-color: $grey-medium
+$header-color: $grey-dark
+
+// Fonts
+$emphasis-font-family: "Droid Serif"
+
 
 *
     text-rendering: optimizeLegibility
+    box-sizing: border-box
 
 a
     text-decoration: none
@@ -22,16 +29,6 @@ html, body
     height: 100%
 
 body
-    font-family: "Open Sans"
     margin: 0
-    background-color: $main-body-grey
-    font-size: 12px
-
-header
-    background-color: #465C73
 
 @include media('md')
-
-@include media('lg')
-
-@include media('xl')
