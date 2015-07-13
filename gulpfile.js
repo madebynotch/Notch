@@ -21,20 +21,6 @@ gulp.task('browser-sync', function() {
 });
 
 
-// Main Task to run all sub-tasks
-gulp.task('serve', ['sass'], function() {
-    browserSync.init({
-        server: {
-            baseDir: "./",
-            index: "templates/index.html"
-        }
-    });
-
-    gulp.watch(SASSinput, ['sass']);
-    gulp.watch('templates/*.html').on('change', browserSync.reload);
-});
-
-
 // Compile SASS to CSS
 gulp.task('sass', function () {
   return gulp
@@ -63,3 +49,7 @@ gulp.task('watch-html', ['browser-sync'], function() {
     // Watch templates folder (HTMLinput) for change
     .watch('templates/*.html').on('change', browserSync.reload);
 });
+
+
+// Main Task to run all sub-tasks
+gulp.task('connect', ['sass', 'watch-sass', 'watch-html']);
