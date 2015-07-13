@@ -20,6 +20,7 @@ $emphasis-font-family: "Droid Serif",serif
 
 // Nav Variables
 $nav-link-color: white
+$nav-desktop-height: 73px
 
 // Slider Variables
 $slider-header-font-family: $header-font-family
@@ -75,3 +76,16 @@ body
 	.nav-head,
 	.nav-right
 		@include column(half)
+	.nav-head
+		line-height: $nav-desktop-height
+	.nav-right
+		.nav-links
+			list-style: none
+			float: right
+			li
+				float: left
+				margin-left: 64px
+				a
+					display: inline-block
+					color: $nav-link-color
+					line-height: $nav-desktop-height
