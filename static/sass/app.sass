@@ -1,8 +1,11 @@
 @import fonts
 @import cartilage/cartilage
 
-@include set-breakpoint('xs')
-@include set-breakpoint('md',640px,600px)
+$side-pad-sm: 15px
+$side-pad-lg: 65px
+
+@include set-breakpoint('sm')
+@include set-breakpoint('lg',900px,900 - $side-pad-lg)
 
 // Colors
 $notch-blue: #2aaed9
@@ -24,17 +27,29 @@ $nav-desktop-height: 73px
 
 // Slider Variables
 $slider-header-font-family: $header-font-family
-$slider-header-size: 80px
-$slider-header-line-height: 92px
-$slider-header-font: ($slider-header-font-family, 800, $slider-header-size, $slider-header-line-height)
+$slider-header-size: 60px
+$slider-header-line-height: 72px
+@mixin slider-header-font
+	@include font($slider-header-font-family, 800, $slider-header-size, $slider-header-line-height)
 
 $slider-desc-font-family: $emphasis-font-family
-$slider-desc-size: 30px
-$slider-desc-line-height: 48px
-$slider-desc-font: ($slider-desc-font-family, 400, $slider-desc-size, $slider-desc-line-height)
+$slider-desc-size: 20px
+$slider-desc-line-height: 30px
+@mixin slider-desc-font
+	@include font($slider-desc-font-family, 400, $slider-desc-size, $slider-desc-line-height)
+
+$slider-nav-link-diam: 14px
+$slider-nav-link-margin: 30px
+$slider-nav-link-border: inset 0 0 0 3px white
+
+@mixin headers
+	h1,h2,h3,h4,h5,h6
+		@content
 
 
 *
+	margin: 0
+	padding: 0
     text-rendering: optimizeLegibility
     box-sizing: border-box
 
@@ -44,11 +59,23 @@ a
 html, body
     height: 100%
 
+html.home
+	&, & body
+		overflow: hidden
+
 body
     margin: 0
+    position: relative
 
+// NAVIGATION
 #nav
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
 	background: $nav-bg
+	padding: 0 $side-pad-sm
+	z-index: 50
 
 .nav-wrapper
 	@include row(full)
@@ -56,6 +83,7 @@ body
 .nav-head,
 .nav-right
 	@include column(12)
+	padding: 0
 
 .nav-toggle
 	width: 26px
@@ -70,22 +98,101 @@ body
 		margin-bottom: 4px
 		background: $nav-link-color
 
-@include media('md')
+// HOMEPAGE SLIDES
+.slider
+	max-height: 100%
+	width: 100%
+	position: absolute
+	top: 0
+	left: 0
+.slide
+	width: 100%
+	height: 100%
+	display: table
+	background: grey
+	position: absolute
+	.slide-image
+		position: absolute
+		top: 0
+		left: 0
+	.slide-wrapper
+		@include row(full)
+		float: none
+		display: table-cell
+		vertical-align: middle
+		color: white
+		@include headers
+			@include slider-header-font
+			margin-bottom: 20px
+		p
+			@include slider-desc-font
+			margin-bottom: 40px
+		.slide-content
+			@include column(5)
+			@include offset(3)
+.slide-link
+	border-radius: 6px
+	border: 2px solid white
+	display: inline-block
+	font-size: 20px
+	line-height: 68px
+	padding: 0 30px
+	color: white
+	.slide-link-arrow
+		margin-left: 10px
+	&:hover
+		background: white
+		color: $grey-medium
+
+.slider-nav
+	position: fixed
+	top: 50%
+	left: $side-pad-sm
+	z-index: 5
+	li
+		display: block
+		height: $slider-nav-link-diam
+		width: $slider-nav-link-diam
+		margin-bottom: $slider-nav-link-margin
+		background: transparent
+		box-shadow: $slider-nav-link-border
+		border-radius: 50%
+		cursor: pointer
+		-webkit-transition: all 0.2s ease
+		-moz-transition: all 0.2s ease
+		transition: all 0.2s ease
+		&:hover
+			box-shadow: inset 0 0 0 5px #fff
+			-webkit-transition: all 0.1s ease
+			-moz-transition: all 0.1s ease
+			transition: all 0.1s ease
+		&.active
+			box-shadow: inset 0 0 0 12px #fff
+
+@include media('lg')
+	.slider-nav
+		left: $side-pad-lg
+	#nav
+		padding-left: $side-pad-lg
+		padding-right: $side-pad-lg
 	.nav-toggle
 		display: none
-	.nav-head,
-	.nav-right
-		@include column(half)
 	.nav-head
+		@include column(3)
+		padding: 0
 		line-height: $nav-desktop-height
 	.nav-right
+		@include column(9)
+		padding: 0
 		.nav-links
 			list-style: none
 			float: right
 			li
 				float: left
-				margin-left: 64px
+				margin-left: 60px
 				a
+					font-size: 14px
+					font-family: $emphasis-font-family
 					display: inline-block
 					color: $nav-link-color
 					line-height: $nav-desktop-height
