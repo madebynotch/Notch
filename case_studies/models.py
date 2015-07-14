@@ -19,10 +19,10 @@ class CaseStudy(models.Model):
 
 class CaseStudyImage(models.Model):
 	case_study = models.ForeignKey(CaseStudy, related_name='images')
-	image = models.ImageField(upload_to='/uploads/case_studies/')
+	image = models.ImageField(upload_to='case_studies')
 	description = models.TextField()
 	is_final_product = models.BooleanField()
 	is_showcase = models.BooleanField()
 
 	def __unicode__(self):
-		return self.case_study+" : "+self.image
+		return self.case_study.title+" : "+str(self.pk)
