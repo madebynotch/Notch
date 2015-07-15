@@ -9,6 +9,7 @@ class CaseStudy(models.Model):
     task_content = models.TextField()
     approach_content = models.TextField()
     project_link = models.URLField(blank=True)
+    extension_text = models.TextField(blank=True)
     sub_header = models.CharField(max_length=25, blank=True)
     sub_header_content = models.TextField(blank=True)
     date_completed = models.DateField(blank=True)
@@ -20,8 +21,8 @@ class CaseStudy(models.Model):
 class CaseStudyImage(models.Model):
     case_study = models.ForeignKey(CaseStudy, related_name='images')
     image = models.ImageField(upload_to='case_studies')
-    description = models.TextField()
-    is_final_product = models.BooleanField()
+    # description = models.TextField()
+    is_sub_header = models.BooleanField()
     is_showcase = models.BooleanField()
 
     def __unicode__(self):
