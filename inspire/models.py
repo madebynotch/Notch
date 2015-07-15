@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 
 class InspireItem(models.Model):
     tag = models.ForeignKey('main.Tag', related_name='inspire_tags')
