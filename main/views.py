@@ -11,6 +11,10 @@ class HomeView(ListView):
     template_name = 'index.html'
 
 
+class AboutView(TemplateView):
+    template_name = 'about.html'
+
+
 class ContactView(FormView):
     template_name = 'contact.html'
     form_class = ContactForm
