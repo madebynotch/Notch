@@ -2,20 +2,29 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
+var exec = require('child_process').exec;
 
 
 // Custom Variables
 var SASSinput = 'static/sass/*.sass';
-var HTMLinput = 'templates/*.html';
+var HTMLinput = ['templates/*.html','*/templates/*.html'];
 var SASSoutput = 'static/css';
 
 
-// Static server
-gulp.task('browser-sync', function() {
+// Django server
+gulp.task('django-server', function() {
+    var proc = exec('PYTHONUNBUFFERED=1 python manage.py runserver');
+    proc.stderr.on('data',function(data){
+        process.stdout.write(data);
+    });
+});
+
+
+// Django server and Browser Sync
+gulp.task('django-sync', ['django-server'], function() {
     browserSync.init({
-        server: {
-            baseDir: "./",
-            index: "templates/index.html"
+        proxy: {
+            target: "localhost:8000"
         }
     });
 });
@@ -44,10 +53,10 @@ gulp.task('watch-sass', function() {
 
 
 // HTML Watch
-gulp.task('watch-html', ['browser-sync'], function() {
+gulp.task('watch-html', ['django-sync'], function() {
   return gulp
     // Watch templates folder (HTMLinput) for change
-    .watch('templates/*.html').on('change', browserSync.reload);
+    .watch(HTMLinput).on('change', browserSync.reload);
 });
 
 
