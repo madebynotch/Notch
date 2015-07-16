@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.views.generic.list import ListView
+from inspire.models import InspireItem
 
-# Create your views here.
+
+class InspireView(ListView):
+    context_object_name = 'inspire_list'
+    model = InspireItem
+    template_name = 'inspire.html'

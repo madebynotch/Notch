@@ -1,0 +1,40 @@
+<h1>{{case_study.title}}</h1>
+
+<h3>{{case_study.subtitle}}</h3>
+
+<h4>The Task</h4>
+<p>{{case_study.task_content}}</p>
+
+<h4>Our Approach</h4>
+<p>{{case_study.approach_content}}</p>
+
+{% for image in images %}
+    <img src="{{image.image.url}}" style='width:100%'>
+{% endfor %}
+
+{% if case_study.extension_text %}
+    <p>{{case_study.approach_content}}</p>
+{% endif %}
+
+{% if case_study.sub_header %}
+    <h4>{{case_study.sub_header}}</h4>
+    <p>{{case_study.sub_header_content}}</p>
+{% endif %}
+
+{% for image in sub_images %}
+    <img src="{{image.image.url}}" style='width:50%'>
+{% endfor %}
+
+<br>
+
+{% if case_study.get_prev != None %}
+    <a href="{% url 'case_study' case_study.get_prev %}">Previous</a>
+{% else %}
+    <a href="" style='background-color: grey'>Previous</a>
+{% endif %}
+
+{% if case_study.get_next != None %}
+    <a href="{% url 'case_study' case_study.get_next %}">Next</a>
+{% else %}
+    <a href="" style='background-color: grey'>Next</a>
+{% endif %}
