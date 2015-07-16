@@ -1,12 +1,19 @@
-<h1>Some Inspire Stuff here</h1>
+{% extends 'base.html' %}
+{% load staticfiles %}
 
-{% for inspire in inspire_list %}
-    <a href="{{ inspire.url }}" target="_blank">
-        <article>
-            <h1>Title: {{ inspire.title }}</h1>
-            <p>Tag: {{ inspire.tag }}</p>
-            <p>Description: {{ inspire.description }}</p>
-            <img src="{{ inspire.image.url }}" alt="" style="width: 100px; height: 100px">
-        </article>
-    </a>
-{% endfor %}
+{% block imports %}
+<script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'js/inspire.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <h1>Some Inspire Stuff here</h1>
+
+    <section id="inspire-list">
+        {% include 'inspire_items.html' %}
+    </section>
+
+    {% if paginator.num_pages > 1 %}
+        <button id="show-more">Show me more</button>
+    {% endif %}
+{% endblock %}

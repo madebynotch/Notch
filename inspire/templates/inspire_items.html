@@ -1,0 +1,10 @@
+{% for inspire in inspire_list %}
+    <a href="{{ inspire.url }}" target="_blank">
+        <article>
+            <h1>Title: {{ inspire.title }}</h1>
+            <p>Tag: {{ inspire.tag }}</p>
+            <p>Description: {{ inspire.description }}</p>
+            <img src="{{ inspire.image.url }}" alt="" style="width: 100px; height: 100px">
+        </article>
+    </a>
+{% endfor %}
