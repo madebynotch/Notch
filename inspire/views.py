@@ -1,7 +1,6 @@
 from django.core.paginator import Paginator
 from django.http.response import JsonResponse
 from django.template.loader import get_template
-from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.list import ListView
 from inspire.models import InspireItem
 
@@ -13,7 +12,6 @@ class InspireView(ListView):
     items_per_page = 1
     queryset = InspireItem.objects.all()[:items_per_page]
 
-    @csrf_exempt
     def dispatch(self, request, *args, **kwargs):
         return super(InspireView, self).dispatch(request, *args, **kwargs)
 
