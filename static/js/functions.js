@@ -5,20 +5,40 @@ $(document).ready(function(){
 	var slider = $('.slider');
 	$('.slider').before('<ul class="slider-nav"></ul>')
 	var slide_nav = $('.slider-nav');
-	slider.css({
-		'width':win_w + 'px',
-		'height':win_h + 'px'
-	});
 	var slides = slider.children('.slide');
+
+	var resizeSlider = function() {
+		slider.css({
+			'width':win_w + 'px',
+			'height':win_h + 'px'
+		});
+	}
+
+	resizeSlider();
 
 	for(var i=0;i<slides.length;i++){
 		$('.slider-nav').append('<li class="slider-link" data-slide="'+i+'"></li>');
 	}
 	var slide_links = $('.slider-nav').children()
 
+	var resizeImg = function(img) {
+		win_a = win_w / win_h
+
+		img.css('width', win_w);
+		img_w = img.width();
+		img_h = img.height();
+		if (img_h < win_h) {
+			img.css('width', img_w * win_h / img_h);
+			img_w = img.width();
+		}
+		img.css('left', (win_w - img_w) / 2)
+	}
+
 	for(var i=0;i<slides.length;i++){
-		img = $(slides[i]).children();
-		console.log(img.attr('src'))
+		img = $(slides[i]).children('img');
+		img.each(function(){
+			resizeImg($(this));
+		});
 		$(slides[i]).attr('id','slide'+i);
 		$(slide_links[i]).attr('id','slide_link'+i);
 		$(slides[i]).css('top',i*win_h)
@@ -56,6 +76,20 @@ $(document).ready(function(){
 			});
 		}
 	}
+
+	$(window).on('resize',function(e){
+		win_w = $(window).width();
+		win_h = $(window).height();
+
+		resizeSlider();
+
+		for(var i=0;i<slides.length;i++) {
+			img = $(slides[i]).children('img');
+			img.each(function(){
+				resizeImg($(this));
+			});
+		}
+	})
 
 	$(window).on('wheel',function(e){
 		y = e.originalEvent.deltaY;

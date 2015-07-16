@@ -115,12 +115,15 @@ body
 		position: absolute
 		top: 0
 		left: 0
+		z-index: 1
 	.slide-wrapper
 		@include row(full)
 		float: none
 		display: table-cell
 		vertical-align: middle
 		color: white
+		position: relative
+		z-index: 10
 		@include headers
 			@include slider-header-font
 			margin-bottom: 20px
@@ -148,7 +151,7 @@ body
 	position: fixed
 	top: 50%
 	left: $side-pad-sm
-	z-index: 5
+	z-index: 15
 	li
 		display: block
 		height: $slider-nav-link-diam
