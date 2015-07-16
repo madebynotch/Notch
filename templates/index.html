@@ -29,37 +29,51 @@
             </div>
         </nav>
         <div class="slider">
+            {% for case in case_list %}
             <div class="slide">
-                <img class="slide-image" src="/static/img/WhatALovelyDay.jpg">
+                {% if case.get_showcase %}
+                    <img class="slide-image" src="{{ case.get_showcase }}" style="width:100%">
+                {% endif %}
                 <div class="slide-wrapper">
                     <div class="slide-content">
-                        <h1>Saving America.</h1>
-                        <p>Notch &amp; Saving America create a new platform to turn your ideas into reality.</p>
-                        <a class="slide-link" href="">View Case Study <span class="slide-link-arrow">&rarr;</span></a>
+                        <h1>{{ case.title }}.</h1>
+                        <p>{{ case.subtitle }}</p>
+                        <a class="slide-link" {% if case.is_visible %} href="{% url 'case_study' case.pk %}" {% else %} href="" {% endif %}>View Case Study <span class="slide-link-arrow">&rarr;</span></a>
                     </div>
                 </div>
             </div>
-            <div class="slide">
-                <img class="slide-image" src="">
-                <div class="slide-wrapper">
-                    <div class="slide-content">
-                        <h1>Slide 2.</h1>
-                        <p>Description for slide 2.</p>
-                        <a class="slide-link" href="">View Case Study <span class="slide-link-arrow">&rarr;</span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="slide">
-                <img class="slide-image" src="">
-                <div class="slide-wrapper">
-                    <div class="slide-content">
-                        <h1>Slide 3.</h1>
-                        <p>Description for slide 3.</p>
-                        <a class="slide-link" href="">View Case Study <span class="slide-link-arrow">&rarr;</span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+            {% endfor %}
+{#            <div class="slide">#}
+{#                <img class="slide-image" src="/static/img/WhatALovelyDay.jpg">#}
+{#                <div class="slide-wrapper">#}
+{#                    <div class="slide-content">#}
+{#                        <h1>Saving America.</h1>#}
+{#                        <p>Notch &amp; Saving America create a new platform to turn your ideas into reality.</p>#}
+{#                        <a class="slide-link" href="">View Case Study <span class="slide-link-arrow">&rarr;</span></a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="slide">#}
+{#                <img class="slide-image" src="">#}
+{#                <div class="slide-wrapper">#}
+{#                    <div class="slide-content">#}
+{#                        <h1>Slide 2.</h1>#}
+{#                        <p>Description for slide 2.</p>#}
+{#                        <a class="slide-link" href="">View Case Study <span class="slide-link-arrow">&rarr;</span></a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="slide">#}
+{#                <img class="slide-image" src="">#}
+{#                <div class="slide-wrapper">#}
+{#                    <div class="slide-content">#}
+{#                        <h1>Slide 3.</h1>#}
+{#                        <p>Description for slide 3.</p>#}
+{#                        <a class="slide-link" href="">View Case Study <span class="slide-link-arrow">&rarr;</span></a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
         <div class="homepage-footer">
             <div class="footer-left">
                 <a href="">Want more? Check out our work in progress</a>

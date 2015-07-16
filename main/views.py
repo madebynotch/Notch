@@ -9,6 +9,7 @@ class HomeView(ListView):
     context_object_name = 'case_list'
     model = CaseStudy
     template_name = 'index.html'
+    queryset = CaseStudy.objects.all().filter(is_visible=True)[:4]
 
 
 class AboutView(TemplateView):
