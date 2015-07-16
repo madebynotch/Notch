@@ -8,7 +8,7 @@
 <h4>Our Approach</h4>
 <p>{{case_study.approach_content}}</p>
 
-{% for image in images %}
+{% for image in case_study.get_main_images %}
     <img src="{{image.image.url}}" style='width:100%'>
 {% endfor %}
 
@@ -21,20 +21,20 @@
     <p>{{case_study.sub_header_content}}</p>
 {% endif %}
 
-{% for image in sub_images %}
+{% for image in case_study.get_sub_images %}
     <img src="{{image.image.url}}" style='width:50%'>
 {% endfor %}
 
 <br>
 
-{% if case_study.get_prev != None %}
-    <a href="{% url 'case_study' case_study.get_prev %}">Previous</a>
+{% if case_study.get_prev_pk %}
+    <a href="{% url 'case_study' case_study.get_prev_pk %}">Previous</a>
 {% else %}
     <a href="" style='background-color: grey'>Previous</a>
 {% endif %}
 
-{% if case_study.get_next != None %}
-    <a href="{% url 'case_study' case_study.get_next %}">Next</a>
+{% if case_study.get_next_pk %}
+    <a href="{% url 'case_study' case_study.get_next_pk %}">Next</a>
 {% else %}
     <a href="" style='background-color: grey'>Next</a>
 {% endif %}

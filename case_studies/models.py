@@ -1,9 +1,11 @@
 from django.db import models
 
-# Create your models here.
 
 class CaseStudy(models.Model):
-    tags = models.ManyToManyField('main.Tag', related_name='case_study_tags')
+    tags = models.ManyToManyField(
+        'main.Tag',
+        related_name='case_study_tags'
+    )
     title = models.CharField(max_length=50)
     subtitle = models.CharField(max_length=50)
     task_content = models.TextField()
@@ -18,39 +20,28 @@ class CaseStudy(models.Model):
     def __unicode__(self):
         return self.title
 
-    def get_next(self):
-        ordered_case_studies = []
-        for cs in CaseStudy.objects.all().order_by('-date_added'):
-            ordered_case_studies.append(cs)
+    def get_main_images(self):
+        return self.images.filter(is_sub_header=False)
 
-        current = ordered_case_studies.index(self)
+    def get_sub_images(self):
+        return self.images.filter(is_sub_header=True)
 
-        if current == 0:
-            next_pk = ordered_case_studies[1].pk
-        else:
-            try:
-                next_pk = ordered_case_studies[current+1].pk
-            except:
-                next_pk = None
+    def get_next_pk(self):
+        try:
+            next_pk = CaseStudy.objects.filter(pk__gt=self.pk)[:1][0].pk
+        except (KeyError, IndexError):
+            return None
 
         return next_pk
 
-    def get_prev(self):
-        ordered_case_studies = []
-        for cs in CaseStudy.objects.all().order_by('-date_added'):
-            ordered_case_studies.append(cs)
-
-        current = ordered_case_studies.index(self)
-
-        if current == 0:
-            prev_pk = None
-        else:
-            try:
-                prev_pk = ordered_case_studies[current-1].pk
-            except:
-                prev_pk = None
+    def get_prev_pk(self):
+        try:
+            prev_pk = CaseStudy.objects.filter(pk__lt=self.pk)[:1][0].pk
+        except (KeyError, IndexError):
+            return None
 
         return prev_pk
+
 
 class CaseStudyImage(models.Model):
     case_study = models.ForeignKey(CaseStudy, related_name='images')

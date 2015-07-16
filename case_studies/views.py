@@ -1,13 +1,10 @@
 from django.shortcuts import render
+from django.views.generic.detail import DetailView
 from case_studies.models import CaseStudy, CaseStudyImage
 
-# Create your views here.
 
-def case_study(request, pk):
-    case_study = CaseStudy.objects.get(pk=pk)
-    images = case_study.images.filter(is_sub_header=False)
-    sub_images = case_study.images.filter(is_sub_header=True)
-    
-    context = {'case_study': case_study, 'images': images, 'sub_images': sub_images,}
+class CaseStudyView(DetailView):
 
-    return render(request, 'case_study.html', context)
+    model = CaseStudy
+    template_name = 'case_study.html'
+    context_object_name = 'case_study'
