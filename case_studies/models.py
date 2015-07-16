@@ -14,8 +14,9 @@ class CaseStudy(models.Model):
     extension_text = models.TextField(blank=True)
     sub_header = models.CharField(max_length=25, blank=True)
     sub_header_content = models.TextField(blank=True)
-    date_completed = models.DateField(blank=True, null=True)
-    date_added = models.DateField(auto_now=True)
+    date_completed = models.DateTimeField(blank=True, null=True)
+    date_added = models.DateTimeField(auto_now=True)
+    is_visible = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.title
@@ -28,7 +29,7 @@ class CaseStudy(models.Model):
 
     def get_next_pk(self):
         try:
-            next_pk = CaseStudy.objects.filter(pk__gt=self.pk)[:1][0].pk
+            next_pk = CaseStudy.objects.filter(pk__gt=self.pk, is_visible=True)[:1][0].pk
         except (KeyError, IndexError):
             return None
 
@@ -36,7 +37,7 @@ class CaseStudy(models.Model):
 
     def get_prev_pk(self):
         try:
-            prev_pk = CaseStudy.objects.filter(pk__lt=self.pk)[:1][0].pk
+            prev_pk = CaseStudy.objects.filter(pk__lt=self.pk, is_visible=True)[:1][0].pk
         except (KeyError, IndexError):
             return None
 

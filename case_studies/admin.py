@@ -1,16 +1,21 @@
 from django.contrib import admin
 from models import CaseStudy, CaseStudyImage
 
-# Register your models here.
-
 
 class CaseStudyImageInline(admin.TabularInline):
-	model = CaseStudyImage
+    model = CaseStudyImage
+
 
 class CaseStudyAdmin(admin.ModelAdmin):
-	inlines = [
+    inlines = [
         CaseStudyImageInline,
     ]
-    
+    list_display = [
+        'id',
+        'title',
+        'subtitle',
+        'date_added',
+    ]
+
+
 admin.site.register(CaseStudy, CaseStudyAdmin)
-# admin.site.register(CaseStudyImage, CaseStudyImageAdmin)
