@@ -10,7 +10,7 @@ class InspireView(ListView):
     context_object_name = 'inspire_list'
     model = InspireItem
     template_name = 'inspire.html'
-    items_per_page = 10
+    items_per_page = 1
     queryset = InspireItem.objects.all()[:items_per_page]
 
     @csrf_exempt
