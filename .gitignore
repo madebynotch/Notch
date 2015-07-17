@@ -7,5 +7,6 @@ node_modules/
 db.sqlite3
 *.pyc
 .idea/
-media/
+media/case_studies
+media/inspire
 local_settings.py
