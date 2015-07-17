@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'main',
     'inspire',
     'case_studies',
+    'django_extensions'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -110,6 +111,12 @@ STATICFILES_DIRS = (
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# Email settings
+EMAIL_HOST = 'smtp.mandrillapp.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'alexc@bixly.com'
+EMAIL_HOST_PASSWORD = '1CglOxB-JFw5JnA-TvAWJw'
 
 try:
     from local_settings import *

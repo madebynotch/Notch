@@ -22,8 +22,8 @@ class ContactView(FormView):
     success_url = '/contact/success'
 
     def form_valid(self, form):
-        form.save()
-        # TODO Send contact form email
+        instance = form.save()
+        instance.send_email()
         return super(ContactView, self).form_valid(form)
 
 
