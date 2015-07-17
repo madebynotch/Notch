@@ -1,31 +1,8 @@
+{% extends 'base.html' %}
 {% load staticfiles %}
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static "css/app.css" %}">
-</head>
 
-<nav id="nav">
-    <div class="nav-wrapper">
-        <div class="nav-head">
-            <a href="/" title="logo" class="nav-logo">notch</a>
-            <button class="nav-toggle">
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-            </button>
-        </div>
-        <div class="nav-right">
-            <ul class="nav-links">
-                <li><a href="">Work.</a></li>
-                <li><a href="{% url 'about' %}">About.</a></li>
-                <li><a href="{% url 'inspire' %}">Inspire.</a></li>
-                <li><a href="{% url 'contact' %}">Contact.</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
+{% block content %}
 <h1>{{case_study.title}}</h1>
 
 <h3>{{case_study.subtitle}}</h3>
@@ -66,3 +43,4 @@
 {% else %}
     <a href="" style='background-color: grey'>Next</a>
 {% endif %}
+{% endblock %}
