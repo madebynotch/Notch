@@ -1,5 +1,6 @@
 $(document).ready(function() {
     var current_page = 1;
+    var csrf_token = $('[name="csrfmiddlewaretoken"]').val();
 
     $('#show-more').click(function () {
         current_page += 1;
@@ -7,7 +8,8 @@ $(document).ready(function() {
         $.post(
             '/inspire/',
             {
-                page: current_page
+                page: current_page,
+                csrfmiddlewaretoken: csrf_token
             },
             function (data, status) {
                 $('#inspire-list').append(data.items);

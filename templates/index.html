@@ -1,0 +1,60 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html class="home">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static "css/app.css" %}">
+</head>
+    <body>
+        <!-- Nav Block -->
+        <nav id="nav">
+            <div class="nav-wrapper">
+                <div class="nav-head">
+                    <a href="/" title="logo" class="nav-logo">notch</a>
+                    <button class="nav-toggle">
+                        <span class="nav-toggle-bar"></span>
+                        <span class="nav-toggle-bar"></span>
+                        <span class="nav-toggle-bar"></span>
+                    </button>
+                </div>
+                <div class="nav-right">
+                    <ul class="nav-links">
+                        <li><a href="">Work.</a></li>
+                        <li><a href="{% url 'about' %}">About.</a></li>
+                        <li><a href="{% url 'inspire' %}">Inspire.</a></li>
+                        <li><a href="{% url 'contact' %}">Contact.</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="slider">
+            {% for case in case_list %}
+            <div class="slide">
+                {% if case.get_showcase %}
+                    <img class="slide-image" src="{{ case.get_showcase }}" style="width:100%">
+                {% endif %}
+                <div class="slide-wrapper">
+                    <div class="slide-content">
+                        <h1>{{ case.title }}.</h1>
+                        <p>{{ case.subtitle }}</p>
+                        <a class="slide-link" {% if case.is_visible %} href="{% url 'case_study' case.pk %}" {% else %} href="" {% endif %}>View Case Study <span class="slide-link-arrow">&rarr;</span></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        <div class="homepage-footer">
+            <div class="footer-left">
+                <a href="">Want more? Check out our work in progress</a>
+            </div>
+            <div class="footer-right social-links">
+                <a href="" target="_blank"><img src=""></a>
+                <a href="" target="_blank"><img src=""></a>
+                <a href="" target="_blank"><img src=""></a>
+            </div>
+        </div>
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="/static/js/functions.js"></script>
+    </body>
+</html>

@@ -27,6 +27,13 @@ class CaseStudy(models.Model):
     def get_sub_images(self):
         return self.images.filter(is_sub_header=True)
 
+    def get_showcase(self):
+        try:
+            image = self.images.filter(is_showcase=True)[:1][0].image.url
+        except IndexError:
+            image = None
+        return image
+
     def get_next_pk(self):
         try:
             next_pk = CaseStudy.objects.filter(pk__gt=self.pk, is_visible=True)[:1][0].pk

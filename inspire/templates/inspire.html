@@ -15,4 +15,6 @@
     {% if paginator.num_pages > 1 %}
         <button id="show-more">Show me more</button>
     {% endif %}
+
+    {% csrf_token %}
 {% endblock %}
