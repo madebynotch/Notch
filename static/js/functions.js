@@ -74,8 +74,21 @@ $(document).ready(function(){
 					}
 				}
 			});
+			if (active_slide >= slides.length - 1) {
+				$('.slider-next').fadeOut(200);
+			}
+			else if ($('.slider-next').css('display') == "none") {
+				$('.slider-next').fadeIn(200);
+			}
 		}
 	}
+
+	$('.slider-next').on('click',function(e){
+		e.preventDefault();
+		if (active_slide < slides.length - 1) {
+			scrollToSlide(active_slide + 1);
+		}
+	});
 
 	$(window).on('resize',function(e){
 		win_w = $(window).width();

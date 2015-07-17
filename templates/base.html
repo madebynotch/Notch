@@ -1,17 +1,44 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
+<html lang="en" class="{% block htmlClass %}{% endblock %}">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notch</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <!-- Scripts -->
+    <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'js/functions.js' %}"></script>
+    {% block imports %}
 
-        {% block imports %}
-        
-        {% endblock %}
-    </head>
-    <body>
-        {% block content %}
+    {% endblock %}
+</head>
+<body>
+    <!-- Nav Block -->
+    <nav id="nav">
+        <div class="nav-wrapper">
+            <div class="nav-head">
+                <a href="/" title="logo" class="nav-logo">notch</a>
+                <button class="nav-toggle">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+            </div>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="">Work.</a></li>
+                    <li><a href="">About.</a></li>
+                    <li><a href="/inspire">Inspire.</a></li>
+                    <li><a href="">Contact.</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% block content %}
 
-        {% endblock %}
-    </body>
+    {% endblock %}
+</body>
 </html>

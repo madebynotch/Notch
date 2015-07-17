@@ -23,12 +23,12 @@ $emphasis-font-family: "Droid Serif",serif
 
 // Nav Variables
 $nav-link-color: white
-$nav-desktop-height: 73px
+$nav-desktop-height: 60px
 
 // Slider Variables
 $slider-header-font-family: $header-font-family
-$slider-header-size: 60px
-$slider-header-line-height: 72px
+$slider-header-size: 54px
+$slider-header-line-height: 60px
 @mixin slider-header-font
 	@include font($slider-header-font-family, 800, $slider-header-size, $slider-header-line-height)
 
@@ -41,6 +41,15 @@ $slider-desc-line-height: 30px
 $slider-nav-link-diam: 14px
 $slider-nav-link-margin: 30px
 $slider-nav-link-border: inset 0 0 0 3px white
+
+// Footer Variables
+$homepage-footer-bg: white
+$homepage-footer-height: 50px
+$homepage-footer-size: 16px
+$homepage-footer-color: $grey-medium
+$homepage-footer-offset: 10px
+@mixin homepage-footer-font
+	@include font($header-font-family, 700, $homepage-footer-size, $homepage-footer-height)
 
 @mixin headers
 	h1,h2,h3,h4,h5,h6
@@ -62,9 +71,12 @@ html, body
 html.home
 	&, & body
 		overflow: hidden
+	body
+		padding-top: 0
 
 body
     margin: 0
+    padding-top: $nav-desktop-height
     position: relative
 
 // NAVIGATION
@@ -123,6 +135,7 @@ body
 		vertical-align: middle
 		color: white
 		position: relative
+		padding-bottom: $homepage-footer-height + $homepage-footer-offset
 		z-index: 10
 		@include headers
 			@include slider-header-font
@@ -171,6 +184,31 @@ body
 			transition: all 0.1s ease
 		&.active
 			box-shadow: inset 0 0 0 12px #fff
+
+.slider-next
+	position: fixed
+	left: 0
+	bottom: $homepage-footer-height + $homepage-footer-offset
+	width: 100%
+	z-index: 60
+	color: white
+	padding: 10px
+	text-align: center
+
+.homepage-footer
+	@include homepage-footer-font
+	@include row(full)
+	position: absolute
+	z-index: 40
+	left: 0
+	bottom: 0
+	width: 100%
+	background: $homepage-footer-bg
+	a
+		color: $homepage-footer-color
+.footer-left,
+.footer-right
+	@include column(half)
 
 @include media('lg')
 	.slider-nav
