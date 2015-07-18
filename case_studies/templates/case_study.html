@@ -25,7 +25,7 @@
     <div class="cs-content">
         <div class="cs-content-left">
             {% if case_study.extension_text %}
-                <p class="cs-approach-content">{{case_study.approach_content}}</p>
+                <p class="cs-approach-content">{{case_study.extension_text}}</p>
             {% endif %}
 
             {% if case_study.sub_header %}
@@ -39,8 +39,8 @@
         </div>
         <div class="cs-content-right">
             <h4 class="cs-subheader">{{case_study.title}}</h4>
-            <p class="cs-tags">Branding, User experience, User Interface</p>
-            <p class="cs-year">2015</p>
+            <p class="cs-tags">{% for tag in case_study.tags.all %} {{ tag }}. {% endfor %}</p>
+            <p class="cs-year">{{ case_study.date_added.year }}</p>
             <a href="#" title="" class="btn-blue">Share Case Study</a>
         </div>
     </div>
