@@ -1,46 +1,66 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-
 {% block content %}
-<h1>{{case_study.title}}</h1>
+<section class="cs-wrapper">
+    <div class="cs-header">
+        <h1 class="cs-title">{{case_study.title}}</h1>
+        <h3 class="cs-subtitle">{{case_study.subtitle}}</h3>
+    </div>
+    <div class="cs-gameplan">
+        <div class="cs-task">
+            <h4 class="cs-subheader">The Task</h4>
+            <p class="cs-text">{{case_study.task_content}}</p>
+        </div>
+        <div class="cs-approach">
+            <h4 class="cs-subheader">Our Approach</h4>
+            <p class="cs-text">{{case_study.approach_content}}</p>
+        </div>
+    </div>
+    <div class="cs-slider">
+        {% for image in case_study.get_main_images %}
+            <img src="{{image.image.url}}" style='width:100%'>
+        {% endfor %}
+    </div>
+    <div class="cs-content">
+        <div class="cs-content-left">
+            {% if case_study.extension_text %}
+                <p class="cs-approach-content">{{case_study.approach_content}}</p>
+            {% endif %}
 
-<h3>{{case_study.subtitle}}</h3>
+            {% if case_study.sub_header %}
+                <h4 class="cs-subheader">{{case_study.sub_header}}</h4>
+                <p class="cs-text">{{case_study.sub_header_content}}</p>
+            {% endif %}
 
-<h4>The Task</h4>
-<p>{{case_study.task_content}}</p>
-
-<h4>Our Approach</h4>
-<p>{{case_study.approach_content}}</p>
-
-{% for image in case_study.get_main_images %}
-    <img src="{{image.image.url}}" style='width:100%'>
-{% endfor %}
-
-{% if case_study.extension_text %}
-    <p><i>{{case_study.approach_content}}</i></p>
-{% endif %}
-
-{% if case_study.sub_header %}
-    <h4>{{case_study.sub_header}}</h4>
-    <p>{{case_study.sub_header_content}}</p>
-{% endif %}
-
-{% for image in case_study.get_sub_images %}
-    <img src="{{image.image.url}}" style='width:50%'>
-{% endfor %}
-
-<br>
-
-{% if case_study.get_prev_pk %}
-    <a href="{% url 'case_study' case_study.get_prev_pk %}">Previous</a>
-{% else %}
-    <a href="" style='background-color: grey'>Previous</a>
-{% endif %}
-
-{% if case_study.get_next_pk %}
-    <a href="{% url 'case_study' case_study.get_next_pk %}">Next</a>
-{% else %}
-    <a href="" style='background-color: grey'>Next</a>
-{% endif %}
+            {% for image in case_study.get_sub_images %}
+                <img src="{{image.image.url}}" style='width:100%'>
+            {% endfor %}
+        </div>
+        <div class="cs-content-right">
+            <h4 class="cs-subheader">{{case_study.title}}</h4>
+            <p class="cs-tags">Branding, User experience, User Interface</p>
+            <p class="cs-year">2015</p>
+            <a href="#" title="" class="btn-blue">Share Case Study</a>
+        </div>
+    </div>
+    <div class="cs-page-nav">
+        <div class="cs-page-nav-previous">
+            {% if case_study.get_prev_pk %}
+                <a href="{% url 'case_study' case_study.get_prev_pk %}" class="cs-page-nav-link">Previous</a>
+                <h1 class="cs-page-nav-title">Previous Study</h1>
+            {% else %}
+                <p class="cs-page-nav-disabled">Previous</p>
+            {% endif %}
+        </div>
+        <div class="cs-page-nav-next">
+            {% if case_study.get_next_pk %}
+                <a href="{% url 'case_study' case_study.get_next_pk %}" class="cs-page-nav-link">Next</a>
+                <h1 class="cs-page-nav-title">Next Study</h1>
+            {% else %}
+                <p class="cs-page-nav-disabled">Next</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
 {% endblock %}

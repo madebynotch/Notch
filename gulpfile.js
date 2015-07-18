@@ -9,11 +9,12 @@ var exec = require('child_process').exec;
 var SASSinput = 'static/sass/*.sass';
 var HTMLinput = ['templates/*.html','*/templates/*.html'];
 var SASSoutput = 'static/css';
+var localhostPort = '8888';
 
 
 // Django server
 gulp.task('django-server', function() {
-    var proc = exec('PYTHONUNBUFFERED=1 python manage.py runserver');
+    var proc = exec('PYTHONUNBUFFERED=1 python manage.py runserver ' + localhostPort);
     proc.stderr.on('data',function(data){
         process.stdout.write(data);
     });
@@ -24,7 +25,7 @@ gulp.task('django-server', function() {
 gulp.task('django-sync', ['django-server'], function() {
     browserSync.init({
         proxy: {
-            target: "localhost:8000"
+            target: "localhost:" + localhostPort
         }
     });
 });
