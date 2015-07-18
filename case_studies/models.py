@@ -36,7 +36,7 @@ class CaseStudy(models.Model):
 
     def get_next_pk(self):
         try:
-            next_pk = CaseStudy.objects.filter(pk__gt=self.pk, is_visible=True)[:1][0].pk
+            next_pk = CaseStudy.objects.order_by('pk').filter(pk__gt=self.pk, is_visible=True)[:1][0].pk
         except (KeyError, IndexError):
             return None
 
@@ -44,7 +44,7 @@ class CaseStudy(models.Model):
 
     def get_prev_pk(self):
         try:
-            prev_pk = CaseStudy.objects.filter(pk__lt=self.pk, is_visible=True)[:1][0].pk
+            prev_pk = CaseStudy.objects.order_by('-pk').filter(pk__lt=self.pk, is_visible=True)[:1][0].pk
         except (KeyError, IndexError):
             return None
 
