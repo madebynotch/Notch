@@ -10,3 +10,4 @@ db.sqlite3
 media/case_studies
 media/inspire
 local_settings.py
+npm-debug.log
