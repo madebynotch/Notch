@@ -52,6 +52,22 @@ class CaseStudy(models.Model):
 
         return prev_pk
 
+    def get_next_title(self):
+        try:
+            next_title = CaseStudy.objects.order_by('pk').filter(pk__gt=self.pk, is_visible=True)[:1][0].title
+        except (KeyError, IndexError):
+            return None
+
+        return next_title
+
+    def get_prev_title(self):
+        try:
+            prev_title = CaseStudy.objects.order_by('-pk').filter(pk__lt=self.pk, is_visible=True)[:1][0].title
+        except (KeyError, IndexError):
+            return None
+
+        return prev_title
+
 
 class CaseStudyImage(models.Model):
     case_study = models.ForeignKey(CaseStudy, related_name='images')
