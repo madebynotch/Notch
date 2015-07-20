@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 
 class CaseStudy(models.Model):
@@ -15,7 +16,8 @@ class CaseStudy(models.Model):
     sub_header = models.CharField(max_length=25, blank=True)
     sub_header_content = models.TextField(blank=True)
     date_completed = models.DateTimeField(blank=True, null=True)
-    date_added = models.DateTimeField(auto_now=True)
+    date_added = models.DateTimeField(default=datetime.now)
+    date_added.editable = True
     is_visible = models.BooleanField(default=False)
 
     def __unicode__(self):
