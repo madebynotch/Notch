@@ -24,10 +24,10 @@ class CaseStudy(models.Model):
         return self.title
 
     def get_main_images(self):
-        return self.images.filter(is_sub_header=False)
+        return self.images.all()
 
     def get_sub_images(self):
-        return self.images.filter(is_sub_header=True)
+        return self.sub_header_images.all()
 
     def get_showcase(self):
         try:
@@ -72,9 +72,15 @@ class CaseStudy(models.Model):
 class CaseStudyImage(models.Model):
     case_study = models.ForeignKey(CaseStudy, related_name='images')
     image = models.ImageField(upload_to='case_studies')
-    # description = models.TextField()
-    is_sub_header = models.BooleanField()
     is_showcase = models.BooleanField()
+
+    def __unicode__(self):
+        return self.case_study.title+" : "+self.image.url
+
+
+class SubHeaderImage(models.Model):
+    case_study = models.ForeignKey(CaseStudy, related_name='sub_header_images')
+    image = models.ImageField(upload_to='case_studies')
 
     def __unicode__(self):
         return self.case_study.title+" : "+self.image.url
