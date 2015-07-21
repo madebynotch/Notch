@@ -1,0 +1,74 @@
+$font-family-gibson: "canada-type-gibson", sans-serif
+$cs-padding: 40px
+
+// temp colors
+$notch-blue: #2aaed9
+$grey-lighter: #e4e4e4
+$grey-light: #c2c2c2
+$grey-medium: #626365
+$grey-dark: #27282a
+$nav-bg: rgba($notch-blue,0.9)
+$body-text-color: $grey-medium
+$header-color: $grey-dark
+
+
+.in-header-wrapper
+    @include row(full)
+    padding-top: $cs-padding*2
+    padding-bottom: $cs-padding*4
+    text-align: center
+    background-color: $notch-blue
+    color: white
+.in-header
+    @include column(12)
+.in-title
+    @include font($font-family-gibson, 600, 48px, 60px)
+.in-subtitle
+    @include font($emphasis-font-family, 400, 16px, 24px)
+
+
+#inspire_list
+    @include row
+.inspire-list-item
+    @include column(12)
+    padding: 0
+    article
+        background-position: center center
+        background-repeat: no-repeat
+        background-size: cover
+        height: 400px
+        padding: $cs-padding/2
+    article > .in-list-content
+        display: none
+    article:hover
+        background-color: #FFF
+        &> .in-list-content
+            display: block
+    .in-list-cat
+        @include font($font-family-gibson, 600, 14px, initial)
+        color: $notch-blue
+        text-transform: uppercase
+        display: inline
+    .in-list-date
+        @include font($font-family-gibson, 400, 14px, initial)
+        color: $grey-medium
+        display: inline
+        span
+            padding: 0 8px 0 6px
+    .in-list-title
+        margin-top: $cs-padding
+        margin-bottom: $cs-padding/2
+        color: black
+    .in-list-desc
+        @include font($emphasis-font-family, 400, 18px, 28px)
+        color: $grey-medium
+
+
+@include media('lg')
+    .cs-task, .cs-approach
+        @include column(6)
+    .cs-content-left
+        @include column(8)
+    .cs-content-right
+        @include column(3)
+        @include offset(1)
