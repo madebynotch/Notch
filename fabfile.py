@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 # Run with: fab -f nameoffile.py update
 from __future__ import with_statement
-import getpass
 from fabric.api import *
-from fabric.colors import red, green
+from fabric.colors import green
 
 env.hosts = ['50.116.4.76']
-env.user = getpass.getuser()
+env.user = 'notch-dev'
+env.password = 'QtpFB17y1676HzTF'
 env.port = 922
 
 
@@ -21,6 +21,6 @@ def update_dev():
         run('python manage.py migrate')
         run('npm install')
         run('node_modules/bower/bin/bower install')
-        # run('node node_modules/gulp/bin/gulp.js sass')
+        run('node node_modules/gulp/bin/gulp.js sass')
         run('python manage.py collectstatic --noinput')
         run('touch /tmp/notch.sock')

@@ -19,7 +19,7 @@
       "title": "Inspire Item 1",
       "url": "http:\/\/google.com",
       "image": "dev\/inspire\/1821449_y5YLCAg.jpg",
-      "tag": 1,
+      "tag": "Dribble",
       "date_added": "2015-07-16"
     },
     "model": "inspire.inspireitem",
@@ -31,7 +31,7 @@
       "title": "Inspire Item 2",
       "url": "http:\/\/yahoo.com",
       "image": "dev\/inspire\/fantasy_space-wide_0BLkjDB.jpg",
-      "tag": 1,
+      "tag": "Dribble",
       "date_added": "2015-07-16"
     },
     "model": "inspire.inspireitem",
@@ -43,7 +43,7 @@
       "title": "Inspire Item 3",
       "url": "http:\/\/facebook.com",
       "image": "dev\/inspire\/featured-space-policy.jpg",
-      "tag": 2,
+      "tag": "Dribble",
       "date_added": "2015-07-16"
     },
     "model": "inspire.inspireitem",
@@ -55,7 +55,7 @@
       "title": "Inspire Item 1",
       "url": "http:\/\/google.com",
       "image": "dev\/inspire\/1821449_y5YLCAg.jpg",
-      "tag": 1,
+      "tag": "Dribble",
       "date_added": "2015-07-16"
     },
     "model": "inspire.inspireitem",
@@ -67,7 +67,7 @@
       "title": "Inspire Item 2",
       "url": "http:\/\/yahoo.com",
       "image": "dev\/inspire\/fantasy_space-wide_0BLkjDB.jpg",
-      "tag": 1,
+      "tag": "Dribble",
       "date_added": "2015-07-16"
     },
     "model": "inspire.inspireitem",
@@ -79,7 +79,7 @@
       "title": "Inspire Item 3",
       "url": "http:\/\/facebook.com",
       "image": "dev\/inspire\/featured-space-policy.jpg",
-      "tag": 2,
+      "tag": "Dribble",
       "date_added": "2015-07-16"
     },
     "model": "inspire.inspireitem",
@@ -91,7 +91,7 @@
       "title": "Inspire Item 1",
       "url": "http:\/\/google.com",
       "image": "dev\/inspire\/1821449_y5YLCAg.jpg",
-      "tag": 1,
+      "tag": "Dribble",
       "date_added": "2015-07-16"
     },
     "model": "inspire.inspireitem",
@@ -103,7 +103,7 @@
       "title": "Inspire Item 2",
       "url": "http:\/\/yahoo.com",
       "image": "dev\/inspire\/fantasy_space-wide_0BLkjDB.jpg",
-      "tag": 1,
+      "tag": "Dribble",
       "date_added": "2015-07-16"
     },
     "model": "inspire.inspireitem",
@@ -115,7 +115,7 @@
       "title": "Inspire Item 3",
       "url": "http:\/\/facebook.com",
       "image": "dev\/inspire\/featured-space-policy.jpg",
-      "tag": 2,
+      "tag": "Dribble",
       "date_added": "2015-07-16"
     },
     "model": "inspire.inspireitem",
@@ -127,7 +127,7 @@
       "title": "Inspire Item 1",
       "url": "http:\/\/google.com",
       "image": "dev\/inspire\/1821449_y5YLCAg.jpg",
-      "tag": 1,
+      "tag": "Dribble",
       "date_added": "2015-07-16"
     },
     "model": "inspire.inspireitem",
@@ -139,7 +139,7 @@
       "title": "Inspire Item 2",
       "url": "http:\/\/yahoo.com",
       "image": "dev\/inspire\/fantasy_space-wide_0BLkjDB.jpg",
-      "tag": 1,
+      "tag": "Dribble",
       "date_added": "2015-07-16"
     },
     "model": "inspire.inspireitem",
@@ -151,7 +151,7 @@
       "title": "Inspire Item 3",
       "url": "http:\/\/facebook.com",
       "image": "dev\/inspire\/featured-space-policy.jpg",
-      "tag": 2,
+      "tag": "Dribble",
       "date_added": "2015-07-16"
     },
     "model": "inspire.inspireitem",
@@ -163,7 +163,7 @@
       "title": "Inspire Item 1",
       "url": "http:\/\/google.com",
       "image": "dev\/inspire\/1821449_y5YLCAg.jpg",
-      "tag": 1,
+      "tag": "Dribble",
       "date_added": "2015-07-16"
     },
     "model": "inspire.inspireitem",
@@ -175,7 +175,7 @@
       "title": "Inspire Item 2",
       "url": "http:\/\/yahoo.com",
       "image": "dev\/inspire\/fantasy_space-wide_0BLkjDB.jpg",
-      "tag": 1,
+      "tag": "Dribble",
       "date_added": "2015-07-16"
     },
     "model": "inspire.inspireitem",
@@ -187,7 +187,7 @@
       "title": "Inspire Item 3",
       "url": "http:\/\/facebook.com",
       "image": "dev\/inspire\/featured-space-policy.jpg",
-      "tag": 2,
+      "tag": "Dribble",
       "date_added": "2015-07-16"
     },
     "model": "inspire.inspireitem",
@@ -207,8 +207,8 @@
       "project_link": "http:\/\/www.yahoo.com",
       "sub_header_content": "",
       "date_added": "2015-07-17T15:52:22.893Z",
-      "task_content": "Look, just because I don't be givin' no man a foot massage don't make it right for Marsellus to throw Antwone into a glass motherfuckin' house, fuckin' up the way the nigger talks. Motherfucker do that shit to me, he better paralyze my ass, 'cause I'll kill the motherfucker, know what I'm sayin'?",
-      "approach_content": "You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it killed the world once and got a taste for murder. After the avalanche, it took us a week to climb out. Now, I don't know exactly when we turned on each other, but I know that seven of us survived the slide... and only five made it out. Now we took an oath, that I'm breaking now. We said we'd say it was the snow that killed the other two, but it wasn't. Nature is lethal but it doesn't hold a candle to man."
+      "task_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "approach_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     },
     "model": "case_studies.casestudy",
     "pk": 100
@@ -228,7 +228,7 @@
       "project_link": "http:\/\/www.google.com",
       "sub_header_content": "",
       "date_added": "2015-07-17T15:53:28.919Z",
-      "task_content": "Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional period so I don't wanna kill you, I wanna help you. But I can't give you this case, it don't belong to me. Besides, I've already been through too much shit this morning over this case to hand it over to your dumb ass.",
+      "task_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "approach_content": "The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee."
     },
     "model": "case_studies.casestudy",
@@ -248,8 +248,8 @@
       "project_link": "http:\/\/www.yahoo.com",
       "sub_header_content": "",
       "date_added": "2015-07-17T15:52:22.893Z",
-      "task_content": "Look, just because I don't be givin' no man a foot massage don't make it right for Marsellus to throw Antwone into a glass motherfuckin' house, fuckin' up the way the nigger talks. Motherfucker do that shit to me, he better paralyze my ass, 'cause I'll kill the motherfucker, know what I'm sayin'?",
-      "approach_content": "You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it killed the world once and got a taste for murder. After the avalanche, it took us a week to climb out. Now, I don't know exactly when we turned on each other, but I know that seven of us survived the slide... and only five made it out. Now we took an oath, that I'm breaking now. We said we'd say it was the snow that killed the other two, but it wasn't. Nature is lethal but it doesn't hold a candle to man."
+      "task_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "approach_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     },
     "model": "case_studies.casestudy",
     "pk": 103
@@ -269,7 +269,7 @@
       "project_link": "http:\/\/www.google.com",
       "sub_header_content": "",
       "date_added": "2015-07-17T15:53:28.919Z",
-      "task_content": "Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional period so I don't wanna kill you, I wanna help you. But I can't give you this case, it don't belong to me. Besides, I've already been through too much shit this morning over this case to hand it over to your dumb ass.",
+      "task_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "approach_content": "The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee."
     },
     "model": "case_studies.casestudy",
@@ -289,8 +289,8 @@
       "project_link": "http:\/\/www.yahoo.com",
       "sub_header_content": "",
       "date_added": "2015-07-17T15:52:22.893Z",
-      "task_content": "Look, just because I don't be givin' no man a foot massage don't make it right for Marsellus to throw Antwone into a glass motherfuckin' house, fuckin' up the way the nigger talks. Motherfucker do that shit to me, he better paralyze my ass, 'cause I'll kill the motherfucker, know what I'm sayin'?",
-      "approach_content": "You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it killed the world once and got a taste for murder. After the avalanche, it took us a week to climb out. Now, I don't know exactly when we turned on each other, but I know that seven of us survived the slide... and only five made it out. Now we took an oath, that I'm breaking now. We said we'd say it was the snow that killed the other two, but it wasn't. Nature is lethal but it doesn't hold a candle to man."
+      "task_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "approach_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     },
     "model": "case_studies.casestudy",
     "pk": 105
@@ -310,7 +310,7 @@
       "project_link": "http:\/\/www.google.com",
       "sub_header_content": "",
       "date_added": "2015-07-17T15:53:28.919Z",
-      "task_content": "Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional period so I don't wanna kill you, I wanna help you. But I can't give you this case, it don't belong to me. Besides, I've already been through too much shit this morning over this case to hand it over to your dumb ass.",
+      "task_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "approach_content": "The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee."
     },
     "model": "case_studies.casestudy",
@@ -318,7 +318,6 @@
   },
   {
     "fields": {
-      "is_sub_header": false,
       "image": "dev\/case_studies\/1821449.jpg",
       "is_showcase": true,
       "case_study": 100
@@ -328,7 +327,6 @@
   },
   {
     "fields": {
-      "is_sub_header": true,
       "image": "dev\/case_studies\/fantasy_space-wide.jpg",
       "is_showcase": false,
       "case_study": 100
@@ -338,7 +336,6 @@
   },
   {
     "fields": {
-      "is_sub_header": false,
       "image": "dev\/case_studies\/featured-space-policy.jpg",
       "is_showcase": false,
       "case_study": 100
@@ -348,7 +345,6 @@
   },
   {
     "fields": {
-      "is_sub_header": false,
       "image": "dev\/case_studies\/space-wallpaper-29.jpg",
       "is_showcase": true,
       "case_study": 102
@@ -358,7 +354,6 @@
   },
   {
     "fields": {
-      "is_sub_header": false,
       "image": "dev\/case_studies\/images.jpg",
       "is_showcase": false,
       "case_study": 102
@@ -368,7 +363,6 @@
   },
   {
     "fields": {
-      "is_sub_header": false,
       "image": "dev\/case_studies\/1821449.jpg",
       "is_showcase": true,
       "case_study": 103
@@ -378,7 +372,6 @@
   },
   {
     "fields": {
-      "is_sub_header": true,
       "image": "dev\/case_studies\/fantasy_space-wide.jpg",
       "is_showcase": false,
       "case_study": 103
@@ -388,7 +381,6 @@
   },
   {
     "fields": {
-      "is_sub_header": false,
       "image": "dev\/case_studies\/featured-space-policy.jpg",
       "is_showcase": false,
       "case_study": 103
@@ -398,7 +390,6 @@
   },
   {
     "fields": {
-      "is_sub_header": false,
       "image": "dev\/case_studies\/space-wallpaper-29.jpg",
       "is_showcase": true,
       "case_study": 104
@@ -408,7 +399,6 @@
   },
   {
     "fields": {
-      "is_sub_header": false,
       "image": "dev\/case_studies\/images.jpg",
       "is_showcase": false,
       "case_study": 104
@@ -418,7 +408,6 @@
   },
   {
     "fields": {
-      "is_sub_header": false,
       "image": "dev\/case_studies\/1821449.jpg",
       "is_showcase": true,
       "case_study": 105
@@ -428,7 +417,6 @@
   },
   {
     "fields": {
-      "is_sub_header": true,
       "image": "dev\/case_studies\/fantasy_space-wide.jpg",
       "is_showcase": false,
       "case_study": 105
@@ -438,7 +426,6 @@
   },
   {
     "fields": {
-      "is_sub_header": false,
       "image": "dev\/case_studies\/featured-space-policy.jpg",
       "is_showcase": false,
       "case_study": 105
