@@ -21,6 +21,6 @@ def update_dev():
         run('python manage.py migrate')
         run('npm install')
         run('node_modules/bower/bin/bower install')
-        # run('node node_modules/gulp/bin/gulp.js sass')
+        run('node node_modules/gulp/bin/gulp.js sass')
         run('python manage.py collectstatic --noinput')
         run('touch /tmp/notch.sock')
