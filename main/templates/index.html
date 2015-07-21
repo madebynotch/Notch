@@ -4,7 +4,7 @@
 {% block htmlClass %}home{% endblock %}
 
 {% block content %}
-    <div class="slider">
+    <div class="slider vertical">
         {% for case in case_list %}
             <div class="slide">
                 {% if case.get_showcase %}
@@ -18,8 +18,10 @@
                     </div>
                 </div>
             </div>
-            {% endfor %}
-        <a href="" class="slider-next">&darr;</a>
+        {% endfor %}
+        <div class="slider-controls">
+            <a href="" class="slider-next">&darr;</a>
+        </div>
     </div>
     <footer class="homepage-footer">
         <div class="footer-left">

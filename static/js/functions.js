@@ -6,10 +6,38 @@ $(document).ready(function(){
 	// Slider Setup
 	// ============
 
+	// Slider object construtor
+	var Slider = function(selector,params) {
+		// Alias 'this'
+		var self = this;
+		// Store jQuery selector
+		self.selector = $(selector);
+		// Set slider's direction for changing slides
+		self.direction = (self.selector.hasClass('vertical') ? "vertical" : "horizontal");
+		// Init variable for slider navigation selector
+		self.navigation = null;
+		// Store array of child DOM elements with class 'slide'
+		self.slides = self.selector.children('.slide');
+	}
+
+	sliders = [];
+	$('.slider').each(function(){
+		var new_slider = new Slider(this);
+		sliders.push(new_slider);
+	});
+	console.log(sliders);
+
 	var slider = $('.slider');
+
 	// Add and alias slider navigation
-	slider.before('<ul class="slider-nav"></ul>');
+	if (slider.hasClass('vertical')) {
+		slider.before('<ul class="slider-nav vertical"></ul>');
+	}
+	else {
+		slider.after('<ul class="slider-nav"></ul>');
+	}
 	var slider_nav = $('.slider-nav');
+
 	// Alias slides in slider
 	var slides = slider.children('.slide');
 
@@ -21,7 +49,10 @@ $(document).ready(function(){
 		});
 	}
 
-	resizeSlider();
+	// If the slider is full-screen, fit to the window
+	if (slider.hasClass('vertical')) {
+		resizeSlider();
+	}
 
 	// For each slide in the slider, add a link to the slider navigation
 	for(var i=0;i<slides.length;i++){
@@ -140,42 +171,43 @@ $(document).ready(function(){
 		}
 	})
 
-	// On scroll or mousewheel events
-	$(window).on('wheel',function(e){
-		y = e.originalEvent.deltaY;
-		if (y == -0) {
-			y = 0;
-		}
-		if (y != 0) {
-			pseudoY += ((Math.sqrt(Math.abs(y)) * 3) + (Math.abs(y) * 1 / 4)) * (y / Math.abs(y));
-			if (pseudoY > maxPseudoY) {
-				pseudoY = maxPseudoY;
+	if (slider.hasClass('vertical')) {
+		// On scroll or mousewheel events
+		$(window).on('wheel',function(e){
+			y = e.originalEvent.deltaY;
+			if (y == -0) {
+				y = 0;
 			}
-			if (pseudoY < 0) {
-				pseudoY = 0;
+			if (y != 0) {
+				pseudoY += ((Math.sqrt(Math.abs(y)) * 3) + (Math.abs(y) * 1 / 4)) * (y / Math.abs(y));
+				if (pseudoY > maxPseudoY) {
+					pseudoY = maxPseudoY;
+				}
+				if (pseudoY < 0) {
+					pseudoY = 0;
+				}
+				// console.log(pseudoY);
+				var new_active_slide = Math.round(pseudoY / win.height());
+				if (new_active_slide != active_slide) {
+					scrollToSlide(new_active_slide);
+				}
 			}
-			// console.log(pseudoY);
-			var new_active_slide = Math.round(pseudoY / win.height());
-			if (new_active_slide != active_slide) {
-				scrollToSlide(new_active_slide);
-			}
-			$('.progress-bar').css('width',(pseudoY / maxPseudoY * 100)+"%");
-		}
-	});
+		});
 
-	// Alias keys
-	// left: 37, up: 38, right: 39, down: 40,
-	// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
-	var keys = {32: 1, 33: -1, 34: 1, 37: -1, 38: -1, 39: 1, 40: 1};
-	// On keydown event
-	$(window).on('keydown',function(e){
-		// If pressed key is one of the keys being listened for
-		if (e.keyCode in keys) {
-			// Jump to the previous or next slide, using either
-			// 1 or -1 from the "keys" object
-			scrollToSlide(active_slide + keys[e.keyCode],'jump');
-		}
-	});
+		// Alias keys
+		// left: 37, up: 38, right: 39, down: 40,
+		// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+		var keys = {32: 1, 33: -1, 34: 1, 37: -1, 38: -1, 39: 1, 40: 1};
+		// On keydown event
+		$(window).on('keydown',function(e){
+			// If pressed key is one of the keys being listened for
+			if (e.keyCode in keys) {
+				// Jump to the previous or next slide, using either
+				// 1 or -1 from the "keys" object
+				scrollToSlide(active_slide + keys[e.keyCode],'jump');
+			}
+		});
+	}
 
 	// When a "slider-link" button is clicked
 	$('.slider-link').on('click',function(){
