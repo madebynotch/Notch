@@ -4,7 +4,9 @@
             <h1>Title: {{ inspire.title }}</h1>
             <p>Tag: {{ inspire.tag }}</p>
             <p>Description: {{ inspire.description }}</p>
-            <img src="{{ inspire.image.url }}" alt="" style="width: 100px; height: 100px">
+            {% if inspire.image %}
+                <img src="{{ inspire.image.url }}" alt="" style="width: 100px; height: 100px">
+            {% endif %}
         </article>
     </a>
 {% endfor %}
