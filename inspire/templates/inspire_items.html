@@ -1,12 +1,18 @@
 {% for inspire in inspire_list %}
-    <a href="{{ inspire.url }}" target="_blank">
-        <article>
-            <h1>Title: {{ inspire.title }}</h1>
-            <p>Tag: {{ inspire.tag }}</p>
-            <p>Description: {{ inspire.description }}</p>
-            {% if inspire.image %}
-                <img src="{{ inspire.image.url }}" alt="" style="width: 100px; height: 100px">
-            {% endif %}
-        </article>
-    </a>
+    <div class="inspire-list-item">
+        <a href="{{ inspire.url }}" target="_blank">
+            <article style="background-image: url({{ inspire.image.url }})">
+                <div class="in-list-content">
+                    <p class="in-list-cat">Launch</p>
+                    <p class="in-list-date"><span>//</span>June 12, 2015</p>
+                    <h2 class="in-list-title">{{ inspire.title }}</h2>
+                    <!-- <p>Tag: {{ inspire.tag }}</p> -->
+                    <p class="in-list-desc">{{ inspire.description }}</p>
+                    {% if inspire.image %}
+                        <img src="{{ inspire.image.url }}" alt="" style="width: 100px; height: 100px">
+                    {% endif %}
+                </div>
+            </article>
+        </a>
+    </div>
 {% endfor %}

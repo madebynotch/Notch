@@ -6,15 +6,22 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Some Inspire Stuff here</h1>
+    <section class="in-header-wrapper">
+        <div class="in-header">
+            <h1 class="in-title">Get Inspired.</h1>
+            <p class="in-subtitle">Work in progress, news, life, inspiration, anything &amp; everything.</p>
+        </div>
+    </section>
 
     <section id="inspire-list">
         {% include 'inspire_items.html' %}
     </section>
 
-    {% if paginator.num_pages > 1 %}
-        <button id="show-more">Show me more</button>
-    {% endif %}
+    <section class="in-show-more">
+        {% if paginator.num_pages > 1 %}
+            <button id="show-more">Show me more</button>
+        {% endif %}
+    </section>
 
     {% csrf_token %}
 {% endblock %}
