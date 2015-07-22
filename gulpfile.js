@@ -8,6 +8,7 @@ var exec = require('child_process').exec;
 // Custom Variables
 var SASSinput = 'static/sass/*.sass';
 var HTMLinput = ['templates/*.html','*/templates/*.html'];
+var JSinput = ['static/js/*.js'];
 var SASSoutput = 'static/css';
 var localhostPort = '8888';
 
@@ -60,6 +61,13 @@ gulp.task('watch-html', ['django-sync'], function() {
     .watch(HTMLinput).on('change', browserSync.reload);
 });
 
+// JS Watch
+gulp.task('watch-js', function() {
+    return gulp
+    // Watch js files for change
+    .watch(JSinput).on('change', browserSync.reload);
+})
+
 
 // Main Task to run all sub-tasks
-gulp.task('connect', ['sass', 'watch-sass', 'watch-html']);
+gulp.task('connect', ['sass', 'watch-sass', 'watch-html', 'watch-js']);

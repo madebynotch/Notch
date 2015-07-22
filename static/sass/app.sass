@@ -163,7 +163,7 @@ body
 		color: $grey-medium
 
 .slider-nav
-	position: fixed
+	position: absolute
 	top: 50%
 	left: $side-pad-sm
 	z-index: 15
@@ -209,7 +209,10 @@ body
 	top: 0
 	left: 0
 	overflow: visible
+	.slider-nav
+		position: fixed
 	.slider-controls
+		position: fixed
 		bottom: $homepage-footer-height + $homepage-footer-offset
 	.slider-next,
 	.slider-prev
