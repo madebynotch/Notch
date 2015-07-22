@@ -4,7 +4,7 @@
             <article {% if inspire.image %}style="background-image: url({{ inspire.image.url }})"{% endif %}>
                 <div class="in-list-content">
                     <p class="in-list-cat">{{ inspire.tag }}</p>
-                    <p class="in-list-date"><span>//</span>June 12, 2015</p>
+                    <p class="in-list-date"><span>//</span>{{ inspire.date_added }}</p>
                     <h2 class="in-list-title">{{ inspire.title }}</h2>
                     <!-- <p>Tag: {{ inspire.tag }}</p> -->
                     <p class="in-list-desc">{{ inspire.description }}</p>
