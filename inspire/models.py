@@ -18,5 +18,8 @@ class InspireItem(models.Model):
     description = models.TextField()
     date_added = models.DateField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-date_added']
+
     def __unicode__(self):
         return self.title
