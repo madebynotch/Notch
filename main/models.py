@@ -39,14 +39,14 @@ class ContactItem(models.Model):
         message = template.render(context)
 
         try:
-            send_mass_mail(
+            send_mass_mail((
                 (
                     'A new contact request from %s' % self.name,
                     message,
                     'contact@notch.com',
-                    recipients
-                )
-            )
+                    list(recipients)
+                ),
+            ))
         except:
             print 'Error sending email'
         else:
