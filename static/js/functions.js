@@ -30,6 +30,17 @@ $(document).ready(function(){
 		self.max_pseudoY = $(window).height() * (self.slides.length - 1);
 
 		self.scrollToSlide = function(i,method) {
+			// If the slider is horizontal, allow it to loop
+			if (self.direction == "horizontal") {
+				if (i >= self.slides.length) {
+					i = 0;
+				}
+				if (i < 0) {
+					i = self.slides.length - 1;
+				}
+			}
+			// Initialize "loop" as being false
+			var loop = false;
 			// If the specified slide is already selected,
 			// the specified slide is not a negative number,
 			// and the specified slide is within the range of the slider
@@ -41,6 +52,8 @@ $(document).ready(function(){
 				// its matching link in the slider navigation
 				$(self.slides[self.active_slide]).removeClass('active');
 				$(self.navigation_links[self.active_slide]).removeClass('active');
+				// Store the active slide when the method was started
+				var prev_active_slide = self.active_slide;
 				// Set the active slide variable to the specified slide
 				self.active_slide = i;
 				// Add the "active" class to the specified slide amd
@@ -49,53 +62,64 @@ $(document).ready(function(){
 				$(self.navigation_links[i]).addClass('active');
 				// Animate the slider to up or down to switch to the
 				// specified slide, 250ms per slide moved
-				self.element.animate({
-					'top': (0 - (i * win.height())) + "px"
-				},{
-					duration: 250 * diff,
-					complete: function(){
-						// If the slide was changed by a keyboard event
-						// or a slider navigation link
-						if (method && method == 'jump') {
-							// update the pseudoY variable
-							self.pseudoY = i * win.height();
+				if (self.direction == "vertical") {
+					self.element.animate({
+						'top': (0 - (i * $(window).height())) + "px"
+					},{
+						duration: 250 * diff,
+						complete: function(){
+							// If the slide was changed by a keyboard event
+							// or a slider navigation link
+							if (method && method == 'jump') {
+								// update the pseudoY variable
+								self.pseudoY = i * $(window).height();
+							}
 						}
-					}
-				});
-				// If the specified slide is the last slide in the slider
-				if (self.active_slide >= self.slides.length - 1) {
-					// Hide the "slider-next" link
-					$(self.next_link).fadeOut(200);
+					});
 				}
-				// If the "slider-next" link is not visible
-				else if ($(self.next_link).css('display') == "none") {
-					// Show the "slider-next" link
-					$(self.next_link).fadeIn(200);
+				else {
+					// Initialize "anim_i" as null
+					var anim_i = null;
+					// Check to see if the requested slide is at the opposite end
+					// of the list of slides. If so, set "anim_i" as being
+					// incremented once more in the direction requested
+					// (either left or right) and set loop as true
+					if (i == 0 && prev_active_slide == self.slides.length - 1) {
+						anim_i = self.slides.length;
+						loop = true;
+						diff = 1;
+					}
+					else if (i == self.slides.length - 1 && prev_active_slide == 0) {
+						anim_i = -1;
+						loop = true;
+						diff = 1;
+					}
+					else {
+						anim_i = i;
+					}
+					self.element.animate({
+						'left': (0 - (anim_i * $(window).width())) + "px"
+					},{
+						duration: 250 * diff,
+						complete: function(){
+							if(loop) {
+								self.element.css('left',(0 - (i * $(window).width())) + "px")
+							}
+						}
+					});
 				}
 
-				// If the specified slide is the first slide in the slider
-				if (self.active_slide == 0) {
-					// Hide the "slider-prev" link
-					$(self.prev_link).animate({
-						'opacity': 0
-					},{
-						duration: 250,
-						complete: function(){
-							// need to mark links as disabled when opacity == 0
-						}
-					})
-				}
-				// If the "slider-next" link is not visible
-				else if ($(self.prev_link).css('opacity') == '0') {
-					// Show the "slider-prev" link
-					$(self.prev_link).animate({
-						'opacity': 1
-					},{
-						duration: 250,
-						complete: function(){
-							// need to mark links as disabled when opacity == 0
-						}
-					})
+				if (self.direction == "vertical") {
+					// If the specified slide is the last slide in the slider
+					if (self.active_slide >= self.slides.length - 1) {
+						// Hide the "slider-next" link
+						$(self.next_link).fadeOut(200);
+					}
+					// If the "slider-next" link is not visible
+					else if ($(self.next_link).css('display') == "none") {
+						// Show the "slider-next" link
+						$(self.next_link).fadeIn(200);
+					}
 				}
 			}
 		}
@@ -149,9 +173,31 @@ $(document).ready(function(){
 				'height': $(window).height() + 'px'
 			});
 			for(var i=0;i<self.slides.length;i++){
-				$(self.slides[i]).css('top',i*self.element.height())
+				$(self.slides[i]).css('top',i*self.element.height());
+				self.resizeImg(self.slides[i]);
 			}
 			self.navigation.css('margin-top',0 - (self.navigation.height() / 2) + "px");
+		}
+
+		self.resizeImg = function(slide) {
+			// NOTE: this could be simplified for the current use case by
+			// attaching the image's size in attributes on its tag.
+			img = $(slide).children('img');
+			// Set the image width to the width of the window
+			img.css('width', self.element.width());
+			// If the image height is less than the window height,
+			// scale the image up until the image covers the window area
+			if (img.height() < self.element.height()) {
+				img.css('width', img.width() * self.element.height() / img.height());
+			}
+			// Adjust the image's left property to center the image in the window
+			img.css('left', ($(window).width() - img.width()) / 2);
+		}
+
+		self.resizeImgs = function() {
+			for(var i=0;i<self.slides.length;i++){
+				self.resizeImg(self.slides[i]);
+			}
 		}
 
 		self.initSlides = function() {
@@ -164,6 +210,8 @@ $(document).ready(function(){
 					$(self.slides[i]).addClass('active');
 					$(self.navigation_links[i]).addClass('active');
 				}
+
+				self.resizeImg(self.slides[i]);
 			}
 		}
 
@@ -229,6 +277,18 @@ $(document).ready(function(){
 					// 1 or -1 from the "keys" object
 					sliders[i].scrollToSlide(sliders[i].active_slide + keys[e.keyCode],'jump');
 				}
+			}
+		});
+
+		$(window).on('resize',function(e){
+			for(var i=0;i<sliders.length;i++){
+				sliders[i].resizeSlider();
+			}
+		});
+
+		$(window).on('load',function(e){
+			for(var i=0;i<sliders.length;i++){
+				sliders[i].resizeImgs();
 			}
 		});
 	}
