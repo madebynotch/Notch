@@ -1,74 +1,119 @@
-$font-family-gibson: "canada-type-gibson", sans-serif
-$cs-padding: 40px
-
-// temp colors
-$notch-blue: #2aaed9
-$grey-lighter: #e4e4e4
-$grey-light: #c2c2c2
-$grey-medium: #626365
-$grey-dark: #27282a
-$nav-bg: rgba($notch-blue,0.9)
-$body-text-color: $grey-medium
-$header-color: $grey-dark
+$article-height: 240px
 
 
 .in-header-wrapper
     @include row(full)
-    padding-top: $cs-padding*2
-    padding-bottom: $cs-padding*4
+    padding-top: $space40
+    padding-bottom: $space40
     text-align: center
     background-color: $notch-blue
     color: white
+
 .in-header
     @include column(12)
+
 .in-title
     @include font($font-family-gibson, 600, 48px, 60px)
+
 .in-subtitle
     @include font($emphasis-font-family, 400, 16px, 24px)
 
 
-#inspire_list
+#inspire-list
     @include row
-.inspire-list-item
-    @include column(12)
+
+.in-list__article
+    @include column(6)
     padding: 0
-    article
-        background-position: center center
-        background-repeat: no-repeat
-        background-size: cover
-        height: 400px
-        padding: $cs-padding/2
-    article > .in-list-content
-        display: none
-    article:hover
-        background-color: #FFF
-        &> .in-list-content
+    height: $article-height
+    background-color: white
+    &:hover
+        background: black
+        .in-list__type--image .in-list__content
             display: block
-    .in-list-cat
-        @include font($font-family-gibson, 600, 14px, initial)
-        color: $notch-blue
-        text-transform: uppercase
-        display: inline
-    .in-list-date
-        @include font($font-family-gibson, 400, 14px, initial)
-        color: $grey-medium
-        display: inline
-        span
-            padding: 0 8px 0 6px
-    .in-list-title
-        margin-top: $cs-padding
-        margin-bottom: $cs-padding/2
-        color: black
-    .in-list-desc
-        @include font($emphasis-font-family, 400, 18px, 28px)
-        color: $grey-medium
+        .in-list__cat, .in-list__date, .in-list__title, .in-list__desc
+            color: white
+        .in-list__image
+            z-index: -5
+
+.in-list__link
+    position: relative
+
+.in-list__type
+    &--image
+        .in-list__content
+            display: none
+    &--text
+        .in-list__image
+            display: none
+
+
+.in-list__content
+    padding: $space40/2
+.in-list__cat
+    @include font($font-family-gibson, 600, 10px, initial)
+    color: $notch-blue
+    text-transform: uppercase
+    display: inline
+.in-list__date
+    @include font($font-family-gibson, 400, 10px, initial)
+    color: $grey-medium
+    display: inline
+    span
+        padding-right: 4px
+.in-list__title
+    @include font($font-family-gibson, 600, 20px, initial)
+    margin-top: $space40/2
+    margin-bottom: $space40/4
+    color: black
+.in-list__desc
+    @include font($emphasis-font-family, 400, 12px, 20px)
+    color: $grey-medium
+
+
+.in-list__image
+    height: $article-height
+    width: 100%
+    overflow: hidden
+    position: absolute
+    top: 0
+    img
+        height: auto
+        width: 100%
 
 
 @include media('lg')
-    .cs-task, .cs-approach
-        @include column(6)
-    .cs-content-left
-        @include column(8)
-    .cs-content-right
+    $article-height: 300px
+
+    .in-header-wrapper
+        @include row(full)
+        padding-top: $space40*2
+        padding-bottom: $space40*6
+
+
+    #inspire-list
+        margin-top: -$space40*4
+
+
+    .in-list__article
         @include column(3)
-        @include offset(1)
+        padding: 0
+        height: $article-height
+
+
+    .in-list__cat
+        @include font($font-family-gibson, 600, 12px, initial)
+    .in-list__date
+        @include font($font-family-gibson, 400, 12px, initial)
+        span
+            padding-right: 4px
+    .in-list__title
+        @include font($font-family-gibson, 600, 24px, initial)
+        margin-top: $space40/1.5
+        margin-bottom: $space40/4
+    .in-list__desc
+        @include font($emphasis-font-family, 400, 12px, 20px)
+
+
+    .in-list__image
+        height: $article-height

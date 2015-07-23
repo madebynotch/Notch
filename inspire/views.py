@@ -9,7 +9,7 @@ class InspireView(ListView):
     context_object_name = 'inspire_list'
     model = InspireItem
     template_name = 'inspire.html'
-    items_per_page = 1
+    items_per_page = 7
     queryset = InspireItem.objects.all()[:items_per_page]
 
     def dispatch(self, request, *args, **kwargs):
