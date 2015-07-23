@@ -10,8 +10,11 @@ $(document).ready(function(){
 	var Slider = function(selector,params) {
 		// Alias 'this'
 		var self = this;
-		// Store jQuery selector
+		// Store jQuery selector for the whole slider
 		self.element = $(selector);
+		// Store jQuery selector for the slider wrapper (this will be moved when
+		//  switching between slides)
+		self.wrapper = self.element.children('.slider-wrapper');
 		// Set slider's direction for changing slides
 		self.direction = (self.element.hasClass('vertical') ? "vertical" : "horizontal");
 		// Init variable for slider navigation selectors
@@ -20,8 +23,22 @@ $(document).ready(function(){
 		self.prev_link = null;
 		self.next_link = null;
 		// Store array of child DOM elements with class 'slide'
-		self.slides = self.element.children('.slide');
-
+		self.slides = self.element.find('.slide');
+		// Init object for phantom first and last slides on horizontal slider
+		if (self.direction == "horizontal") {
+			// Add a phantom last slide to the beginning of the slider
+			self.wrapper.prepend($(self.slides[self.slides.length - 1]).clone());
+			phantom_last = $(self.wrapper.children()[0]);
+			phantom_last.removeClass("slide").addClass("slide-phantom-last");
+			// Add a phantom first slide to the end of the slider
+			self.wrapper.append($(self.slides[0]).clone());
+			phantom_first = $(self.wrapper.children()[self.wrapper.children().length - 1]);
+			phantom_first.removeClass("slide").addClass("slide-phantom-first");
+			self.phantom_slides = {
+				first: phantom_first,
+				last: phantom_last
+			}
+		}
 		// Initialize the active slide
 		self.active_slide = 0
 		// Initialize the pseudoY variable
@@ -63,7 +80,7 @@ $(document).ready(function(){
 				// Animate the slider to up or down to switch to the
 				// specified slide, 250ms per slide moved
 				if (self.direction == "vertical") {
-					self.element.animate({
+					self.wrapper.animate({
 						'top': (0 - (i * $(window).height())) + "px"
 					},{
 						duration: 250 * diff,
@@ -97,13 +114,13 @@ $(document).ready(function(){
 					else {
 						anim_i = i;
 					}
-					self.element.animate({
+					self.wrapper.animate({
 						'left': (0 - (anim_i * $(window).width())) + "px"
 					},{
 						duration: 250 * diff,
 						complete: function(){
 							if(loop) {
-								self.element.css('left',(0 - (i * $(window).width())) + "px")
+								self.wrapper.css('left',(0 - (i * $(window).width())) + "px")
 							}
 						}
 					});
@@ -173,7 +190,14 @@ $(document).ready(function(){
 				'height': $(window).height() + 'px'
 			});
 			for(var i=0;i<self.slides.length;i++){
-				$(self.slides[i]).css('top',i*self.element.height());
+				if (self.direction == "vertical") {
+					$(self.slides[i]).css('top',i*self.element.height());
+				}
+				else {
+					$(self.slides[i]).css('left',i*self.element.width());
+					self.phantom_slides.last.css('left',(-1*self.element.width()))
+					self.phantom_slides.first.css('left',(self.slides.length*self.element.width()))
+				}
 				self.resizeImg(self.slides[i]);
 			}
 			self.navigation.css('margin-top',0 - (self.navigation.height() / 2) + "px");
