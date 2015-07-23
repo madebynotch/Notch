@@ -1,9 +1,9 @@
 $font-family-gibson: "canada-type-gibson", sans-serif
-$cs-padding: 40px
+$space40: 40px
 
 .cs-subheader
     @include font($font-family-gibson, 600, 18px, 22px)
-    padding-bottom: $cs-padding/4
+    padding-bottom: $space40/4
 .cs-text
     @include font($font-family-gibson, 400, 12px, 18px)
     color: $grey-medium
@@ -12,8 +12,8 @@ $cs-padding: 40px
 .cs-header
     @include row
     border-bottom: 1px solid $grey-light
-    padding-top: $cs-padding*2
-    padding-bottom: $cs-padding
+    padding-top: $space40*2
+    padding-bottom: $space40
     text-align: center
 .cs-title
     @include font($font-family-gibson, 700, 48px, 60px)
@@ -24,10 +24,10 @@ $cs-padding: 40px
 
 .cs-gameplan
     @include row
-    padding-bottom: $cs-padding
+    padding-bottom: $space40
 .cs-task, .cs-approach
     @include column(12)
-    padding-top: $cs-padding
+    padding-top: $space40
 
 
 // class for slider
@@ -36,32 +36,32 @@ $cs-padding: 40px
 
 .cs-content
     @include row
-    padding-bottom: $cs-padding
+    padding-bottom: $space40
 
 .cs-content-left
     @include column(12)
-    padding-top: $cs-padding
+    padding-top: $space40
     .cs-text
-        padding-bottom: $cs-padding/2
+        padding-bottom: $space40/2
 .cs-approach-content
     @include font($emphasis-font-family, 400, 16px, 26px)
     font-style: italic
-    padding-bottom: $cs-padding
+    padding-bottom: $space40
 
 .cs-content-right
     @include column(12)
-    padding-top: $cs-padding
+    padding-top: $space40
 .cs-tags
     @include font($emphasis-font-family, 400, 10px, 16px)
     color: $grey-light
-    padding-bottom: $cs-padding/4
+    padding-bottom: $space40/4
 .cs-year
     @include font($font-family-gibson, 400, 10px, 16px)
     font-style: italic
-    padding-bottom: $cs-padding
+    padding-bottom: $space40
 .btn-blue
     @include font($font-family-gibson, 400, 14px, 18px)
-    padding: $cs-padding/4 $cs-padding/2
+    padding: $space40/4 $space40/2
     background-color: $notch-blue
     border-radius: 4px
     color: white
@@ -70,8 +70,8 @@ $cs-padding: 40px
 .cs-page-nav
     @include row
     border-top: 1px solid $grey-light
-    padding-top: $cs-padding
-    padding-bottom: $cs-padding*2
+    padding-top: $space40
+    padding-bottom: $space40*2
 .cs-page-nav-previous, .cs-page-nav-next
     @include column(6)
 .cs-page-nav-next
