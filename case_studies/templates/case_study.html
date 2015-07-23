@@ -20,15 +20,13 @@
     <div class="cs-slider">
         {% if case_study.get_main_images.count > 1 %}
             <div class="slider">
-                {% for image in case_study.get_main_images %}
-                    <div class="slide">
-                        <img class="slide-image" src="{{ image.image.url }}" style="width:100%">
-                    </div>
+                <div class="slider-wrapper">
+                    {% for image in case_study.get_main_images %}
+                        <div class="slide">
+                            <img class="slide-image" src="{{ image.image.url }}" style="width:100%">
+                        </div>
                     {% endfor %}
-                <!-- <div class="slider-controls">
-                    <a href="" class="slider-prev">&larr;</a>
-                    <a href="" class="slider-next">&rarr;</a>
-                </div> -->
+                </div>
             </div>
         {% else %}
             {% for image in case_study.get_main_images %}

@@ -1,24 +1,25 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-
 {% block htmlClass %}home{% endblock %}
 
 {% block content %}
     <div class="slider vertical">
-        {% for case in case_list %}
-            <div class="slide">
-                {% if case.get_showcase %}
-                    <img class="slide-image" src="{{ case.get_showcase }}" style="width:100%">
-                {% endif %}
-                <div class="slide-wrapper">
-                    <div class="slide-content">
-                        <h1>{{ case.title }}.</h1>
-                        <p>{{ case.subtitle }}</p>
-                        <a class="slide-link" {% if case.is_visible %} href="{% url 'case_study' case.pk %}" {% else %} href="" {% endif %}>View Case Study <span class="slide-link-arrow">&rarr;</span></a>
+        <div class="slider-wrapper">
+            {% for case in case_list %}
+                <div class="slide">
+                    {% if case.get_showcase %}
+                        <img class="slide-image" src="{{ case.get_showcase }}" style="width:100%">
+                    {% endif %}
+                    <div class="slide-wrapper">
+                        <div class="slide-content">
+                            <h1>{{ case.title }}.</h1>
+                            <p>{{ case.subtitle }}</p>
+                            <a class="slide-link" {% if case.is_visible %} href="{% url 'case_study' case.pk %}" {% else %} href="" {% endif %}>View Case Study <span class="slide-link-arrow">&rarr;</span></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
     <footer class="homepage-footer">
         <div class="footer-left">
