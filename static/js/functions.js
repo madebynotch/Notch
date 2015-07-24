@@ -101,7 +101,6 @@ $(document).ready(function(){
 					// of the list of slides. If so, set "anim_i" as being
 					// incremented once more in the direction requested
 					// (either left or right) and set loop as true
-					console.log(method);
 					if (i == 0 && prev_active_slide == self.slides.length - 1 && method == "right") {
 						anim_i = self.slides.length;
 						loop = true;
@@ -197,6 +196,7 @@ $(document).ready(function(){
 			for(var i=0;i<self.slides.length;i++){
 				if (self.direction == "vertical") {
 					$(self.slides[i]).css('top',i*self.element.height());
+					self.navigation.css('margin-top',0 - (self.navigation.height() / 2) + "px");
 				}
 				else {
 					$(self.slides[i]).css('left',i*self.element.width());
@@ -205,7 +205,6 @@ $(document).ready(function(){
 				}
 				self.resizeImg(self.slides[i]);
 			}
-			self.navigation.css('margin-top',0 - (self.navigation.height() / 2) + "px");
 		}
 
 		self.resizeImg = function(slide) {
