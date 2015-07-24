@@ -35,6 +35,9 @@ $article-height: 240px
             color: white
         .in-list__image
             z-index: -5
+    &:nth-child(14n + 1),
+    &:nth-child(14n + 10)
+        @include column(12)
 
 .in-list__link
     position: relative
@@ -99,6 +102,9 @@ $article-height: 240px
         @include column(3)
         padding: 0
         height: $article-height
+        &:nth-child(14n + 1),
+        &:nth-child(14n + 10)
+            @include column(6)
 
 
     .in-list__cat

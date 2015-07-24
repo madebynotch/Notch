@@ -81,7 +81,7 @@ $(document).ready(function(){
 				// specified slide, 250ms per slide moved
 				if (self.direction == "vertical") {
 					self.wrapper.animate({
-						'top': (0 - (i * $(window).height())) + "px"
+						'top': (0 - (i * self.element.height())) + "px"
 					},{
 						duration: 250 * diff,
 						complete: function(){
@@ -89,7 +89,7 @@ $(document).ready(function(){
 							// or a slider navigation link
 							if (method && method == 'jump') {
 								// update the pseudoY variable
-								self.pseudoY = i * $(window).height();
+								self.pseudoY = i * self.element.height();
 							}
 						}
 					});
@@ -101,12 +101,13 @@ $(document).ready(function(){
 					// of the list of slides. If so, set "anim_i" as being
 					// incremented once more in the direction requested
 					// (either left or right) and set loop as true
-					if (i == 0 && prev_active_slide == self.slides.length - 1) {
+					console.log(method);
+					if (i == 0 && prev_active_slide == self.slides.length - 1 && method == "right") {
 						anim_i = self.slides.length;
 						loop = true;
 						diff = 1;
 					}
-					else if (i == self.slides.length - 1 && prev_active_slide == 0) {
+					else if (i == self.slides.length - 1 && prev_active_slide == 0 && method == "left") {
 						anim_i = -1;
 						loop = true;
 						diff = 1;
@@ -115,12 +116,16 @@ $(document).ready(function(){
 						anim_i = i;
 					}
 					self.wrapper.animate({
-						'left': (0 - (anim_i * $(window).width())) + "px"
+						'left': (0 - (anim_i * self.element.width())) + "px"
 					},{
 						duration: 250 * diff,
+						step: function(){
+							// console.log(self.wrapper.css('left'));
+						},
 						complete: function(){
 							if(loop) {
-								self.wrapper.css('left',(0 - (i * $(window).width())) + "px")
+								self.wrapper.css('left',(0 - (i * self.element.width())) + "px")
+								loop = false;
 							}
 						}
 					});
@@ -158,14 +163,14 @@ $(document).ready(function(){
 				self.next_link = self.element.find('.slider-next');
 				$(self.prev_link).on('click',function(e){
 					e.preventDefault();
-					// Jump to the next slide
-					self.scrollToSlide(self.active_slide - 1,"jump");
+					// Jump to the previous slide
+					self.scrollToSlide(self.active_slide - 1,"left");
 				});
 			}
 			$(self.next_link).on('click',function(e){
 				e.preventDefault();
 				// Jump to the next slide
-				self.scrollToSlide(self.active_slide + 1,"jump");
+				self.scrollToSlide(self.active_slide + 1,"right");
 			});
 
 			// For each slide in the slider, add a link to the slider navigation
@@ -297,9 +302,18 @@ $(document).ready(function(){
 			// If pressed key is one of the keys being listened for
 			if (e.keyCode in keys) {
 				for(var i=0;i<sliders.length;i++){
+					method = "jump";
+					if (sliders[i].direction == "horizontal") {
+						if (e.keyCode == 37) {
+							method = "left";
+						}
+						else if (e.keyCode == 39) {
+							method = "right";
+						}
+					}
 					// Jump to the previous or next slide, using either
 					// 1 or -1 from the "keys" object
-					sliders[i].scrollToSlide(sliders[i].active_slide + keys[e.keyCode],'jump');
+					sliders[i].scrollToSlide(sliders[i].active_slide + keys[e.keyCode],method);
 				}
 			}
 		});
