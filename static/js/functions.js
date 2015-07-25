@@ -114,6 +114,8 @@ $(document).ready(function(){
 					else {
 						anim_i = i;
 					}
+					anim_i++;
+					i++;
 					self.wrapper.animate({
 						'left': (0 - (anim_i * self.element.width())) + "px"
 					},{
@@ -193,17 +195,28 @@ $(document).ready(function(){
 				'width': $(window).width() + 'px',
 				'height': $(window).height() + 'px'
 			});
+			self.wrapper.css('height', self.element.height());
+			if (self.direction == "horizontal") {
+				self.wrapper.css({
+					'width': self.element.width() * (self.slides.length + 2),
+					'left': (0 - self.element.width())
+				})
+			}
 			for(var i=0;i<self.slides.length;i++){
 				if (self.direction == "vertical") {
 					$(self.slides[i]).css('top',i*self.element.height());
 					self.navigation.css('margin-top',0 - (self.navigation.height() / 2) + "px");
 				}
 				else {
-					$(self.slides[i]).css('left',i*self.element.width());
-					self.phantom_slides.last.css('left',(-1*self.element.width()))
-					self.phantom_slides.first.css('left',(self.slides.length*self.element.width()))
+					$(self.slides[i]).css('left',(i + 1) * self.element.width());
 				}
 				self.resizeImg(self.slides[i]);
+			}
+			if (self.direction == "horizontal") {
+				self.phantom_slides.last.css('left',0);
+				self.phantom_slides.first.css('left',((self.slides.length + 1) * self.element.width()));
+				self.resizeImg(self.phantom_slides.first);
+				self.resizeImg(self.phantom_slides.last);
 			}
 		}
 
