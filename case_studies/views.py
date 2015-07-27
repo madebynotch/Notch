@@ -20,6 +20,12 @@ class CaseStudyView(DetailView):
             else:
                 raise Http404()
 
+    def get_context_data(self, **kwargs):
+        context = super(CaseStudyView, self).get_context_data(**kwargs)
+        url = str(self.request.META['HTTP_REFERER'])[:-1]+str(self.request.META['PATH_INFO'])
+        context['url'] = url
+        return context
+
 
 # class ShareView(TemplateView):
 #     template_name = 'share.html'
