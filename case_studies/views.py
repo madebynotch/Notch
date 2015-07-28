@@ -1,5 +1,6 @@
 from django.http.response import Http404
 from django.views.generic.detail import DetailView
+from django.views.generic.base import TemplateView
 from case_studies.models import CaseStudy
 
 
@@ -18,3 +19,20 @@ class CaseStudyView(DetailView):
                 return super(CaseStudyView, self).get(request, *args, **kwargs)
             else:
                 raise Http404()
+
+    def get_context_data(self, **kwargs):
+        context = super(CaseStudyView, self).get_context_data(**kwargs)
+        url = str(self.request.META['wsgi.url_scheme'])+'://'+str(self.request.META['HTTP_HOST'])+str(self.request.META['PATH_INFO'])
+        # url = str(self.request.META['HTTP_REFERER'])[:-1]+str(self.request.META['PATH_INFO'])
+        context['url'] = url
+        return context
+
+
+# class ShareView(TemplateView):
+#     template_name = 'share.html'
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(ShareView, self).get_context_data(**kwargs)
+    #     #print "https://notch.bixly.com"+str(self.request)[-21:-7]
+    #     context['case_study'] = "https://notch.bixly.com"+str(self.request)[-21:-7]
+    #     return context
