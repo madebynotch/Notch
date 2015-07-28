@@ -1,7 +1,7 @@
 // The functionality still needs to optimized, specifically by using "transform(translate)" to adjust the position of the slides rather than animating the "top" property, as the current method will expend more resources as the browser re-renders (or may not need to worry about it because it's using jQuery's "animate", not any CSS transitions or animations?). Could most likely optimize the selectors, such as storing them to be re-used whenever possible.
 $(document).ready(function(){
 
-	var win = $(window)
+	var win = $(window);
 
 	// Slider Setup
 	// ============
@@ -342,4 +342,26 @@ $(document).ready(function(){
 			}
 		});
 	}
+	// END Slider logic
+
+	if(!Modernizr.backgroundsize) {
+		$('.in-list__image').each(function(){
+			if($(this).css('background-image') != "none") {
+				imgWidth = $(this).attr('data-img-width');
+				imgHeight = $(this).attr('data-img-height');
+				blockWidth = $(this).width();
+				blockHeight = $(this).height();
+
+				newImgWidth = blockWidth;
+				newImgHeight = newImgWidth / imgWidth * imgHeight;
+
+				if(newImgHeight < blockHeight) {
+					newImgWidth = imgWidth * blockHeight / imgHeight;
+					newImgHeight = blockHeight;
+				}
+				bgSize = newImgWidth + "px " + newImgHeight + "px";
+				$(this).css('background-size',bgSize);
+			}
+		});
+	};
 });

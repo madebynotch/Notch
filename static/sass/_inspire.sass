@@ -38,6 +38,8 @@ $article-height: 240px
     &:nth-child(14n + 1),
     &:nth-child(14n + 10)
         @include column(12)
+        padding-left: 0
+        padding-right: 0
 
 .in-list__link
     position: relative
@@ -46,6 +48,10 @@ $article-height: 240px
     &--image
         .in-list__content
             display: none
+        .in-list__image
+            background-position: 50% 50%
+            background-repeat: no-repeat
+            background-size: cover
     &--text
         .in-list__image
             display: none
@@ -105,6 +111,8 @@ $article-height: 240px
         &:nth-child(14n + 1),
         &:nth-child(14n + 10)
             @include column(6)
+            padding-left: 0
+            padding-right: 0
 
 
     .in-list__cat

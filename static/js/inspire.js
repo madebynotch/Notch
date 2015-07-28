@@ -1,4 +1,4 @@
-$(document).ready(function() {
+jQuery(function($) {
     var current_page = 1;
     var csrf_token = $('[name="csrfmiddlewaretoken"]').val();
 
@@ -17,7 +17,6 @@ $(document).ready(function() {
                 if (current_page >= data.pages) {
                     $('#show-more').hide();
                 }
-            }
-        );
+            });
     });
 });
