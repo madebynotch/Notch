@@ -1,1 +1,7 @@
-<h1>This is the about page</h1>
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<h1>About page</h1>
+
+{% incldue "footer.html" %}
+{% endblock %}

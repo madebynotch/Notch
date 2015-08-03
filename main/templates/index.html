@@ -14,7 +14,7 @@
                         <div class="slide-content">
                             <h1>{{ case.title }}.</h1>
                             <p>{{ case.subtitle }}</p>
-                            <a class="slide-link" {% if case.is_visible %} href="{% url 'case_study' case.pk %}" {% else %} href="" {% endif %}>View Case Study <span class="slide-link-arrow">&rarr;</span></a>
+                            <a class="slide-link" {% if case.is_visible %} href="{% url 'case_study' case.pk %}" {% else %} href="" {% endif %}>View Case Study <span class="slide-link-arrow"><i class="fa fa-long-arrow-right"></i></span></a>
                         </div>
                     </div>
                 </div>

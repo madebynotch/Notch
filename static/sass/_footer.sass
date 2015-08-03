@@ -1,0 +1,73 @@
+$footer-bg: $grey-dark
+$footer-text-color: #929a9c
+$footer-lower-stroke: #3c3e41
+
+footer
+    background: $grey-dark
+    color: $footer-text-color
+
+.footer-wrapper
+    @include row(full)
+    max-width: 1170px
+
+.footer-contact,
+.footer-social
+    text-align: center
+    background: $grey-darker
+    padding: 50px 0 35px
+    a
+        display: inline-block
+        line-height: 40px
+
+.footer-contact
+    a
+        color: white
+        @include font($emphasis-font-family, 400, 20px, 40px)
+        &:hover
+            color: $grey-medium
+            .footer-contact-link-arrow
+                position: relative
+                left: 10px
+
+
+.footer-lower
+    @include row(full)
+    font-size: 12px
+    line-height: 20px
+    padding-top: 25px
+    padding-bottom: 25px
+    padding-left: 0
+    text-align: center
+
+.footer-lower-copyright,
+.footer-lower-email
+    @include column(full)
+    padding: 0 !important
+
+
+@include media('lg')
+    footer
+        padding: 0 25px
+
+    .footer-contact,
+    .footer-social
+        background: transparent
+
+    .footer-contact
+        padding-top: 100px
+        padding-bottom: 75px
+        a
+            @include font($emphasis-font-family, 400, 30px, 80px)
+
+    .footer-lower
+        text-align: left
+        padding-top: 50px
+        padding-bottom: 50px
+        border-top: 1px solid $footer-lower-stroke
+
+    .footer-lower-copyright,
+    .footer-lower-email
+        @include column(half)
+
+    .footer-lower-email
+        text-align: right

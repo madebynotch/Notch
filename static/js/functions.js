@@ -155,11 +155,11 @@ $(document).ready(function(){
 			// Give the slider-nav the "vertical" class if its parent has it
 			if (self.direction == "vertical") {
 				self.navigation.addClass('vertical');
-				self.element.append('<div class="slider-controls"><a href="" class="slider-next">&darr;</a></div>');
+				self.element.append('<div class="slider-controls"><a href="" class="slider-next"><i class="fa fa-long-arrow-down"></i></a></div>');
 				self.next_link = self.element.find('.slider-next');
 			}
 			else {
-				self.element.append('<div class="slider-controls"><a href="" class="slider-prev">&larr;</a><a href="" class="slider-next">&rarr;</a></div>');
+				self.element.append('<div class="slider-controls"><a href="" class="slider-prev"><i class="fa fa-long-arrow-left"></i></a><a href="" class="slider-next"><i class="fa fa-long-arrow-right"></i></a></div>');
 				self.prev_link = self.element.find('.slider-prev');
 				self.next_link = self.element.find('.slider-next');
 				$(self.prev_link).on('click',function(e){
