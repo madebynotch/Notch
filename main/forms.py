@@ -10,3 +10,8 @@ class ContactForm(forms.ModelForm):
             'email',
             'content'
         ]
+        widgets = {
+            'name': forms.TextInput(attrs={'placeholder': 'Your Name'}),
+            'email': forms.TextInput(attrs={'placeholder': 'Email Address'}),
+            'content': forms.Textarea(attrs={'placeholder': 'Describe your project here. Keep it short and sweet, we can talk specifics later...'}),
+        }

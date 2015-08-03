@@ -3,8 +3,13 @@
 {% block content %}
     <form action="" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {% for field in form.visible_fields %}
+        {{ field }}
+            <br>
+        {% endfor %}
         <input type="submit" value="Submit" />
     </form>
     {% include "footer-contact.html" %}
 {% endblock %}
+
+{{ form.as_p }}
