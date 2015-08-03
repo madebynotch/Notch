@@ -97,7 +97,11 @@ body
 
 .dribbble-icon
 	.fa-stack-1x
-		font-size: 1.2em
+		font-size: 1.35em
+
+.twitter-icon
+	.fa-stack-1x
+		font-size: 1.12em
 
 // NAVIGATION
 #nav
@@ -288,7 +292,7 @@ body
 .homepage-footer
 	@include homepage-footer-font
 	@include row(full)
-	position: absolute
+	position: fixed
 	z-index: 40
 	left: 0
 	bottom: 0
@@ -296,9 +300,24 @@ body
 	background: $homepage-footer-bg
 	a
 		color: $homepage-footer-color
+
 .footer-left,
 .footer-right
 	@include column(half)
+
+.homepage-footer
+	.footer-right
+		text-align: right
+		.footer-social-link
+			font-size: 15px
+			margin-left: 15px
+			.fa-stack-2x
+				color: $grey-lighter
+			.fa-stack-1x
+				color: white
+			&:hover
+				.fa-stack-2x
+					color: $grey-dark
 
 @include media('lg')
 	.slider.vertical
