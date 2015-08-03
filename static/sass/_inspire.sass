@@ -1,5 +1,15 @@
 $article-height: 240px
 
+$show-more-bg: $grey-lighter
+$show-more-color: white
+$show-more-hover-bg: $grey-dark
+
+$show-more-mobile-height: 100px
+$show-more-desktop-height: 76px
+$show-more-top-margin: 68px
+
+.in-bg-wrapper
+    background: #efefef
 
 .in-header-wrapper
     @include row(full)
@@ -90,6 +100,17 @@ $article-height: 240px
         height: auto
         width: 100%
 
+#show-more
+    display: block
+    width: 100%
+    border: none
+    background: $show-more-bg
+    color: $show-more-color
+    line-height: $show-more-mobile-height
+    outline: none !important
+    &:hover
+        background: $show-more-hover-bg
+
 
 @include media('lg')
     $article-height: 300px
@@ -131,3 +152,10 @@ $article-height: 240px
 
     .in-list__image
         height: $article-height
+
+    .in-show-more
+        padding-bottom: $show-more-top-margin * 2
+    #show-more
+        margin: $show-more-top-margin auto 0
+        width: $show-more-desktop-height
+        line-height: $show-more-desktop-height

@@ -87,7 +87,7 @@ $(document).ready(function(){
 						complete: function(){
 							// If the slide was changed by a keyboard event
 							// or a slider navigation link
-							if (method && method == 'jump') {
+							if (method && (method == 'jump' || method == 'left' || method == 'right')) {
 								// update the pseudoY variable
 								self.pseudoY = i * self.element.height();
 							}
@@ -344,6 +344,8 @@ $(document).ready(function(){
 	}
 	// END Slider logic
 
+
+	// Fallback for "background-size: cover"
 	if(!Modernizr.backgroundsize) {
 		$('.in-list__image').each(function(){
 			if($(this).css('background-image') != "none") {
@@ -364,4 +366,17 @@ $(document).ready(function(){
 			}
 		});
 	};
+
+
+	// Fallback for SVG
+	if(!Modernizr.svg) {
+		$("img[src$='.svg']").each(function(){
+			if($(this).hasAttr('data-fallback')) {
+				$(this).attr('src',$(this).hasAttr('data-fallback'));
+			}
+			else {
+				$(this).attr('src',$(this).attr('src').replace('svg','png'));
+			}
+		})
+	}
 });

@@ -9,7 +9,8 @@ $side-pad-lg: 65px
 
 // Colors
 $notch-blue: #2aaed9
-$grey-lighter: #e4e4e4
+$grey-lightest: #e4e4e4
+$grey-lighter: #d0d0d0
 $grey-light: #c2c2c2
 $grey-medium: #626365
 $grey-dark: #27282a
@@ -23,7 +24,7 @@ $emphasis-font-family: "Droid Serif",serif
 
 // Nav Variables
 $nav-link-color: white
-$nav-desktop-height: 60px
+$nav-desktop-height: 81px
 
 // Slider Variables
 $slider-header-font-family: $header-font-family
@@ -48,6 +49,11 @@ $slider-nav-link-border-active: inset 0 0 0 12px $slider-nav-link-border-color
 $slider-nav-link-alt-border: inset 0 0 0 3px $slider-nav-link-border-alt-color
 $slider-nav-link-alt-border-hover: inset 0 0 0 5px $slider-nav-link-border-alt-color
 $slider-nav-link-alt-border-active: inset 0 0 0 12px $slider-nav-link-border-alt-color
+$slide-link-bg: white
+$slide-link-alt-bg: $grey-lighter
+$slide-link-color: $grey-dark
+$slide-link-hover-bg: $grey-dark
+$slide-link-hover-color: white
 $slider-controls-offset: 45px
 
 // Footer Variables
@@ -65,8 +71,9 @@ $homepage-footer-offset: 10px
 
 
 *
+	box-sizing: border-box
+*
 	text-rendering: optimizeLegibility
-    box-sizing: border-box
 	margin: 0
 	padding: 0
 
@@ -221,7 +228,11 @@ body
 	display: inline-block
 	padding: 0 25px
 	line-height: 60px
-	background: white
+	background: $slide-link-bg
+	color: $slide-link-color
+	&:hover
+		background: $slide-link-hover-bg
+		color: $slide-link-hover-color
 
 .slider-prev
 	margin-right: 3px
@@ -263,8 +274,11 @@ body
 		bottom: $homepage-footer-height + $homepage-footer-offset
 	.slider-next,
 	.slider-prev
-		background: transparent
+		font-size: 20px
+		background: $slide-link-alt-bg
 		color: white
+		&:hover
+			background: $slide-link-hover-bg
 
 .homepage-footer
 	@include homepage-footer-font

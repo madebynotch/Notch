@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+<div class="in-bg-wrapper">
     <section class="in-header-wrapper">
         <div class="in-header">
             <h1 class="in-title">Get Inspired.</h1>
@@ -21,7 +22,11 @@
         {% if paginator.num_pages > 1 %}
             <button id="show-more">Show me more</button>
         {% endif %}
+        <button id="show-more">&darr;</button>
     </section>
+</div>
 
-    {% csrf_token %}
+{% include "footer.html" %}
+
+{% csrf_token %}
 {% endblock %}
