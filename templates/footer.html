@@ -2,8 +2,5 @@
     <section class="footer-contact">
         <a class="footer-contact-link" href="{% url 'contact' %}">Ready to Get Started? &rarr;</a>
     </section>
-    <section class="footer-lower">
-        <div class="footer-lower-copyright">Copyright &copy; 2015 Notch Interactive LLC</div>
-        <div class="footer-lower-email">hello@madebynotch.com</div>
-    </section>
+    {% include "footer-lower.html" %}
 </footer>
