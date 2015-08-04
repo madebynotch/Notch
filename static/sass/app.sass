@@ -1,7 +1,7 @@
 @import fonts
 @import cartilage/cartilage
 
-$side-pad-sm: 15px
+$side-pad-sm: 20px
 $side-pad-lg: 65px
 
 @include set-breakpoint('sm')
@@ -24,23 +24,28 @@ $header-font-family: "Helvetica Neue","Helvetica",Arial,sans-serif
 $emphasis-font-family: "Droid Serif",serif
 
 // Nav Variables
+$logo-mobile-height: 20px
+$logo-desktop-height: 26px
 $nav-link-color: white
+$nav-link-hover-color: #9fdbef
+$nav-link-desktop-shift: 5px
 $nav-mobile-height: 60px
 $nav-desktop-height: 81px
-$nav-link-mobile-line-height: 60px
 
 // Slider Variables
 $slider-header-font-family: $header-font-family
-$slider-header-size: 54px
-$slider-header-line-height: 60px
+$slider-header-size-mobile: 29px
+$slider-header-size-desktop: 54px
+$slider-header-line-height: 1.11
 @mixin slider-header-font
-	@include font($slider-header-font-family, 800, $slider-header-size, $slider-header-line-height)
+	@include font($slider-header-font-family, 800, $slider-header-size-mobile, $slider-header-line-height)
 
 $slider-desc-font-family: $emphasis-font-family
-$slider-desc-size: 20px
-$slider-desc-line-height: 30px
+$slider-desc-size-mobile: 14px
+$slider-desc-size-desktop: 20px
+$slider-desc-line-height: 1.5
 @mixin slider-desc-font
-	@include font($slider-desc-font-family, 400, $slider-desc-size, $slider-desc-line-height)
+	@include font($slider-desc-font-family, 400, $slider-desc-size-mobile, $slider-desc-line-height)
 
 $slider-nav-link-diam: 14px
 $slider-nav-link-margin: 30px
@@ -126,18 +131,20 @@ body
 
 .nav-logo
 	display: inline-block
+	line-height: $nav-mobile-height
 	img
-		height: 20px
+		height: $logo-mobile-height
+		width: auto
 		position: relative
-		top: 10px
-		left: 0
+		// top: 10px
+		vertical-align: middle
 
 .nav-toggle
 	position: absolute
-	top: 16px
 	right: $side-pad-sm
 	width: 26px
 	height: 23px
+	top: ($nav-mobile-height - 23px) / 2
 	border: 0
 	outline: none
 	background: transparent
@@ -168,7 +175,11 @@ body
 				font-family: $emphasis-font-family
 				display: inline-block
 				color: $nav-link-color
-				line-height: $nav-link-mobile-line-height
+				line-height: $nav-mobile-height
+				&:hover
+					color: $nav-link-hover-color
+				&:active
+					color: $nav-link-color
 	&.fading
 		display: block
 	&.open
@@ -223,16 +234,16 @@ body
 			@include slider-desc-font
 			margin-bottom: 40px
 		.slide-content
-			@include column(5)
-			@include offset(3)
+			@include column(9, center)
+			text-align: center
 
 .slide-link
-	border-radius: 6px
+	border-radius: 4px
 	border: 2px solid white
 	display: inline-block
-	font-size: 20px
-	line-height: 68px
-	padding: 0 30px
+	font-size: 14px
+	line-height: 50px
+	padding: 0 20px
 	color: white
 	.slide-link-arrow
 		margin-left: 10px
@@ -343,14 +354,21 @@ body
 	a
 		color: $homepage-footer-color
 
-.footer-left,
-.footer-right
-	@include column(half)
+	.footer-left
+		@include column(full)
+		text-align: center
+		a
+			display: block
+			font-size: 12px
+	.footer-right
+		display: none
 
 .homepage-footer
 	.footer-right
 		text-align: right
 		.footer-social-link
+			position: relative
+			top: -3px
 			font-size: 15px
 			margin-left: 15px
 			.fa-stack-2x
@@ -368,15 +386,25 @@ body
 	#nav
 		padding-left: $side-pad-lg
 		padding-right: $side-pad-lg
+		height: $nav-desktop-height
 	.nav-toggle
 		display: none
 	.nav-head
 		@include column(3)
 		padding: 0
 		line-height: $nav-desktop-height
+	.nav-logo
+		img
+			top: -2px
+			height: $logo-desktop-height
 	.nav-right
 		@include column(9)
+		display: block
+		opacity: 1
+		position: relative
 		padding: 0
+		background: transparent
+		top: 0
 		.nav-links
 			list-style: none
 			float: right
@@ -385,7 +413,32 @@ body
 				margin-left: 60px
 				a
 					font-size: 22px
-					line-height: $nav-desktop-height
+					padding-top: $nav-link-desktop-shift
+					line-height: $nav-desktop-height - $nav-link-desktop-shift
+	.homepage-footer
+		.footer-left,
+		.footer-right
+			@include column(half)
+		.footer-left
+			text-align: left
+			a
+				font-size: 16px
+
+	.slide
+		.slide-wrapper
+			@include headers
+				font-size: $slider-header-size-desktop
+			p
+				font-size: $slider-desc-size-desktop
+			.slide-content
+				@include column(6)
+				@include offset(3)
+				text-align: left
+	.slide-link
+		border-radius: 6px
+		font-size: 20px
+		line-height: 68px
+		padding: 0 30px
 
 @import case-study
 @import inspire

@@ -41,7 +41,7 @@ gulp.task('sass', function () {
     // Run Sass on those files
     .pipe(sass().on('error', sass.logError))
     // Add relevant prefixes to the stylesheets
-    .pipe(autoprefixer('last 2 version'))
+    .pipe(autoprefixer('last 3 version'))
     // Write the resulting CSS in the output folder
     .pipe(gulp.dest(SASSoutput))
     // Reload browsers
