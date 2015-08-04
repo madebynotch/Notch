@@ -1,6 +1,7 @@
 // Load Gulp Requirements
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
 var exec = require('child_process').exec;
 
@@ -39,6 +40,8 @@ gulp.task('sass', function () {
     .src(SASSinput)
     // Run Sass on those files
     .pipe(sass().on('error', sass.logError))
+    // Add relevant prefixes to the stylesheets
+    .pipe(autoprefixer('last 2 version'))
     // Write the resulting CSS in the output folder
     .pipe(gulp.dest(SASSoutput))
     // Reload browsers
@@ -60,6 +63,7 @@ gulp.task('watch-html', ['django-sync'], function() {
     // Watch templates folder (HTMLinput) for change
     .watch(HTMLinput).on('change', browserSync.reload);
 });
+
 
 // JS Watch
 gulp.task('watch-js', function() {
