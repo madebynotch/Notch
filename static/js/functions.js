@@ -345,6 +345,48 @@ $(document).ready(function(){
 	// END Slider logic
 
 
+	// Navigation logic
+	var openNav = function() {
+		nav = $('.nav-right');
+		nav.addClass('fading');
+		nav.css({
+			'opacity': 0,
+		});
+		nav.animate({
+			'opacity': 1,
+		},{
+			duration: 300,
+			complete: function() {
+				nav.addClass('open');
+				nav.removeClass('fading');
+			}
+		});
+	}
+
+	var closeNav = function() {
+		nav = $('.nav-right');
+		nav.addClass('fading');
+		nav.removeClass('open');
+		nav.animate({
+			'opacity': 0,
+		},{
+			duration: 300,
+			complete: function() {
+				nav.removeClass('fading');
+			}
+		})
+	}
+
+	$('.nav-toggle').on('click',function(e){
+		if (!$('.nav-right').hasClass('fading') && !$('.nav-right').hasClass('open')) {
+			openNav();
+		}
+		else {
+			closeNav();
+		}
+	});
+
+
 	// Fallback for "background-size: cover"
 	if(!Modernizr.backgroundsize) {
 		$('.in-list__image').each(function(){

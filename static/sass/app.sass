@@ -25,7 +25,9 @@ $emphasis-font-family: "Droid Serif",serif
 
 // Nav Variables
 $nav-link-color: white
+$nav-mobile-height: 60px
 $nav-desktop-height: 81px
+$nav-link-mobile-line-height: 60px
 
 // Slider Variables
 $slider-header-font-family: $header-font-family
@@ -109,9 +111,10 @@ body
 	top: 0
 	left: 0
 	width: 100%
+	height: $nav-mobile-height
 	background: $nav-bg
 	padding: 0 $side-pad-sm
-	z-index: 50
+	z-index: 500
 
 .nav-wrapper
 	@include row(full)
@@ -124,11 +127,15 @@ body
 .nav-logo
 	display: inline-block
 	img
-		height: 30px
+		height: 20px
 		position: relative
 		top: 10px
+		left: 0
 
 .nav-toggle
+	position: absolute
+	top: 16px
+	right: $side-pad-sm
 	width: 26px
 	height: 23px
 	border: 0
@@ -140,6 +147,33 @@ body
 		height: 5px
 		margin-bottom: 4px
 		background: $nav-link-color
+
+.nav-right
+	display: none
+	opacity: 0
+	position: fixed
+	top: $nav-mobile-height
+	left: 0
+	bottom: 0
+	right: 0
+	z-index: 1000
+	padding: 80px 0 0
+	text-align: center
+	background: $nav-bg
+	.nav-links
+		list-style: none
+		li
+			a
+				font-size: 25px
+				font-family: $emphasis-font-family
+				display: inline-block
+				color: $nav-link-color
+				line-height: $nav-link-mobile-line-height
+	&.fading
+		display: block
+	&.open
+		display: block
+		opacity: 1
 
 // HOMEPAGE SLIDES
 
@@ -167,6 +201,7 @@ body
 	background: grey
 	position: absolute
 	top: 0
+	overflow: hidden
 	.slide-image
 		position: absolute
 		top: 0
@@ -350,9 +385,6 @@ body
 				margin-left: 60px
 				a
 					font-size: 22px
-					font-family: $emphasis-font-family
-					display: inline-block
-					color: $nav-link-color
 					line-height: $nav-desktop-height
 
 @import case-study
