@@ -1,6 +1,39 @@
 $font-family-gibson: "canada-type-gibson", sans-serif
 $space40: 40px
 
+$cs-side-nav-link-height: 50px
+$cs-side-nav-link-width: 240px
+
+.cs-wrapper
+    position: relative
+
+.cs-side-nav-link
+    display: none
+    position: absolute
+
+    top: 140px
+    line-height: $cs-side-nav-link-height
+    width: $cs-side-nav-link-width
+    text-align: center
+    font-size: 12px
+    font-weight: bold
+    text-transform: uppercase
+    background: #fff
+    color: $grey-dark
+    &:hover
+        background: $grey-dark
+        color: #fff
+    &.prev
+        left: 0 - (($cs-side-nav-link-width - $cs-side-nav-link-height) / 2)
+        transform: rotate(-90deg)
+    &.next
+        right: 0 - (($cs-side-nav-link-width - $cs-side-nav-link-height) / 2)
+        transform: rotate(90deg)
+
+@include media('lg')
+    .cs-side-nav-link
+        display: inline-block
+
 .cs-subheader
     @include font($font-family-gibson, 600, 18px, 22px)
     padding-bottom: $space40/4

@@ -3,6 +3,12 @@
 
 {% block content %}
 <section class="cs-wrapper">
+    {% if case_study.get_prev_pk %}
+        <a class="cs-side-nav-link prev" href="{% url 'case_study' case_study.get_prev_pk %}">Prev Case Study</a>
+    {% endif %}
+    {% if case_study.get_next_pk %}
+        <a class="cs-side-nav-link next" href="{% url 'case_study' case_study.get_next_pk %}">Next Case Study</a>
+    {% endif %}
     <div class="cs-header">
         <h1 class="cs-title">{{case_study.title}}</h1>
         <h3 class="cs-subtitle">{{case_study.subtitle}}</h3>
