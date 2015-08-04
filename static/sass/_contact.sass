@@ -22,16 +22,44 @@
     padding-left: $gutter-width/2
     padding-right: $gutter-width/2
     padding-bottom: $gutter-width*2
+    textarea
+        max-width: 100%
     input, textarea
+        transition: border-color 0.2s ease
         width: 100%
-        padding: $gutter-width/3 $gutter-width/4
-        border-radius: 4px
+        font-family: $emphasis-font-family
+        line-height: 22px
+        padding: 16px 20px
+        border-radius: 6px
         border: 2px solid $grey-lightest
         margin-bottom: $gutter-width/4
         color: $grey-medium
+        &:focus
+            outline: none
+            border-color: #2fb4e0
         &.btn-blue
+            @include font($font-family-gibson, 400, 20px, 24px)
+            font-weight: normal
             color: white
             border: none
+            &:hover
+                background: $grey-dark
+
+    .form-group
+        position: relative
+        margin-bottom: 16px
+        &.error
+            &:after
+                content: "oops!"
+                font-family: $emphasis-font-family
+                color: #ef6e6e
+                display: inline-block
+                position: absolute
+                top: 18px
+                right: 20px
+            input,textarea
+                padding-right: 80px
+                border-color: #ef6e6e
 
     ::-webkit-input-placeholder
         color: $grey-light
