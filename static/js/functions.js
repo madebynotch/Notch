@@ -344,37 +344,60 @@ $(document).ready(function(){
 	}
 	// END Slider logic
 
+	// From Modernizr
+    function whichTransitionEvent () {
+		var t;
+        var el = document.createElement('fakeelement');
+        var transitions = {
+            'transition':'transitionend',
+            'OTransition':'oTransitionEnd',
+            'MozTransition':'transitionend',
+            'WebkitTransition':'webkitTransitionEnd',
+		}
+
+        for (t in transitions) {
+            if (el.style[t] !== undefined) {
+                return transitions[t];
+			}
+		}
+	}
+
+	// Listen for a transition!
+    if (document.getElementById("nav") != null) {
+        transitionEvent = whichTransitionEvent();
+        transitionEvent && $('nav')[0].addEventListener(transitionEvent, function(e){
+            if (e.target.id == "nav-right") {
+				console.log("transition end");
+				var nav = $(e.target);
+				nav.removeClass("fading");
+				if (nav.hasClass("fading-in")) {
+					nav.addClass("open");
+					nav.removeClass("fading-in");
+				}
+				else if (nav.hasClass("fading-out")) {
+					nav.removeClass("fading-out");
+				}
+			}
+		});
+	}
 
 	// Navigation logic
 	var openNav = function() {
 		nav = $('.nav-right');
 		nav.addClass('fading');
-		nav.css({
-			'opacity': 0,
-		});
-		nav.animate({
-			'opacity': 1,
-		},{
-			duration: 300,
-			complete: function() {
-				nav.addClass('open');
-				nav.removeClass('fading');
-			}
-		});
+		var timeout = setTimeout(function(){
+			nav.addClass('fading-in');
+		},10);
+
 	}
 
 	var closeNav = function() {
 		nav = $('.nav-right');
 		nav.addClass('fading');
-		nav.removeClass('open');
-		nav.animate({
-			'opacity': 0,
-		},{
-			duration: 300,
-			complete: function() {
-				nav.removeClass('fading');
-			}
-		})
+		var timeout = setTimeout(function(){
+			nav.addClass('fading-out');
+			nav.removeClass('open');
+		},10);
 	}
 
 	$('.nav-toggle').on('click',function(e){
