@@ -104,6 +104,11 @@ body
 	padding-top: $nav-mobile-height
     position: relative
 
+#body-scroll-wrapper
+	&.lock
+		height: 100%
+		overflow-y: hidden
+
 @include media('lg')
 	body
 		padding-top: $nav-desktop-height
@@ -184,20 +189,24 @@ body
 		vertical-align: middle
 
 .nav-toggle
+	display: block
 	position: absolute
-	right: $side-pad-sm
-	width: 26px
-	height: 23px
-	top: ($nav-mobile-height - 23px) / 2
+	right: 0
+	top: 0
+	width: (13px + $side-pad-sm) * 2
+	height: $nav-mobile-height
+	padding: 13px $side-pad-sm
 	border: 0
 	outline: none
 	background: transparent
 	&-bar
 		display: block
 		width: 100%
-		height: 5px
-		margin-bottom: 4px
+		height: 4px
+		margin-bottom: 5px
 		background: $nav-link-color
+		&:last-child
+			margin-bottom: 0
 
 .nav-right
 	transition: opacity 0.3s ease

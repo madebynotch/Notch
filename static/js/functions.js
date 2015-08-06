@@ -381,6 +381,8 @@ $(document).ready(function(){
 		}
 	}
 
+	bodyScroll = $('#body-scroll-wrapper');
+
 	// Listen for a transition!
     if (document.getElementById("nav") != null) {
         transitionEvent = whichTransitionEvent();
@@ -395,6 +397,7 @@ $(document).ready(function(){
 				}
 				else if (nav.hasClass("fading-out")) {
 					nav.removeClass("fading-out");
+					bodyScroll.removeClass('lock');
 				}
 			}
 		});
@@ -404,6 +407,7 @@ $(document).ready(function(){
 	var openNav = function() {
 		nav = $('.nav-right');
 		nav.addClass('fading');
+		bodyScroll.addClass('lock');
 		var timeout = setTimeout(function(){
 			nav.addClass('fading-in');
 		},10);

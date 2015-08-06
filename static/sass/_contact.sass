@@ -1,3 +1,9 @@
+$contact-map-mobile-height: 300px
+$contact-map-desktop-height: 550px
+$contact-map-location-width: 174px
+$contact-map-location-font-size: 16px
+$contact-map-location-line-height: 24px
+
 .contact-hero
     max-width: 540px
     .hero__subtitle
@@ -20,7 +26,7 @@ textarea
     max-width: 540px
     padding-left: $gutter-width/2
     padding-right: $gutter-width/2
-    padding-bottom: $gutter-width*2
+    padding-bottom: 160px
     .contact-input
         transition: border-color 0.2s ease
         width: 100%
@@ -61,3 +67,29 @@ textarea
         opacity: 1
     :-ms-input-placeholder
         color: $grey-light
+
+.contact-map
+    height: $contact-map-mobile-height
+    position: relative
+    background: 50% 50% url(/static/img/contactMap.png) no-repeat
+    background-size: cover
+
+.contact-map__location
+    @include font($emphasis-font-family, 400, $contact-map-location-font-size, $contact-map-location-line-height)
+    position: absolute
+    border-radius: 50%
+    width: $contact-map-location-width
+    height: $contact-map-location-width
+    background: rgba(#2fb4e0, 0.9)
+    color: white
+    display: block
+    text-align: center
+    top: 50%
+    left: 50%
+    padding-top: ($contact-map-location-width / 2) - ($contact-map-location-line-height)
+    margin-top: (0 - ($contact-map-location-width / 2))
+    margin-left: (0 - ($contact-map-location-width / 2))
+
+@include media('lg')
+    .contact-map
+        height: $contact-map-desktop-height
