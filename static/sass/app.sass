@@ -23,6 +23,7 @@ $header-color: $grey-dark
 // Fonts
 $header-font-family: "Helvetica Neue","Helvetica",Arial,sans-serif
 $emphasis-font-family: "Droid Serif",serif
+$font-family-gibson: "canada-type-gibson", sans-serif
 
 // Nav Variables
 $logo-mobile-height: 20px
@@ -78,6 +79,7 @@ $homepage-footer-offset: 10px
 	h1,h2,h3,h4,h5,h6
 		@content
 
+$space40: 40px
 
 *
 	box-sizing: border-box
@@ -105,7 +107,8 @@ body
     position: relative
 
 @include media('lg')
-	padding-top: $nav-desktop-height
+	body
+		padding-top: $nav-desktop-height
 
 .dribbble-icon
 	.fa-stack-1x
@@ -114,6 +117,41 @@ body
 .twitter-icon
 	.fa-stack-1x
 		font-size: 1.12em
+
+
+// Main Styles
+.hero
+    @include row
+    padding-top: $gutter-width*2
+    padding-bottom: $gutter-width*2
+    text-align: center
+.hero__title
+    @include font($font-family-gibson, 700, 48px, 60px)
+.hero__subtitle
+    @include font($emphasis-font-family, 400, 16px, 24px)
+    color: $grey-light
+
+.main-subheader
+    @include font($font-family-gibson, 600, 18px, 22px)
+    padding-bottom: $space40/4
+.main-text
+    @include font($font-family-gibson, 400, 12px, 18px)
+    color: $grey-medium
+
+
+// Buttons
+.btn-blue
+    @include font($font-family-gibson, 400, 14px, 18px)
+    padding: $gutter-width/2 $gutter-width/2
+    background-color: #2fb4e0
+    border-radius: 4px
+    color: white
+    width: 100%
+    display: block
+    text-align: center
+    &:hover
+        background-color: black
+
 
 // NAVIGATION
 #nav

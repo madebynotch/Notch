@@ -9,21 +9,21 @@
     {% if case_study.get_next_pk %}
         <a class="cs-side-nav-link next" href="{% url 'case_study' case_study.get_next_pk %}">Next Case Study</a>
     {% endif %}
-    <div class="cs-header">
-        <h1 class="cs-title">{{case_study.title}}</h1>
-        <h3 class="cs-subtitle">{{case_study.subtitle}}</h3>
-    </div>
-    <div class="cs-gameplan">
+    <section class="hero">
+        <h1 class="hero__title">{{case_study.title}}</h1>
+        <h3 class="hero__subtitle">{{case_study.subtitle}}</h3>
+    </section>
+    <section class="cs-gameplan">
         <div class="cs-task">
-            <h4 class="cs-subheader">The Task</h4>
-            <p class="cs-text">{{case_study.task_content}}</p>
+            <h4 class="main-subheader">The Task</h4>
+            <p class="main-text">{{case_study.task_content}}</p>
         </div>
         <div class="cs-approach">
-            <h4 class="cs-subheader">Our Approach</h4>
-            <p class="cs-text">{{case_study.approach_content}}</p>
+            <h4 class="main-subheader">Our Approach</h4>
+            <p class="main-text">{{case_study.approach_content}}</p>
         </div>
-    </div>
-    <div class="cs-slider">
+    </section>
+    <section class="cs-slider">
         {% if case_study.get_main_images.count > 1 %}
             <div class="slider">
                 <div class="slider-wrapper">
@@ -39,10 +39,10 @@
                 <img src="{{image.image.url}}" style='width:100%'>
             {% endfor %}
         {% endif %}
-    </div>
-    <div class="cs-content">
+    </section>
+    <section class="cs-content">
         <div class="cs-content__meta">
-            <h4 class="cs-subheader">{{case_study.title}}</h4>
+            <h4 class="main-subheader">{{case_study.title}}</h4>
             <p class="cs-tags">{% for tag in case_study.tags.all %} {{ tag }}. {% endfor %}</p>
             <p class="cs-year">{{ case_study.date_added.year }}</p>
         </div>
@@ -52,8 +52,8 @@
             {% endif %}
 
             {% if case_study.sub_header %}
-                <h4 class="cs-subheader">{{case_study.sub_header}}</h4>
-                <p class="cs-text">{{case_study.sub_header_content}}</p>
+                <h4 class="main-subheader">{{case_study.sub_header}}</h4>
+                <p class="main-text">{{case_study.sub_header_content}}</p>
             {% endif %}
 
             {% for image in case_study.get_sub_images %}
@@ -63,29 +63,29 @@
         <div class="cs-content__share">
             <a href="#" title="" class="btn-blue">Share Case Study</a>
         </div>
-    </div>
-    <div class="cs-page-nav">
-        <div class="cs-page-nav-previous">
+    </section>
+    <section class="cs-nav">
+        <div class="cs-nav-previous">
             {% if case_study.get_prev_pk %}
                 <a href="{% url 'case_study' case_study.get_prev_pk %}">
-                    <span class="cs-page-nav-link">Previous</span>
-                    <h1 class="cs-page-nav-title">{{ case_study.get_prev_title }}</h1>
+                    <span class="cs-nav-link">Previous</span>
+                    <h1 class="cs-nav-title">{{ case_study.get_prev_title }}</h1>
                 </a>
             {% else %}
-                <p class="cs-page-nav-disabled">Previous</p>
+                <p class="cs-nav-disabled">Previous</p>
             {% endif %}
         </div>
-        <div class="cs-page-nav-next">
+        <div class="cs-nav-next">
             {% if case_study.get_next_pk %}
                 <a href="{% url 'case_study' case_study.get_next_pk %}">
-                    <span class="cs-page-nav-link">Next</span>
-                    <h1 class="cs-page-nav-title">{{ case_study.get_next_title }}</h1>
+                    <span class="cs-nav-link">Next</span>
+                    <h1 class="cs-nav-title">{{ case_study.get_next_title }}</h1>
                 </a>
             {% else %}
-                <p class="cs-page-nav-disabled">Next</p>
+                <p class="cs-nav-disabled">Next</p>
             {% endif %}
         </div>
-    </div>
+    </section>
 </section>
 <a href="https://twitter.com/share" class="twitter-share-button" data-text="Notch's latest awesomeness">Tweet</a>
 <a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-color="red" data-pin-height="28"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_28.png" /></a>
