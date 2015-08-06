@@ -1,7 +1,6 @@
 {% for inspire in inspire_list %}
     <article class="in-list__article">
-        <!-- href="{{ inspire.url }} target="_blank" " -->
-        <div href="" class="in-list__link in-list__type--{% if inspire.image %}image{% else %}text{% endif %}">
+        <a href="{{ inspire.url }}" target="_blank" class="in-list__link in-list__type--{% if inspire.image %}image{% else %}text{% endif %}">
             <div class="in-list__content">
                 <h6 class="in-list__cat">{{ inspire.tag }}</h6>
                 <p class="in-list__date"><span>//</span>{{ inspire.date_added }}</p>
@@ -10,6 +9,6 @@
             </div>
             <div class="in-list__image" {% if inspire.image %}style="background-image:url('{{ inspire.image.url }}'); " data-img-width="{{ inspire.image.width }}" data-img-height="{{ inspire.image.height }}"{% endif %}>
             </div>
-        </div>
+        </a>
     </article>
 {% endfor %}

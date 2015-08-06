@@ -8,29 +8,18 @@ $show-more-mobile-height: 50px
 $show-more-desktop-height: 76px
 $show-more-top-margin: 68px
 
-.in-bg-wrapper
-    background: #efefef
 
-.in-header-wrapper
+.in-hero__wrapper
     @include row(full)
-    padding-top: $space40
-    padding-bottom: $space40
-    text-align: center
     background-color: $notch-blue
-    color: white
-
-.in-header
-    @include column(12)
-
-.in-title
-    @include font($font-family-gibson, 600, 48px, 60px)
-
-.in-subtitle
-    @include font($emphasis-font-family, 400, 16px, 24px)
+    .hero__title,
+    .hero__subtitle
+        color: white
 
 
 #inspire-list
     @include row
+
 
 .in-list__article
     @include column(6)
@@ -50,10 +39,10 @@ $show-more-top-margin: 68px
         @include column(12)
         padding-left: 0
         padding-right: 0
-
 .in-list__link
     position: relative
-
+    display: block
+    height: 100%
 .in-list__type
     &--image
         .in-list__content
@@ -68,7 +57,7 @@ $show-more-top-margin: 68px
 
 
 .in-list__content
-    padding: $space40/2
+    padding: $gutter-width/2
 .in-list__cat
     @include font($font-family-gibson, 600, 10px, initial)
     color: $notch-blue
@@ -82,8 +71,8 @@ $show-more-top-margin: 68px
         padding-right: 4px
 .in-list__title
     @include font($font-family-gibson, 600, 20px, initial)
-    margin-top: $space40/2
-    margin-bottom: $space40/4
+    margin-top: $gutter-width/2
+    margin-bottom: $gutter-width/4
     color: black
 .in-list__desc
     @include font($emphasis-font-family, 400, 12px, 20px)
@@ -99,6 +88,7 @@ $show-more-top-margin: 68px
     img
         height: auto
         width: 100%
+
 
 .in-show-more
     padding-bottom: $show-more-top-margin / 2
@@ -117,14 +107,14 @@ $show-more-top-margin: 68px
 @include media('lg')
     $article-height: 300px
 
-    .in-header-wrapper
+
+    .in-hero__wrapper
         @include row(full)
-        padding-top: $space40*2
-        padding-bottom: $space40*6
+        padding-bottom: $gutter-width*6
 
 
     #inspire-list
-        margin-top: -$space40*4
+        margin-top: -$gutter-width*6
 
 
     .in-list__article
@@ -146,14 +136,15 @@ $show-more-top-margin: 68px
             padding-right: 4px
     .in-list__title
         @include font($font-family-gibson, 600, 24px, initial)
-        margin-top: $space40/1.5
-        margin-bottom: $space40/4
+        margin-top: $gutter-width/1.5
+        margin-bottom: $gutter-width/4
     .in-list__desc
         @include font($emphasis-font-family, 400, 12px, 20px)
 
 
     .in-list__image
         height: $article-height
+
 
     .in-show-more
         padding-bottom: $show-more-top-margin * 2

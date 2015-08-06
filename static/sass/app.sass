@@ -79,8 +79,6 @@ $homepage-footer-offset: 10px
 	h1,h2,h3,h4,h5,h6
 		@content
 
-$space40: 40px
-
 *
 	box-sizing: border-box
 *
@@ -120,6 +118,9 @@ body
 
 
 // Main Styles
+.bg--grey
+    background: #efefef
+
 .hero
     @include row
     padding-top: $gutter-width*2
@@ -133,7 +134,7 @@ body
 
 .main-subheader
     @include font($font-family-gibson, 600, 18px, 22px)
-    padding-bottom: $space40/4
+    padding-bottom: $gutter-width/4
 .main-text
     @include font($font-family-gibson, 400, 12px, 18px)
     color: $grey-medium
@@ -488,7 +489,7 @@ body
 		line-height: 68px
 		padding: 0 30px
 
+@import footer
 @import case-study
 @import inspire
-@import footer
 @import contact
