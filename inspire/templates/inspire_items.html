@@ -8,7 +8,7 @@
                 <h2 class="in-list__title">{{ inspire.title }}</h2>
                 <p class="in-list__desc">{{ inspire.description }}</p>
             </div>
-            <div class="in-list__image" {% if inspire.image %}style="background-image:url('{{ inspire.resized_image.url }}'); " data-img-width="{{ inspire.image.width }}" data-img-height="{{ inspire.image.height }}"{% endif %}>
+            <div class="in-list__image" {% if inspire.image %}style="background-image:url('{{ inspire.image.url }}'); " data-img-width="{{ inspire.image.width }}" data-img-height="{{ inspire.image.height }}"{% endif %}>
             </div>
         </div>
     </article>
