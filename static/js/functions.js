@@ -3,6 +3,9 @@ $(document).ready(function(){
 
 	var win = $(window);
 
+	var old_window_w = $(window).width()
+	var old_window_h = $(window).height()
+
 	// Slider Setup
 	// ============
 
@@ -191,10 +194,15 @@ $(document).ready(function(){
 
 		// Function to resize slider to fit window
 		self.resizeSlider = function() {
+			console.log("resizing slider")
 			self.element.css({
 				'width': $(window).width() + 'px',
 				'height': $(window).height() + 'px'
 			});
+			if ($(window).width() < 768) {
+				console.log("compensating for shifting nav");
+				// self.element.css('height', ($(window).height() + 300) + "px" )
+			}
 			self.wrapper.css('height', self.element.height());
 			if (self.direction == "horizontal") {
 				self.wrapper.css({
@@ -283,6 +291,15 @@ $(document).ready(function(){
 			self.initNavigation();
 			self.resizeSlider();
 			self.initSlides();
+
+			if (self.direction == "vertical") {
+				$(window).on("scroll",function(e){
+					e.preventDefault();
+				});
+				document.addEventListener("touchmove",function(e){
+					e.preventDefault();
+				});
+			}
 		}
 	}
 
@@ -331,8 +348,10 @@ $(document).ready(function(){
 		});
 
 		$(window).on('resize',function(e){
-			for(var i=0;i<sliders.length;i++){
-				sliders[i].resizeSlider();
+			if (($(window).width() > 768) || (Math.abs($(window).height() - old_window_h) > 40)) {
+				for(var i=0;i<sliders.length;i++){
+					sliders[i].resizeSlider();
+				}
 			}
 		});
 
@@ -344,37 +363,60 @@ $(document).ready(function(){
 	}
 	// END Slider logic
 
+	// From Modernizr
+    function whichTransitionEvent () {
+		var t;
+        var el = document.createElement('fakeelement');
+        var transitions = {
+            'transition':'transitionend',
+            'OTransition':'oTransitionEnd',
+            'MozTransition':'transitionend',
+            'WebkitTransition':'webkitTransitionEnd',
+		}
+
+        for (t in transitions) {
+            if (el.style[t] !== undefined) {
+                return transitions[t];
+			}
+		}
+	}
+
+	// Listen for a transition!
+    if (document.getElementById("nav") != null) {
+        transitionEvent = whichTransitionEvent();
+        transitionEvent && $('nav')[0].addEventListener(transitionEvent, function(e){
+            if (e.target.id == "nav-right") {
+				console.log("transition end");
+				var nav = $(e.target);
+				nav.removeClass("fading");
+				if (nav.hasClass("fading-in")) {
+					nav.addClass("open");
+					nav.removeClass("fading-in");
+				}
+				else if (nav.hasClass("fading-out")) {
+					nav.removeClass("fading-out");
+				}
+			}
+		});
+	}
 
 	// Navigation logic
 	var openNav = function() {
 		nav = $('.nav-right');
 		nav.addClass('fading');
-		nav.css({
-			'opacity': 0,
-		});
-		nav.animate({
-			'opacity': 1,
-		},{
-			duration: 300,
-			complete: function() {
-				nav.addClass('open');
-				nav.removeClass('fading');
-			}
-		});
+		var timeout = setTimeout(function(){
+			nav.addClass('fading-in');
+		},10);
+
 	}
 
 	var closeNav = function() {
 		nav = $('.nav-right');
 		nav.addClass('fading');
-		nav.removeClass('open');
-		nav.animate({
-			'opacity': 0,
-		},{
-			duration: 300,
-			complete: function() {
-				nav.removeClass('fading');
-			}
-		})
+		var timeout = setTimeout(function(){
+			nav.addClass('fading-out');
+			nav.removeClass('open');
+		},10);
 	}
 
 	$('.nav-toggle').on('click',function(e){

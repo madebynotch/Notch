@@ -16,6 +16,11 @@
     font-style: italic
     margin-bottom: $gutter-width/2
 
+input[type=text]
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+
 .contact-form
     @include row
     max-width: 540px
@@ -24,7 +29,12 @@
     padding-bottom: $gutter-width*2
     textarea
         max-width: 100%
+        -webkit-appearance: none
+        -moz-appearance: none
+        appearance: none
     input, textarea
+        background: transparent
+        outline: none
         transition: border-color 0.2s ease
         width: 100%
         font-family: $emphasis-font-family

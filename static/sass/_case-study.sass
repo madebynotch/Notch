@@ -71,9 +71,22 @@ $cs-side-nav-link-width: 240px
     @include row
     padding-bottom: $space40
 
-.cs-content-left
+.cs-content__meta
     @include column(12)
     padding-top: $space40
+
+.cs-content__text
+    @include column(12)
+    padding-top: $space40/2
+    position: relative
+    &:before
+        content: ""
+        display: block
+        width: $space40
+        background-color: $grey-medium
+        position: absolute
+        top: 0
+        height: 1px
     .cs-text
         padding-bottom: $space40/2
 .cs-approach-content
@@ -81,9 +94,10 @@ $cs-side-nav-link-width: 240px
     font-style: italic
     padding-bottom: $space40
 
-.cs-content-right
+.cs-content__share
     @include column(12)
-    padding-top: $space40
+    padding-top: $space40/2
+
 .cs-tags
     @include font($emphasis-font-family, 400, 10px, 16px)
     color: $grey-light
@@ -91,13 +105,16 @@ $cs-side-nav-link-width: 240px
 .cs-year
     @include font($font-family-gibson, 400, 10px, 16px)
     font-style: italic
-    padding-bottom: $space40
+    padding-bottom: $space40/2
 .btn-blue
     @include font($font-family-gibson, 400, 14px, 18px)
-    padding: $space40/4 $space40/2
+    padding: $space40/2 $space40/2
     background-color: #2fb4e0
     border-radius: 4px
     color: white
+    width: 100%
+    display: block
+    text-align: center
 
 
 .cs-page-nav
@@ -123,8 +140,24 @@ $cs-side-nav-link-width: 240px
 @include media('lg')
     .cs-task, .cs-approach
         @include column(6)
-    .cs-content-left
+
+    .cs-content__text
         @include column(8)
-    .cs-content-right
+        padding-top: $space40*2
+        &:before
+            display: none
+
+    .cs-year
+        padding-bottom: $space40/4
+
+    .cs-content__meta
+        padding-top: $space40*2
+
+    .cs-content__meta,
+    .cs-content__share
         @include column(3)
         @include offset(1)
+        float: right
+
+    .btn-blue
+        padding: $space40/3 $space40/2
