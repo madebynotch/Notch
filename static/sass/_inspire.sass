@@ -26,14 +26,6 @@ $show-more-top-margin: 68px
     padding: 0
     height: $article-height
     background-color: white
-    &:hover
-        background: black
-        .in-list__type--image .in-list__content
-            display: block
-        .in-list__cat, .in-list__date, .in-list__title, .in-list__desc
-            color: white
-        .in-list__image
-            z-index: -5
     &:nth-child(14n + 1),
     &:nth-child(14n + 10)
         @include column(12)
@@ -121,6 +113,14 @@ $show-more-top-margin: 68px
         @include column(3)
         padding: 0
         height: $article-height
+        &:hover
+            background: black
+            .in-list__type--image .in-list__content
+                display: block
+            .in-list__cat, .in-list__date, .in-list__title, .in-list__desc
+                color: white
+            .in-list__image
+                z-index: -5
         &:nth-child(14n + 1),
         &:nth-child(14n + 10)
             @include column(6)
