@@ -296,9 +296,9 @@ $(document).ready(function(){
 				$(window).on("scroll",function(e){
 					e.preventDefault();
 				});
-				// document.addEventListener("touchmove",function(e){
-				// 	e.preventDefault();
-				// });
+				document.addEventListener("touchmove",function(e){
+					e.preventDefault();
+				});
 			}
 		}
 	}

@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'main',
     'inspire',
     'case_studies',
-    'django_extensions'
+    'django_extensions',
+    'imagekit',
 )
 
 MIDDLEWARE_CLASSES = (

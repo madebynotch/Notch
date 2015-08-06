@@ -9,5 +9,6 @@ db.sqlite3
 .idea/
 media/case_studies
 media/inspire
+media/CACHE
 local_settings.py
 npm-debug.log
