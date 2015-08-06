@@ -1,25 +1,20 @@
-.contact-header
-    @include row
+.contact-hero
     max-width: 540px
-    padding-top: $gutter-width*2
-    padding-bottom: $gutter-width
-    text-align: center
-.contact-title
-    @include font($font-family-gibson, 700, 48px, 60px)
-.contact-subtitle
-    @include font($emphasis-font-family, 400, 16px, 24px)
-    color: $grey-light
-    margin-bottom: $gutter-width/2
-.contact-text
-    @include font($font-family-gibson, 400, 12px, 18px)
-    color: $grey-medium
-    font-style: italic
-    margin-bottom: $gutter-width/2
+    .hero__subtitle
+        margin-bottom: $gutter-width/2
+    .contact-required
+        @include font($font-family-gibson, 400, 12px, 18px)
+        color: $grey-medium
+        font-style: italic
+        margin-bottom: $gutter-width/2
 
-input[type=text]
+
+input[type=text],
+textarea
     -webkit-appearance: none
     -moz-appearance: none
     appearance: none
+
 
 .contact-form
     @include row
@@ -27,34 +22,21 @@ input[type=text]
     padding-left: $gutter-width/2
     padding-right: $gutter-width/2
     padding-bottom: $gutter-width*2
-    textarea
-        max-width: 100%
-        -webkit-appearance: none
-        -moz-appearance: none
-        appearance: none
-    input, textarea
-        background: transparent
-        outline: none
+    .contact-input
         transition: border-color 0.2s ease
         width: 100%
         font-family: $emphasis-font-family
-        line-height: 22px
         padding: 16px 20px
         border-radius: 6px
         border: 2px solid $grey-lightest
-        margin-bottom: $gutter-width/4
         color: $grey-medium
         &:focus
             outline: none
             border-color: #2fb4e0
-        &.btn-blue
-            @include font($font-family-gibson, 400, 20px, 24px)
-            font-weight: normal
-            color: white
-            border: none
-            &:hover
-                background: $grey-dark
-
+    .btn-blue
+        @include font($font-family-gibson, 400, 16px, 18px)
+        padding: $gutter-width/1.5 $gutter-width/2
+        border: none
     .form-group
         position: relative
         margin-bottom: 16px
@@ -70,7 +52,6 @@ input[type=text]
             input,textarea
                 padding-right: 80px
                 border-color: #ef6e6e
-
     ::-webkit-input-placeholder
         color: $grey-light
     :-moz-placeholder
