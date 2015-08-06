@@ -3,6 +3,9 @@ $(document).ready(function(){
 
 	var win = $(window);
 
+	var old_window_w = $(window).width()
+	var old_window_h = $(window).height()
+
 	// Slider Setup
 	// ============
 
@@ -191,10 +194,15 @@ $(document).ready(function(){
 
 		// Function to resize slider to fit window
 		self.resizeSlider = function() {
+			console.log("resizing slider")
 			self.element.css({
 				'width': $(window).width() + 'px',
 				'height': $(window).height() + 'px'
 			});
+			if ($(window).width() < 768) {
+				console.log("compensating for shifting nav");
+				// self.element.css('height', ($(window).height() + 300) + "px" )
+			}
 			self.wrapper.css('height', self.element.height());
 			if (self.direction == "horizontal") {
 				self.wrapper.css({
@@ -283,6 +291,15 @@ $(document).ready(function(){
 			self.initNavigation();
 			self.resizeSlider();
 			self.initSlides();
+
+			if (self.direction == "vertical") {
+				$(window).on("scroll",function(e){
+					e.preventDefault();
+				});
+				// document.addEventListener("touchmove",function(e){
+				// 	e.preventDefault();
+				// });
+			}
 		}
 	}
 
@@ -331,8 +348,10 @@ $(document).ready(function(){
 		});
 
 		$(window).on('resize',function(e){
-			for(var i=0;i<sliders.length;i++){
-				sliders[i].resizeSlider();
+			if (($(window).width() > 768) || (Math.abs($(window).height() - old_window_h) > 40)) {
+				for(var i=0;i<sliders.length;i++){
+					sliders[i].resizeSlider();
+				}
 			}
 		});
 
