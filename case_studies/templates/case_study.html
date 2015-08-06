@@ -41,7 +41,12 @@
         {% endif %}
     </div>
     <div class="cs-content">
-        <div class="cs-content-left">
+        <div class="cs-content__meta">
+            <h4 class="cs-subheader">{{case_study.title}}</h4>
+            <p class="cs-tags">{% for tag in case_study.tags.all %} {{ tag }}. {% endfor %}</p>
+            <p class="cs-year">{{ case_study.date_added.year }}</p>
+        </div>
+        <div class="cs-content__text">
             {% if case_study.extension_text %}
                 <p class="cs-approach-content">{{case_study.extension_text}}</p>
             {% endif %}
@@ -55,10 +60,7 @@
                 <img src="{{image.image.url}}" style='width:100%'>
             {% endfor %}
         </div>
-        <div class="cs-content-right">
-            <h4 class="cs-subheader">{{case_study.title}}</h4>
-            <p class="cs-tags">{% for tag in case_study.tags.all %} {{ tag }}. {% endfor %}</p>
-            <p class="cs-year">{{ case_study.date_added.year }}</p>
+        <div class="cs-content__share">
             <a href="#" title="" class="btn-blue">Share Case Study</a>
         </div>
     </div>
