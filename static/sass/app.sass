@@ -6,7 +6,7 @@ $side-pad-lg: 65px
 
 @include set-breakpoint('sm')
 @include set-breakpoint('lg',900px,850 - $side-pad-lg)
-@include set-breakpoint('xl',970px,900 - $side-pad-lg)
+@include set-breakpoint('xl',1200px,1000 - $side-pad-lg)
 
 // Colors
 $notch-blue: #2aaed9
@@ -123,16 +123,39 @@ body
 
 
 // Main Styles
+.text--blue
+	color: $notch-blue
+
 .bg--grey
     background: #efefef
+.bg--white
+	background: white
 
 .hero
     @include row
     padding-top: $gutter-width*2
     padding-bottom: $gutter-width*2
     text-align: center
+
+.hero-wrapper
+    @include row(full)
+    background-color: $notch-blue
+    .hero__title,
+    .hero__subtitle
+        color: white
+
+@include media('lg')
+	.hero-wrapper
+        @include row(full)
+        padding-bottom: $gutter-width*6
+
 .hero__title
-    @include font($font-family-gibson, 700, 48px, 60px)
+	@include font($font-family-gibson, 700, 48px, 60px)
+	margin-bottom: 20px
+.hero__title--emphasis
+	@include font($emphasis-font-family, 400, 48px, 60px)
+	font-style: italic
+
 .hero__subtitle
     @include font($emphasis-font-family, 400, 16px, 24px)
     color: $grey-light
@@ -502,3 +525,4 @@ body
 @import case-study
 @import inspire
 @import contact
+@import about

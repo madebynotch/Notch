@@ -9,14 +9,6 @@ $show-more-desktop-height: 76px
 $show-more-top-margin: 68px
 
 
-.in-hero__wrapper
-    @include row(full)
-    background-color: $notch-blue
-    .hero__title,
-    .hero__subtitle
-        color: white
-
-
 #inspire-list
     @include row
 
@@ -98,12 +90,6 @@ $show-more-top-margin: 68px
 
 @include media('lg')
     $article-height: 300px
-
-
-    .in-hero__wrapper
-        @include row(full)
-        padding-bottom: $gutter-width*6
-
 
     #inspire-list
         margin-top: -$gutter-width*6
