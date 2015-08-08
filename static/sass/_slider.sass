@@ -1,0 +1,205 @@
+// Slider Variables
+$slider-header-font-family: $header-font-family
+$slider-header-size-mobile: 29px
+$slider-header-size-desktop: 54px
+$slider-header-line-height: 1.11
+@mixin slider-header-font
+	@include font($slider-header-font-family, 800, $slider-header-size-mobile, $slider-header-line-height)
+
+$slider-desc-font-family: $emphasis-font-family
+$slider-desc-size-mobile: 14px
+$slider-desc-size-desktop: 20px
+$slider-desc-line-height: 1.5
+@mixin slider-desc-font
+	@include font($slider-desc-font-family, 400, $slider-desc-size-mobile, $slider-desc-line-height)
+
+$slider-nav-link-diam: 14px
+$slider-nav-link-margin: 30px
+$slider-nav-link-border-color: white
+$slider-nav-link-border-alt-color: $grey-light
+$slider-nav-link-border: inset 0 0 0 3px $slider-nav-link-border-color
+$slider-nav-link-border-hover: inset 0 0 0 5px $slider-nav-link-border-color
+$slider-nav-link-border-active: inset 0 0 0 12px $slider-nav-link-border-color
+$slider-nav-link-alt-border: inset 0 0 0 3px $slider-nav-link-border-alt-color
+$slider-nav-link-alt-border-hover: inset 0 0 0 5px $slider-nav-link-border-alt-color
+$slider-nav-link-alt-border-active: inset 0 0 0 12px $slider-nav-link-border-alt-color
+$slide-link-bg: white
+$slide-link-alt-bg: $grey-lighter
+$slide-link-color: $grey-dark
+$slide-link-hover-bg: $grey-dark
+$slide-link-hover-color: white
+$slider-controls-offset: 45px
+
+
+// HOMEPAGE SLIDER
+.slider
+	position: relative
+	width: 100%
+	height: 700px
+	overflow: hidden
+	padding-bottom: 40px
+.slider-wrapper
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	background: grey
+	// height: 100%
+.slide-phantom
+	&-first,
+	&-last
+		@extend .slide
+.slide
+	width: 100%
+	height: 100%
+	display: table
+	background: grey
+	position: absolute
+	top: 0
+	overflow: hidden
+	.slide-image
+		position: absolute
+		top: 0
+		left: 0
+		z-index: 1
+	.slide-wrapper
+		@include row(full)
+		float: none
+		display: table-cell
+		vertical-align: middle
+		color: white
+		position: relative
+		// padding-bottom: $homepage-footer-height + $homepage-footer-offset
+		z-index: 10
+		@include headers
+			@include slider-header-font
+			margin-bottom: 20px
+		p
+			@include slider-desc-font
+			margin-bottom: 40px
+		.slide-content
+			@include column(9, center)
+			text-align: center
+
+.slide-link
+	border-radius: 4px
+	border: 2px solid white
+	display: inline-block
+	font-size: 14px
+	line-height: 50px
+	padding: 0 20px
+	color: white
+	.slide-link-arrow
+		margin-left: 10px
+	&:hover
+		background: white
+		color: $grey-medium
+
+.slider-nav
+	z-index: 15
+	position: absolute
+	left: 0
+	text-align: center
+	li
+		display: inline-block
+		height: $slider-nav-link-diam
+		width: $slider-nav-link-diam
+		background: transparent
+		box-shadow: $slider-nav-link-alt-border
+		border-radius: 50%
+		cursor: pointer
+		transition: all 0.2s ease
+		&:not(:first-child)
+			margin-left: $slider-nav-link-margin
+		&:hover
+			box-shadow: $slider-nav-link-alt-border-hover
+			transition: all 0.1s ease
+		&.active
+			box-shadow: $slider-nav-link-alt-border-active
+
+.slider-controls
+	position: absolute
+	left: 0
+	bottom: $slider-controls-offset
+	width: 100%
+	z-index: 60
+	text-align: center
+
+.slider-next,
+.slider-prev
+	display: inline-block
+	padding: 0 25px
+	line-height: 60px
+	background: $slide-link-bg
+	color: $slide-link-color
+	&:hover
+		background: $slide-link-hover-bg
+		color: $slide-link-hover-color
+
+.slider-prev
+	margin-right: 3px
+
+.slider:not(.vertical)
+	.slider-wrapper
+		overflow: hidden
+	.slider-controls
+		bottom: 100px
+	.slider-nav
+		bottom: 0
+		width: 100%
+
+.slider.vertical
+	max-height: 100%
+	height: 100%
+	position: absolute
+	top: 0
+	left: 0
+	overflow: visible
+	margin-bottom: 0
+	.slider-nav
+		position: fixed
+		top: 50%
+		left: $side-pad-sm
+		text-align: left
+		li
+			display: block
+			box-shadow: $slider-nav-link-border
+			margin-left: 0
+			margin-bottom: $slider-nav-link-margin
+			&:hover
+				box-shadow: $slider-nav-link-border-hover
+			&.active
+				box-shadow: $slider-nav-link-border-active
+
+	.slider-controls
+		position: fixed
+		bottom: $homepage-footer-height + $homepage-footer-offset
+	.slider-next,
+	.slider-prev
+		font-size: 20px
+		background: transparent
+		color: white
+		&:hover
+			background: transparent
+
+@include media('lg')
+    .slider.vertical
+        .slider-nav
+            left: $side-pad-lg
+
+    .slide
+        .slide-wrapper
+            @include headers
+                font-size: $slider-header-size-desktop
+            p
+                font-size: $slider-desc-size-desktop
+            .slide-content
+                text-align: left
+                @include column(6)
+                @include offset(3)
+
+    .slide-link
+        border-radius: 6px
+        font-size: 20px
+        line-height: 68px
+        padding: 0 30px

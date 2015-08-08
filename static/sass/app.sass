@@ -21,9 +21,9 @@ $body-text-color: $grey-medium
 $header-color: $grey-dark
 
 // Fonts
-$header-font-family: "Helvetica Neue","Helvetica",Arial,sans-serif
-$emphasis-font-family: "Droid Serif",serif
 $font-family-gibson: "canada-type-gibson", sans-serif
+$header-font-family: $font-family-gibson
+$emphasis-font-family: "Droid Serif",serif
 
 // Nav Variables
 $logo-mobile-height: 20px
@@ -34,38 +34,6 @@ $nav-link-desktop-shift: 5px
 $nav-mobile-height: 60px
 $nav-desktop-height: 81px
 
-// Slider Variables
-$slider-header-font-family: $header-font-family
-$slider-header-size-mobile: 29px
-$slider-header-size-desktop: 54px
-$slider-header-line-height: 1.11
-@mixin slider-header-font
-	@include font($slider-header-font-family, 800, $slider-header-size-mobile, $slider-header-line-height)
-
-$slider-desc-font-family: $emphasis-font-family
-$slider-desc-size-mobile: 14px
-$slider-desc-size-desktop: 20px
-$slider-desc-line-height: 1.5
-@mixin slider-desc-font
-	@include font($slider-desc-font-family, 400, $slider-desc-size-mobile, $slider-desc-line-height)
-
-$slider-nav-link-diam: 14px
-$slider-nav-link-margin: 30px
-$slider-nav-link-border-color: white
-$slider-nav-link-border-alt-color: $grey-light
-$slider-nav-link-border: inset 0 0 0 3px $slider-nav-link-border-color
-$slider-nav-link-border-hover: inset 0 0 0 5px $slider-nav-link-border-color
-$slider-nav-link-border-active: inset 0 0 0 12px $slider-nav-link-border-color
-$slider-nav-link-alt-border: inset 0 0 0 3px $slider-nav-link-border-alt-color
-$slider-nav-link-alt-border-hover: inset 0 0 0 5px $slider-nav-link-border-alt-color
-$slider-nav-link-alt-border-active: inset 0 0 0 12px $slider-nav-link-border-alt-color
-$slide-link-bg: white
-$slide-link-alt-bg: $grey-lighter
-$slide-link-color: $grey-dark
-$slide-link-hover-bg: $grey-dark
-$slide-link-hover-color: white
-$slider-controls-offset: 45px
-
 // Footer Variables
 $homepage-footer-bg: white
 $homepage-footer-height: 50px
@@ -73,7 +41,7 @@ $homepage-footer-size: 16px
 $homepage-footer-color: $grey-medium
 $homepage-footer-offset: 10px
 @mixin homepage-footer-font
-	@include font($header-font-family, 700, $homepage-footer-size, $homepage-footer-height)
+	@include font($header-font-family, 600, $homepage-footer-size, $homepage-footer-height)
 
 @mixin headers
 	h1,h2,h3,h4,h5,h6
@@ -150,7 +118,7 @@ body
         padding-bottom: $gutter-width*6
 
 .hero__title
-	@include font($font-family-gibson, 700, 48px, 60px)
+	@include font($font-family-gibson, 600, 48px, 60px)
 	margin-bottom: 20px
 .hero__title--emphasis
 	@include font($emphasis-font-family, 400, 48px, 60px)
@@ -182,247 +150,7 @@ body
         background-color: black
 
 
-// NAVIGATION
-#nav
-	position: fixed
-	top: 0
-	left: 0
-	width: 100%
-	height: $nav-mobile-height
-	background: $nav-bg
-	padding: 0 $side-pad-sm
-	z-index: 500
-
-.nav-wrapper
-	@include row(full)
-
-.nav-head,
-.nav-right
-	@include column(12)
-	padding: 0
-
-.nav-logo
-	display: inline-block
-	line-height: $nav-mobile-height
-	img
-		height: $logo-mobile-height
-		width: auto
-		position: relative
-		// top: 10px
-		vertical-align: middle
-
-.nav-toggle
-	display: block
-	position: absolute
-	right: 0
-	top: 0
-	width: (13px + $side-pad-sm) * 2
-	height: $nav-mobile-height
-	padding: 13px $side-pad-sm
-	border: 0
-	outline: none
-	background: transparent
-	&-bar
-		display: block
-		width: 100%
-		height: 4px
-		margin-bottom: 5px
-		background: $nav-link-color
-		&:last-child
-			margin-bottom: 0
-
-.nav-right
-	transition: opacity 0.3s ease
-	display: none
-	opacity: 0
-	position: fixed
-	top: $nav-mobile-height
-	left: 0
-	bottom: 0
-	right: 0
-	z-index: 1000
-	padding: 80px 0 0
-	text-align: center
-	background: $nav-bg
-	.nav-links
-		list-style: none
-		li
-			a
-				font-size: 25px
-				font-family: $emphasis-font-family
-				display: inline-block
-				color: $nav-link-color
-				line-height: $nav-mobile-height
-				&:hover
-					color: $nav-link-hover-color
-				&:active
-					color: $nav-link-color
-	&.fading
-		display: block
-	&.fading-in
-		opacity: 1
-	&.fading-out
-		opacity: 0
-	&.open
-		display: block
-		opacity: 1
-
-// HOMEPAGE SLIDES
-
-.slider
-	position: relative
-	width: 100%
-	height: 700px
-	overflow: hidden
-	padding-bottom: 40px
-.slider-wrapper
-	position: absolute
-	top: 0
-	left: 0
-	width: 100%
-	background: grey
-	// height: 100%
-.slide-phantom
-	&-first,
-	&-last
-		@extend .slide
-.slide
-	width: 100%
-	height: 100%
-	display: table
-	background: grey
-	position: absolute
-	top: 0
-	overflow: hidden
-	.slide-image
-		position: absolute
-		top: 0
-		left: 0
-		z-index: 1
-	.slide-wrapper
-		@include row(full)
-		float: none
-		display: table-cell
-		vertical-align: middle
-		color: white
-		position: relative
-		// padding-bottom: $homepage-footer-height + $homepage-footer-offset
-		z-index: 10
-		@include headers
-			@include slider-header-font
-			margin-bottom: 20px
-		p
-			@include slider-desc-font
-			margin-bottom: 40px
-		.slide-content
-			@include column(9, center)
-			text-align: center
-
-.slide-link
-	border-radius: 4px
-	border: 2px solid white
-	display: inline-block
-	font-size: 14px
-	line-height: 50px
-	padding: 0 20px
-	color: white
-	.slide-link-arrow
-		margin-left: 10px
-	&:hover
-		background: white
-		color: $grey-medium
-
-.slider-nav
-	z-index: 15
-	position: absolute
-	left: 0
-	text-align: center
-	li
-		display: inline-block
-		height: $slider-nav-link-diam
-		width: $slider-nav-link-diam
-		background: transparent
-		box-shadow: $slider-nav-link-alt-border
-		border-radius: 50%
-		cursor: pointer
-		-webkit-transition: all 0.2s ease
-		-moz-transition: all 0.2s ease
-		transition: all 0.2s ease
-		&:not(:first-child)
-			margin-left: $slider-nav-link-margin
-		&:hover
-			box-shadow: $slider-nav-link-alt-border-hover
-			-webkit-transition: all 0.1s ease
-			-moz-transition: all 0.1s ease
-			transition: all 0.1s ease
-		&.active
-			box-shadow: $slider-nav-link-alt-border-active
-
-.slider-controls
-	position: absolute
-	left: 0
-	bottom: $slider-controls-offset
-	width: 100%
-	z-index: 60
-	text-align: center
-
-.slider-next,
-.slider-prev
-	display: inline-block
-	padding: 0 25px
-	line-height: 60px
-	background: $slide-link-bg
-	color: $slide-link-color
-	&:hover
-		background: $slide-link-hover-bg
-		color: $slide-link-hover-color
-
-.slider-prev
-	margin-right: 3px
-
-.slider:not(.vertical)
-	.slider-wrapper
-		overflow: hidden
-	.slider-controls
-		bottom: 100px
-	.slider-nav
-		bottom: 0
-		width: 100%
-
-.slider.vertical
-	max-height: 100%
-	height: 100%
-	position: absolute
-	top: 0
-	left: 0
-	overflow: visible
-	margin-bottom: 0
-	.slider-nav
-		position: fixed
-		top: 50%
-		left: $side-pad-sm
-		text-align: left
-		li
-			display: block
-			box-shadow: $slider-nav-link-border
-			margin-left: 0
-			margin-bottom: $slider-nav-link-margin
-			&:hover
-				box-shadow: $slider-nav-link-border-hover
-			&.active
-				box-shadow: $slider-nav-link-border-active
-
-	.slider-controls
-		position: fixed
-		bottom: $homepage-footer-height + $homepage-footer-offset
-	.slider-next,
-	.slider-prev
-		font-size: 20px
-		background: transparent
-		color: white
-		&:hover
-			background: transparent
-
+// Homepage Footer
 .homepage-footer
 	@include homepage-footer-font
 	@include row(full)
@@ -461,41 +189,6 @@ body
 					color: $grey-dark
 
 @include media('lg')
-	.slider.vertical
-		.slider-nav
-			left: $side-pad-lg
-	#nav
-		padding-left: $side-pad-lg
-		padding-right: $side-pad-lg
-		height: $nav-desktop-height
-	.nav-toggle
-		display: none
-	.nav-head
-		@include column(3)
-		padding: 0
-		line-height: $nav-desktop-height
-	.nav-logo
-		img
-			top: -2px
-			height: $logo-desktop-height
-	.nav-right
-		@include column(9)
-		display: block
-		opacity: 1
-		position: relative
-		padding: 0
-		background: transparent
-		top: 0
-		.nav-links
-			list-style: none
-			float: right
-			li
-				float: left
-				margin-left: 60px
-				a
-					font-size: 22px
-					padding-top: $nav-link-desktop-shift
-					line-height: $nav-desktop-height - $nav-link-desktop-shift
 	.homepage-footer
 		.footer-left,
 		.footer-right
@@ -505,22 +198,8 @@ body
 			a
 				font-size: 16px
 
-	.slide
-		.slide-wrapper
-			@include headers
-				font-size: $slider-header-size-desktop
-			p
-				font-size: $slider-desc-size-desktop
-			.slide-content
-				@include column(6)
-				@include offset(3)
-				text-align: left
-	.slide-link
-		border-radius: 6px
-		font-size: 20px
-		line-height: 68px
-		padding: 0 30px
-
+@import nav
+@import slider
 @import footer
 @import case-study
 @import inspire
