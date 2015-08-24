@@ -1,6 +1,10 @@
 $cs-side-nav-link-height: 50px
 $cs-side-nav-link-width: 240px
 
+$cs-share-popup-width: 200px
+$cs-share-popup-height: 60px
+$cs-share-popup-border-width: 2px
+
 
 .cs-wrapper
     position: relative
@@ -80,6 +84,104 @@ $cs-side-nav-link-width: 240px
 .cs-content__share
     @include column(12)
     padding-top: $gutter-width/2
+    position: relative
+
+.share__popup
+    transition: opacity 0.2s ease, transform 0.3s ease
+    opacity: 0
+    transform: translateY(10px)
+    position: absolute
+    top: 100%
+    margin-top: 15px
+    left: 50%
+    margin-left: 0 - ($cs-share-popup-width / 2)
+    &.closed
+        display: none
+    &.open
+        opacity: 1
+        transition: opacity 0.2s ease 0.1s, transform 0.3s ease
+        transform: translateY(0px)
+
+
+    // &:before,
+    // &:after
+    //     content: ""
+    //     position: absolute
+    //     display: block
+    //     left: 50%
+    //     transform: rotate(45deg)
+    // &:before
+    //     top: -6px
+    //     margin-left: -8px
+    //     width: 16px
+    //     height: 16px
+    //     border-radius: 3px
+    //     background: $grey-lightest
+    //     z-index: 1
+    // &:after
+    //     background: white
+    //     top: -4px
+    //     margin-left: -6px
+    //     width: 12px
+    //     height: 12px
+    //     border-radius: 1px
+    //     background: white
+    //     z-index: 10
+
+.share__popup
+    &:before,
+    &:after
+        content: ""
+        position: absolute
+        display: block
+        left: 50%
+    &:before
+        top: -11px
+        margin-left: -9px
+        border-left: 17px solid transparent
+        border-right: 17px solid transparent
+        border-bottom: 17px solid $grey-lightest
+        z-index: 1
+    &:after
+        top: -8px
+        margin-left: -4px
+        border-left: 11px solid transparent
+        border-right: 11px solid transparent
+        border-bottom: 11px solid white
+        z-index: 10
+
+.popup__social-links
+    position: relative
+    z-index: 10
+    text-align: center
+    height: $cs-share-popup-height - ($cs-share-popup-border-width * 2)
+    width: $cs-share-popup-width
+    background: white
+    border: $cs-share-popup-border-width solid $grey-lightest
+    border-radius: 7px
+    box-shadow: 0 0 8px rgba(0,0,0,0.1)
+    padding: 0 16px
+    line-height: $cs-share-popup-height - ($cs-share-popup-border-width * 5)
+    z-index: 5
+    .popup__social-link
+        font-size: 15px
+        margin-left: 10px
+        color: $grey-light
+        &:hover
+            color: $notch-blue
+        &:first-child
+            margin-left: 0
+
+@include media('lg')
+    .share__popup
+        left: auto
+        margin-left: 0
+        right: 15px
+        &:before,
+        &:after
+            left: 69%
+
+
 
 
 .cs-nav

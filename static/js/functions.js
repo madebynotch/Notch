@@ -432,6 +432,67 @@ $(document).ready(function(){
 		}
 	});
 
+	if($('#share-button')[0]) {
+		popupTransition = false;
+
+		function openPopup(){
+			popupTransition = true;
+			popup.removeClass('closed');
+			delayClass = setTimeout(function(){
+				popup.addClass('open');
+				popupTransition = false;
+			},10);
+		}
+		function closePopup(){
+			popupTransition = true;
+			popup.removeClass('open');
+		}
+
+		// Close the popup if anywhere other than the popup is clicked
+		$('body').on('click', function(e){
+			popup = $('#share__popup');
+			isSocialLink = ($(e.target).closest('.popup__social-link')[0] ? true : false);
+			isPopup = ($(e.target).closest('#share__popup')[0] ? true : false);
+			if(popup.hasClass('open') && (!isSocialLink || !isPopup)) {
+				closePopup();
+			}
+		});
+
+		$('#share-button').on('click', function(e){
+			e.preventDefault();
+			if(!popupTransition) {
+				popup = $('#share__popup');
+				if(popup.hasClass('closed')) {
+					openPopup();
+				}
+				else if(popup.hasClass('open')){
+					closePopup();
+				}
+			}
+		});
+
+		$('.popup__social-link:not(.email-icon)').on('click',function(e){
+			e.preventDefault();
+			href = $(this).attr('href');
+			if(href.includes('mailto:')) {
+
+			}
+			else {
+				// console.log($(this).attr('href'));
+				window.open($(this).attr('href'),'Share Case Study','left=20,top=20,width=600,height=450,toolbar=1,resizable=0');
+			}
+		})
+
+		transitionEvent = whichTransitionEvent();
+        transitionEvent && $('#share__popup')[0].addEventListener(transitionEvent, function(e){
+			popup = $('#share__popup');
+			if(!popup.hasClass('open') && !popup.hasClass('closed')) {
+				popup.addClass('closed');
+				popupTransition = false;
+			}
+		});
+	}
+
 
 	// Fallback for "background-size: cover"
 	if(!Modernizr.backgroundsize) {

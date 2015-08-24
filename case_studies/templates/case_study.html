@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+{% block imports %}
+{% endblock %}
+
 {% block content %}
+
 <section class="cs-wrapper">
     {% if case_study.get_prev_pk %}
         <a class="cs-side-nav-link prev" href="{% url 'case_study' case_study.get_prev_pk %}">Prev Case Study</a>
@@ -61,7 +65,35 @@
             {% endfor %}
         </div>
         <div class="cs-content__share">
-            <a href="#" title="" class="btn-blue">Share Case Study</a>
+            <a href="#" id="share-button" title="" class="btn-blue">Share Case Study</a>
+            <div class="share__popup closed" id="share__popup">
+                <div class="popup__social-links">
+                    <a class="popup__social-link facebook-icon" href="//www.facebook.com/sharer/sharer.php?u=madebynotch.com&title=Case%20Study%20Name">
+                        <span class="fa-stack">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                    <a class="popup__social-link email-icon" href="mailto:meagan@madebynotch.com">
+                        <span class="fa-stack">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                    <a class="popup__social-link twitter-icon" href="">
+                        <span class="fa-stack">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                    <a class="popup__social-link linkedin-icon" href="">
+                        <span class="fa-stack">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-linkedin-square fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
     <section class="cs-nav">
@@ -89,7 +121,8 @@
 </section>
 <a href="https://twitter.com/share" class="twitter-share-button" data-text="Notch's latest awesomeness: ">Tweet</a>
 <a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-color="red" data-pin-height="28"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_28.png" /></a>
-<div class="fb-share-button" data-href="{{ url }}" data-layout="button_count"></div>
+<div class="fb-share-button" data-href="{{ url }}" data-layout="button"></div>
+
 
 {% include "footer.html" %}
 {% endblock %}

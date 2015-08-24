@@ -83,6 +83,18 @@
 		display: block
 		opacity: 1
 
+.nav__social-links
+	margin-top: 40px
+	.nav-social-link
+		color: white
+		font-size: 28px
+		padding: 0 3px
+		.fa-stack-1x
+			color: $notch-blue
+		&:hover,
+		&:active
+			color: $nav-link-hover-color
+
 @include media('lg')
 	#nav
 		padding-left: $side-pad-lg
@@ -116,3 +128,5 @@
 					font-size: 22px
 					padding-top: $nav-link-desktop-shift
 					line-height: $nav-desktop-height - $nav-link-desktop-shift
+	.nav__social-links
+		display: none
