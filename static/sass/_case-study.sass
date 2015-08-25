@@ -102,53 +102,53 @@ $cs-share-popup-border-width: 2px
         transition: opacity 0.2s ease 0.1s, transform 0.3s ease
         transform: translateY(0px)
 
+.popup__arrow
+    position: absolute
+    top: -14px
+    right: 50%
+    margin-right: -10px
+    display: block
+    width: 20px
+    height: 16px
+    z-index: 20
+    overflow: hidden
+    &:before
+        content: ""
+        position: absolute
+        display: block
+        left: 2px
+        top: 9px
+        width: 13px
+        height: 13px
+        border-radius: 3px
+        border: 2px solid $grey-lightest
+        background: white
+        transform: rotate(45deg)
 
-    // &:before,
-    // &:after
-    //     content: ""
-    //     position: absolute
-    //     display: block
-    //     left: 50%
-    //     transform: rotate(45deg)
-    // &:before
-    //     top: -6px
-    //     margin-left: -8px
-    //     width: 16px
-    //     height: 16px
-    //     border-radius: 3px
-    //     background: $grey-lightest
-    //     z-index: 1
-    // &:after
-    //     background: white
-    //     top: -4px
-    //     margin-left: -6px
-    //     width: 12px
-    //     height: 12px
-    //     border-radius: 1px
-    //     background: white
-    //     z-index: 10
-
-.share__popup
+.no-csstransforms .popup__arrow
     &:before,
     &:after
         content: ""
         position: absolute
         display: block
-        left: 50%
     &:before
-        top: -11px
-        margin-left: -9px
-        border-left: 17px solid transparent
-        border-right: 17px solid transparent
-        border-bottom: 17px solid $grey-lightest
-        z-index: 1
+        top: 0
+        left: 50%
+        width: 0px
+        height: 5px
+        border-left: 10px solid transparent
+        border-right: 10px solid transparent
+        border-bottom: 10px solid $grey-lightest
     &:after
-        top: -8px
-        margin-left: -4px
-        border-left: 11px solid transparent
-        border-right: 11px solid transparent
-        border-bottom: 11px solid white
-        z-index: 10
+        top: 4px
+        left: 50%
+        margin-left: 2px
+        width: 0px
+        height: 4px
+        border-left: 9px solid transparent
+        border-right: 9px solid transparent
+        border-bottom: 9px solid white
+
 
 .popup__social-links
     position: relative
@@ -177,9 +177,9 @@ $cs-share-popup-border-width: 2px
         left: auto
         margin-left: 0
         right: 15px
-        &:before,
-        &:after
-            left: 69%
+    .popup__arrow
+        right: 45px
+        margin-right: 0
 
 
 
@@ -226,3 +226,4 @@ $cs-share-popup-border-width: 2px
         @include column(3)
         @include offset(1)
         float: right
+        clear: right

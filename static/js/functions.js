@@ -194,13 +194,13 @@ $(document).ready(function(){
 
 		// Function to resize slider to fit window
 		self.resizeSlider = function() {
-			console.log("resizing slider")
+			// console.log("resizing slider")
 			self.element.css({
 				'width': $(window).width() + 'px',
 				'height': $(window).height() + 'px'
 			});
 			if ($(window).width() < 768) {
-				console.log("compensating for shifting nav");
+				// console.log("compensating for shifting nav");
 				// self.element.css('height', ($(window).height() + 300) + "px" )
 			}
 			self.wrapper.css('height', self.element.height());
@@ -388,7 +388,7 @@ $(document).ready(function(){
         transitionEvent = whichTransitionEvent();
         transitionEvent && $('nav')[0].addEventListener(transitionEvent, function(e){
             if (e.target.id == "nav-right") {
-				console.log("transition end");
+				// console.log("transition end");
 				var nav = $(e.target);
 				nav.removeClass("fading");
 				if (nav.hasClass("fading-in")) {
@@ -471,7 +471,7 @@ $(document).ready(function(){
 			}
 		});
 
-		$('.popup__social-link:not(.email-icon)').on('click',function(e){
+		$('.popup__social-link:not(.email-link)').on('click',function(e){
 			e.preventDefault();
 			href = $(this).attr('href');
 			if(href.includes('mailto:')) {
