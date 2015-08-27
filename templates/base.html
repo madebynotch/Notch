@@ -6,6 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notch</title>
+    <meta property="og:site_name" content="Made by Notch">
+    {% block og_tags %}
+    <meta property="og:title" content="Interactive Web Design">
+    <meta property="og:description" content="Notch is an interactive design agency based in St. Louis.">
+    {% endblock %}
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/app.css' %}">

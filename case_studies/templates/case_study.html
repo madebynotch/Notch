@@ -4,6 +4,11 @@
 {% block imports %}
 {% endblock %}
 
+{% block og_tags %}
+<meta property="og:title" content="{{case_study.title}}">
+<meta property="og:description" content="{{case_study.subtitle}}">
+{% endblock %}
+
 {% block content %}
 
 <section class="cs-wrapper">
@@ -69,25 +74,25 @@
             <div class="share__popup closed" id="share__popup">
                 <span class="popup__arrow"></span>
                 <div class="popup__social-links">
-                    <a class="popup__social-link facebook-icon" href="//www.facebook.com/sharer/sharer.php?u=madebynotch.com&title=Case%20Study%20Name">
+                    <a class="popup__social-link facebook-icon" href="//www.facebook.com/sharer/sharer.php?u=http://madebynotch.com{% url 'case_study' case_study.pk %}&title={{case_study.title}}">
                         <span class="fa-stack">
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
                         </span>
                     </a>
-                    <a class="popup__social-link email-icon" href="mailto:meagan@madebynotch.com">
+                    <a class="popup__social-link email-icon" href="mailto:?subject=Notch Interactive - {{case_study.title}}&body=http://madebynotch.com{% url 'case_study' case_study.pk %}">
                         <span class="fa-stack">
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
                         </span>
                     </a>
-                    <a class="popup__social-link twitter-icon" href="http://twitter.com/intent/tweet?status=Case%20Study%20Name+madebynotch.com">
+                    <a class="popup__social-link twitter-icon" href="http://twitter.com/intent/tweet?status={{case_study.title}}+http://madebynotch.com+via+@{% url 'case_study' case_study.pk %}">
                         <span class="fa-stack">
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                         </span>
                     </a>
-                    <a class="popup__social-link linkedin-icon" href="http://www.linkedin.com/shareArticle?mini=true&url=madebynotch.com&title=Case%20Study%20Name&source=madebynotch.com">
+                    <a class="popup__social-link linkedin-icon" href="https://www.linkedin.com/shareArticle?mini=true&url=http://madebynotch.com{% url 'case_study' case_study.pk %}&title={{case_study.title}}&summary=&source=">
                         <span class="fa-stack">
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-linkedin-square fa-stack-1x fa-inverse"></i>

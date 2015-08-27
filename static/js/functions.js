@@ -473,9 +473,9 @@ $(document).ready(function(){
 
 		$('.popup__social-link:not(.email-link)').on('click',function(e){
 			e.preventDefault();
-			href = $(this).attr('href');
+			var href = $(this).attr('href');
 			if(href.includes('mailto:')) {
-
+				window.location.href = href;
 			}
 			else {
 				// console.log($(this).attr('href'));
