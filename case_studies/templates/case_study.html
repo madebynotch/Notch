@@ -10,7 +10,7 @@
 {% if case_study.get_main_images.count > 1 %}
     {% for image in case_study.get_main_images %}
         {% if forloop.counter == 1 %}
-            <meta property="og:image" content="//notch.bixly.com{{image.image.url}}">
+            <meta property="og:image" content="https://notch.bixly.com{{image.image.url}}">
         {% endif %}
     {% endfor %}
 {% endif %}
