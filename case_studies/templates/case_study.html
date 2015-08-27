@@ -7,6 +7,13 @@
 {% block og_tags %}
 <meta property="og:title" content="{{case_study.title}}">
 <meta property="og:description" content="{{case_study.subtitle}}">
+{% if case_study.get_main_images.count > 1 %}
+    {% for image in case_study.get_main_images %}
+        {% if forloop.counter == 1 %}
+            <meta property="og:image" content="{{image.image.url}}">
+        {% endif %}
+    {% endfor %}
+{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -125,9 +132,6 @@
         </div>
     </section>
 </section>
-<a href="https://twitter.com/share" class="twitter-share-button" data-text="Notch's latest awesomeness: ">Tweet</a>
-<a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-color="red" data-pin-height="28"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_28.png" /></a>
-<div class="fb-share-button" data-href="{{ url }}" data-layout="button"></div>
 
 
 {% include "footer.html" %}
