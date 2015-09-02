@@ -24,6 +24,7 @@ $header-color: $grey-dark
 $font-family-gibson: "canada-type-gibson", sans-serif
 $header-font-family: $font-family-gibson
 $emphasis-font-family: "Droid Serif",serif
+$body-font-family: 'Helvetica Neue', Helvetica, 'Helvetica', 'Arial', sans-serif
 
 // Nav Variables
 $logo-mobile-height: 20px
@@ -41,7 +42,7 @@ $homepage-footer-size: 16px
 $homepage-footer-color: $grey-medium
 $homepage-footer-offset: 10px
 @mixin homepage-footer-font
-	@include font($header-font-family, 600, $homepage-footer-size, $homepage-footer-height)
+	@include font($body-font-family, 700, $homepage-footer-size, $homepage-footer-height)
 
 @mixin headers
 	h1,h2,h3,h4,h5,h6
@@ -71,6 +72,7 @@ body
 	margin: 0
 	padding-top: $nav-mobile-height
 	position: relative
+	font-family: $body-font-family
 
 #body-scroll-wrapper
 	&.lock
@@ -168,7 +170,7 @@ body
 	@include homepage-footer-font
 	@include row(full)
 	position: fixed
-	z-index: 40
+	z-index: 100
 	left: 0
 	bottom: 0
 	width: 100%
@@ -190,9 +192,8 @@ body
 		text-align: right
 		.footer-social-link
 			position: relative
-			top: -3px
 			font-size: 15px
-			margin-left: 15px
+			margin-left: 13px
 			.fa-stack-2x
 				color: $grey-lighter
 			.fa-stack-1x

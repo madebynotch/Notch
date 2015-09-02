@@ -6,6 +6,24 @@ $(document).ready(function(){
 	var old_window_w = $(window).width()
 	var old_window_h = $(window).height()
 
+	// From Modernizr
+    function whichTransitionEvent() {
+		var t;
+        var el = document.createElement('fakeelement');
+        var transitions = {
+            'transition':'transitionend',
+            'OTransition':'oTransitionEnd',
+            'MozTransition':'transitionend',
+            'WebkitTransition':'webkitTransitionEnd',
+		}
+
+        for (t in transitions) {
+            if (el.style[t] !== undefined) {
+                return transitions[t];
+			}
+		}
+	}
+
 	// Slider Setup
 	// ============
 
@@ -20,6 +38,8 @@ $(document).ready(function(){
 		self.wrapper = self.element.children('.slider-wrapper');
 		// Set slider's direction for changing slides
 		self.direction = (self.element.hasClass('vertical') ? "vertical" : "horizontal");
+		// Init variable for tracking if sliding is taking place
+		self.sliding = false;
 		// Init variable for slider navigation selectors
 		self.navigation = null;
 		self.navigation_links = null;
@@ -49,7 +69,14 @@ $(document).ready(function(){
 		// Initialize the max_pseudoY variable
 		self.max_pseudoY = $(window).height() * (self.slides.length - 1);
 
+		self.realHeight = function() {
+			return parseInt($(self.element).css('height').replace('px',''));
+		}
+
 		self.scrollToSlide = function(i,method) {
+			// Set `sliding` to `true`, preventing unecessary events
+			console.log(self.sliding);
+			self.sliding = true;
 			// If the slider is horizontal, allow it to loop
 			if (self.direction == "horizontal") {
 				if (i >= self.slides.length) {
@@ -71,7 +98,9 @@ $(document).ready(function(){
 				// Remove the "active" class from the current slide and
 				// its matching link in the slider navigation
 				$(self.slides[self.active_slide]).removeClass('active');
-				$(self.navigation_links[self.active_slide]).removeClass('active');
+				if (self.navigation_links != null) {
+					$(self.navigation_links[self.active_slide]).removeClass('active');
+				}
 				// Store the active slide when the method was started
 				var prev_active_slide = self.active_slide;
 				// Set the active slide variable to the specified slide
@@ -79,23 +108,52 @@ $(document).ready(function(){
 				// Add the "active" class to the specified slide amd
 				// its matching link in the slider navigation
 				$(self.slides[i]).addClass('active');
-				$(self.navigation_links[i]).addClass('active');
+				if (self.navigation_links != null) {
+					$(self.navigation_links[i]).addClass('active');
+				}
 				// Animate the slider to up or down to switch to the
 				// specified slide, 250ms per slide moved
 				if (self.direction == "vertical") {
-					self.wrapper.animate({
-						'top': (0 - (i * self.element.height())) + "px"
-					},{
-						duration: 250 * diff,
-						complete: function(){
-							// If the slide was changed by a keyboard event
-							// or a slider navigation link
-							if (method && (method == 'jump' || method == 'left' || method == 'right')) {
-								// update the pseudoY variable
-								self.pseudoY = i * self.element.height();
-							}
+					// $(self.slides[i]).css({
+					// 	'top': (0 - self.realHeight()) + "px",
+					// });
+
+					for (var j=0;j<self.slides.length;j++) {
+						slide = $(self.slides[j]);
+						if (j < i) {
+							slide.css({
+								// 'top': (0 - self.realHeight()) + "px",
+								'height': "0px",
+							});
+							slide.children('.slide-wrapper').css({
+								'opacity': 0,
+								'transition-delay': "0",
+							});
 						}
-					});
+						else {
+							slide.css({
+								// 'top': 0,
+								'height': self.realHeight() + "px",
+							});
+							slide.children('.slide-wrapper').css({
+								'opacity': 1,
+								'transition-delay': "0.2s",
+							});
+						}
+					}
+					// self.wrapper.animate({
+					// 	'top': (0 - (i * self.realHeight())) + "px"
+					// },{
+					// 	duration: 450 * diff,
+					// 	complete: function(){
+					// 		// If the slide was changed by a keyboard event
+					// 		// or a slider navigation link
+					// 		if (method && (method == 'jump' || method == 'left' || method == 'right')) {
+					// 			// update the pseudoY variable
+					// 			self.pseudoY = i * self.element.height();
+					// 		}
+					// 	}
+					// });
 				}
 				else {
 					// Initialize "anim_i" as null
@@ -131,6 +189,7 @@ $(document).ready(function(){
 								self.wrapper.css('left',(0 - (i * self.element.width())) + "px")
 								loop = false;
 							}
+							self.sliding = false;
 						}
 					});
 				}
@@ -152,11 +211,11 @@ $(document).ready(function(){
 
 		// Function to initialize navigation and return nav element
 		self.initNavigation = function() {
-			// Append slider-nav to the end of the slider element
-			self.element.append('<ul class="slider-nav"></ul>');
-			self.navigation = self.element.children('.slider-nav');
-			// Give the slider-nav the "vertical" class if its parent has it
 			if (self.direction == "vertical") {
+				// Append slider-nav to the end of the slider element
+				self.element.append('<ul class="slider-nav"></ul>');
+				self.navigation = self.element.children('.slider-nav');
+				// Give the slider-nav the "vertical" class if its parent has it
 				self.navigation.addClass('vertical');
 				self.element.append('<div class="slider-controls"><a href="" class="slider-next"><i class="fa fa-long-arrow-down"></i></a></div>');
 				self.next_link = self.element.find('.slider-next');
@@ -168,42 +227,48 @@ $(document).ready(function(){
 				$(self.prev_link).on('click',function(e){
 					e.preventDefault();
 					// Jump to the previous slide
-					self.scrollToSlide(self.active_slide - 1,"left");
+					if (self.sliding == false) {
+						self.scrollToSlide(self.active_slide - 1,"left");
+					}
 				});
 			}
 			$(self.next_link).on('click',function(e){
 				e.preventDefault();
 				// Jump to the next slide
-				self.scrollToSlide(self.active_slide + 1,"right");
+				if (self.sliding == false || self.direction == "vertical") {
+					self.scrollToSlide(self.active_slide + 1,"right");
+				}
 			});
 
-			// For each slide in the slider, add a link to the slider navigation
-			for(var i=0;i<self.slides.length;i++){
-				self.navigation.append('<li class="slider-link" data-slide="'+i+'"></li>');
+			if (self.direction == "vertical") {
+				// For each slide in the slider, add a link to the slider navigation
+				for(var i=0;i<self.slides.length;i++){
+					self.navigation.append('<li class="slider-link" data-slide="'+i+'"></li>');
+				}
+				self.navigation_links = self.navigation.children();
+
+				// Attach event listener to each nav link element
+				self.navigation_links.on('click',function(){
+					// Alias the specified link from the "data-slide" attribute
+					var new_active_link = parseInt($(this).attr('data-slide'));
+					// Jump to the specified slide
+					self.scrollToSlide(new_active_link,'jump');
+				});
 			}
-			self.navigation_links = self.navigation.children();
-
-			// Attach event listener to each nav link element
-			self.navigation_links.on('click',function(){
-				// Alias the specified link from the "data-slide" attribute
-				var new_active_link = parseInt($(this).attr('data-slide'));
-				// Jump to the specified slide
-				self.scrollToSlide(new_active_link,'jump');
-			});
 		}
 
 		// Function to resize slider to fit window
 		self.resizeSlider = function() {
 			// console.log("resizing slider")
 			self.element.css({
-				'width': $(window).width() + 'px',
-				'height': $(window).height() + 'px'
+				'width': ($(window).width() + 2) + 'px',
+				'height': ($(window).height() + 2) + 'px'
 			});
 			if ($(window).width() < 768) {
 				// console.log("compensating for shifting nav");
 				// self.element.css('height', ($(window).height() + 300) + "px" )
 			}
-			self.wrapper.css('height', self.element.height());
+			self.wrapper.css('height', ($(window).height() + 2) + 'px');
 			if (self.direction == "horizontal") {
 				self.wrapper.css({
 					'width': self.element.width() * (self.slides.length + 2),
@@ -212,7 +277,17 @@ $(document).ready(function(){
 			}
 			for(var i=0;i<self.slides.length;i++){
 				if (self.direction == "vertical") {
-					$(self.slides[i]).css('top',i*self.element.height());
+					$(self.slides[i]).css({
+						// 'top': (i * self.realHeight()) + "px",
+						'top': 0,
+						'z-index': 90 - (i * 10)
+					});
+					var wrapper = $(self.slides[i]).children('.slide-wrapper');
+					// console.log(wrapper.css('margin-bottom'));
+					var delay = setTimeout(function(){
+						wrapper.css('margin-bottom',(10 - (wrapper[0].clientHeight) / 2) + "px");
+					},5);
+					// console.log(wrapper.css('margin-bottom'));
 					self.navigation.css('margin-top',0 - (self.navigation.height() / 2) + "px");
 				}
 				else {
@@ -257,7 +332,9 @@ $(document).ready(function(){
 				}
 				if (i==0) {
 					$(self.slides[i]).addClass('active');
-					$(self.navigation_links[i]).addClass('active');
+					if (self.navigation_links != null) {
+						$(self.navigation_links[i]).addClass('active');
+					}
 				}
 
 				self.resizeImg(self.slides[i]);
@@ -281,7 +358,9 @@ $(document).ready(function(){
 					// console.log(pseudoY);
 					var new_active_slide = Math.round(self.pseudoY / $(window).height());
 					if (new_active_slide != self.active_slide) {
-						self.scrollToSlide(new_active_slide);
+						if (!self.sliding) {
+							self.scrollToSlide(new_active_slide);
+						}
 					}
 				}
 			}
@@ -299,6 +378,14 @@ $(document).ready(function(){
 				document.addEventListener("touchmove",function(e){
 					e.preventDefault();
 				});
+
+				var transitionEvent = whichTransitionEvent();
+				transitionEvent && self.element[0].addEventListener(transitionEvent, function(e){
+					if ($(e.target).hasClass('slide')) {
+						self.pseudoY = self.active_slide * self.realHeight();
+						self.sliding = false;
+					}
+				});
 			}
 		}
 	}
@@ -315,7 +402,9 @@ $(document).ready(function(){
 	if ($('.slider.vertical')[0]) {
 		$(window).on('wheel',function(e){
 			for(var i=0;i<sliders.length;i++){
-				sliders[i].onScrollEvent(e);
+				if (sliders[i].sliding == false) {
+					sliders[i].onScrollEvent(e);
+				}
 			}
 		});
 	}
@@ -342,7 +431,9 @@ $(document).ready(function(){
 					}
 					// Jump to the previous or next slide, using either
 					// 1 or -1 from the "keys" object
-					sliders[i].scrollToSlide(sliders[i].active_slide + keys[e.keyCode],method);
+					if (sliders[i].sliding == false) {
+						sliders[i].scrollToSlide(sliders[i].active_slide + keys[e.keyCode],method);
+					}
 				}
 			}
 		});
@@ -362,24 +453,6 @@ $(document).ready(function(){
 		});
 	}
 	// END Slider logic
-
-	// From Modernizr
-    function whichTransitionEvent () {
-		var t;
-        var el = document.createElement('fakeelement');
-        var transitions = {
-            'transition':'transitionend',
-            'OTransition':'oTransitionEnd',
-            'MozTransition':'transitionend',
-            'WebkitTransition':'webkitTransitionEnd',
-		}
-
-        for (t in transitions) {
-            if (el.style[t] !== undefined) {
-                return transitions[t];
-			}
-		}
-	}
 
 	bodyScroll = $('#body-scroll-wrapper');
 
