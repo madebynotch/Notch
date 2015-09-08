@@ -26,8 +26,8 @@
     {% if case_study.get_next_pk %}
         <a class="cs-side-nav-link next" href="{% url 'case_study' case_study.get_next_pk %}">Next Case Study</a>
     {% endif %}
-    <section class="hero">
-        <h1 class="hero__title">{{case_study.title}}</h1>
+    <section class="hero--cs">
+        <h1 class="hero--cs__title">{{case_study.title}}</h1>
         <h3 class="hero__subtitle">{{case_study.subtitle}}</h3>
     </section>
     <section class="cs-gameplan">

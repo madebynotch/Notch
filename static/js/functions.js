@@ -414,7 +414,7 @@ $(document).ready(function(){
 		// Alias keys
 		// left: 37, up: 38, right: 39, down: 40,
 		// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
-		var keys = {32: 1, 33: -1, 34: 1, 37: -1, 38: -1, 39: 1, 40: 1};
+		var keys = {33: -1, 34: 1, 37: -1, 38: -1, 39: 1, 40: 1};
 		// On keydown event
 		$(window).on('keydown',function(e){
 			// If pressed key is one of the keys being listened for

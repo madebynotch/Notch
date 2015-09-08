@@ -16,9 +16,9 @@ $grey-light: #c2c2c2
 $grey-medium: #626365
 $grey-dark: #27282a
 $grey-darker: #1e1e21
-$nav-bg: rgba($notch-blue,0.9)
+$nav-bg: rgba(#25a5cf,0.9)
 $body-text-color: $grey-medium
-$header-color: $grey-dark
+$header-color: #26272a
 
 // Fonts
 $font-family-gibson: "canada-type-gibson", sans-serif
@@ -28,12 +28,12 @@ $body-font-family: 'Helvetica Neue', Helvetica, 'Helvetica', 'Arial', sans-serif
 
 // Nav Variables
 $logo-mobile-height: 20px
-$logo-desktop-height: 26px
+$logo-desktop-height: 19px
 $nav-link-color: white
 $nav-link-hover-color: #9fdbef
 $nav-link-desktop-shift: 5px
 $nav-mobile-height: 60px
-$nav-desktop-height: 81px
+$nav-desktop-height: 50px
 
 // Footer Variables
 $homepage-footer-bg: white
@@ -47,6 +47,8 @@ $homepage-footer-offset: 10px
 @mixin headers
 	h1,h2,h3,h4,h5,h6
 		@content
+
+$notch-transition: cubic-bezier(.41,.41,.62,.86)
 
 *
 	box-sizing: border-box
@@ -73,6 +75,7 @@ body
 	padding-top: $nav-mobile-height
 	position: relative
 	font-family: $body-font-family
+	color: #616265
 
 #body-scroll-wrapper
 	&.lock
@@ -115,14 +118,16 @@ body
 	background: white
 
 .hero
-    @include row
-    padding-top: $gutter-width*2
-    padding-bottom: $gutter-width*2
-    text-align: center
+	@include row
+	padding-top: $gutter-width*2
+	padding-bottom: $gutter-width*2
+	text-align: center
+	p
+		@include column(full)
 
 .hero-wrapper
     @include row(full)
-    background-color: $notch-blue
+    background-color: #2daed8
     .hero__title,
     .hero__subtitle
         color: white
@@ -133,36 +138,55 @@ body
         padding-bottom: $gutter-width*6
 
 .hero__title
-	@include font($font-family-gibson, 600, 48px, 60px)
-	margin-bottom: 20px
+	@include column(full)
+	@include font($font-family-gibson, 600, 31px, 31px)
+	margin-bottom: 8px
+	color: $header-color
 .hero__title--emphasis
-	@include font($emphasis-font-family, 400, 48px, 60px)
+	font-family: $emphasis-font-family
+	font-weight: 400
 	font-style: italic
 
 .hero__subtitle
-    @include font($emphasis-font-family, 400, 16px, 24px)
-    color: $grey-light
+	@include column(full)
+	@include font($emphasis-font-family, 400, 12px, 18px)
+	color: #c3c3c3
+
+@include media('lg')
+	.hero__title
+		font-size: 50px
+		line-height: 50px
+
+	.hero__subtitle
+		font-size: 17px
+		line-height: 25px
 
 .main-subheader
-    @include font($font-family-gibson, 600, 18px, 22px)
-    padding-bottom: $gutter-width/4
+	@include font($font-family-gibson, 600, 18px, 22px)
+	padding-bottom: $gutter-width/4
+	color: $header-color
 .main-text
     @include font($font-family-gibson, 400, 12px, 18px)
-    color: $grey-medium
+    color: #616265
 
 
 // Buttons
 .btn-blue
-    @include font($font-family-gibson, 400, 12px, 18px)
-    padding: $gutter-width/2 $gutter-width/2
-    background-color: #2fb4e0
-    border-radius: 4px
-    color: white
-    width: 100%
-    display: block
-    text-align: center
-    &:hover
+	@include font($body-font-family, 400, 12px, 18px)
+	transition: background-color 0.1s $notch-transition
+	padding: 19px 40px
+	background-color: #2fb4e0
+	border-radius: 5px
+	color: white
+	width: 100%
+	display: block
+	text-align: center
+	&:hover
         background-color: black
+
+@include media('lg')
+	.btn-blue
+		padding: 10px 25px
 
 
 // Homepage Footer

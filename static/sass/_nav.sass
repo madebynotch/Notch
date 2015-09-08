@@ -5,7 +5,7 @@
 	left: 0
 	width: 100%
 	height: $nav-mobile-height
-	background: $notch-blue
+	background: #25a5cf
 	background: $nav-bg
 	padding: 0 $side-pad-sm
 	z-index: 500
@@ -65,6 +65,7 @@
 		list-style: none
 		li
 			a
+				transition: color 0.1s $notch-transition
 				font-size: 25px
 				font-family: $emphasis-font-family
 				display: inline-block
@@ -87,6 +88,7 @@
 .nav__social-links
 	margin-top: 40px
 	.nav-social-link
+		transition: color 0.2s $notch-transition
 		color: white
 		font-size: 28px
 		padding: 0 3px
@@ -108,6 +110,7 @@
 		padding: 0
 		line-height: $nav-desktop-height
 	.nav-logo
+		line-height: $logo-desktop-height
 		img
 			top: -2px
 			height: $logo-desktop-height
@@ -124,9 +127,9 @@
 			float: right
 			li
 				float: left
-				margin-left: 60px
+				margin-left: 40px
 				a
-					font-size: 22px
+					font-size: 14px
 					padding-top: $nav-link-desktop-shift
 					line-height: $nav-desktop-height - $nav-link-desktop-shift
 	.nav__social-links

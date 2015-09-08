@@ -4,8 +4,9 @@ $contact-map-location-width: 174px
 $contact-map-location-font-size: 16px
 $contact-map-location-line-height: 24px
 
-.contact-hero
-    max-width: 540px
+.hero--contact
+    @extend .hero
+    max-width: 540px + $gutter-width
     .hero__subtitle
         margin-bottom: $gutter-width/2
     .contact-required
@@ -30,21 +31,25 @@ textarea
     .contact-input
         transition: border-color 0.2s ease
         width: 100%
+        max-width: 100%
         font-family: $emphasis-font-family
         padding: 16px 20px
         border-radius: 6px
         border: 2px solid $grey-lightest
         color: $grey-medium
+        font-size: 13px
         &:focus
             outline: none
             border-color: #2fb4e0
     .btn-blue
-        @include font($font-family-gibson, 400, 16px, 18px)
-        padding: $gutter-width/1.5 $gutter-width/2
+        @include font($body-font-family, 400, 15px, 18px)
+        padding: 15px
         border: none
     .form-group
         position: relative
-        margin-bottom: 16px
+        margin-bottom: 12px
+        &:last-of-type
+            margin-bottom: 17px
         &.error
             &:after
                 content: "oops!"
@@ -91,5 +96,8 @@ textarea
     margin-left: (0 - ($contact-map-location-width / 2))
 
 @include media('lg')
+    .hero--contact
+        .hero__subtitle
+            font-size: 16px
     .contact-map
         height: $contact-map-desktop-height
