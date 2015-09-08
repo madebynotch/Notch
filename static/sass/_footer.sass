@@ -48,16 +48,21 @@ footer
 
 
 .footer-lower
-    @include row(full)
+    @include row
     font-size: 12px
     line-height: 20px
     padding-top: 25px
     padding-bottom: 25px
     padding-left: 0
     text-align: center
+    a
+        display: block
+        color: inherit
+        &:hover
+            text-decoration: underline
 
-.footer-lower-copyright,
-.footer-lower-email
+.footer-lower-left,
+.footer-lower-right
     @include column(full)
     padding: 0 !important
 
@@ -85,10 +90,16 @@ footer
         padding-top: 34px
         padding-bottom: 34px
         border-top: 1px solid $footer-lower-stroke
+        a
+            float: left
 
-    .footer-lower-copyright,
-    .footer-lower-email
+    .footer-lower-left,
+    .footer-lower-right
         @include column(half)
 
-    .footer-lower-email
+    .footer-lower-right
         text-align: right
+
+    .footer__tel-link
+        display: inline-block
+        @include offset(2)

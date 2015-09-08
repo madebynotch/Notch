@@ -12,6 +12,7 @@ $cs-share-popup-border-width: 2px
 .hero--cs
     @extend .hero
     position: relative
+    padding-bottom: 25px
     &:before
         content: ""
         display: block
@@ -23,11 +24,15 @@ $cs-share-popup-border-width: 2px
 
 .hero--cs__title
     @extend .hero__title
+    margin-bottom: 5px
 
 @include media('lg')
+    .hero--cs
+        padding-bottom: 21px
     .hero--cs__title
         font-size: 54px
         line-height: 62px
+        margin-bottom: 8px
 
 
 .cs-side-nav-link
@@ -65,7 +70,7 @@ $cs-share-popup-border-width: 2px
 .cs-task,
 .cs-approach
     @include column(12)
-    padding-top: $gutter-width*2
+    padding-top: 40px
 
 
 .cs-content

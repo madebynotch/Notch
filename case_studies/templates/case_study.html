@@ -60,7 +60,7 @@
     <section class="cs-content">
         <div class="cs-content__meta">
             <h4 class="main-subheader">{{case_study.title}}</h4>
-            <p class="cs-tags">{% for tag in case_study.tags.all %} {{ tag }}. {% endfor %}</p>
+            <p class="cs-tags">{% for tag in case_study.tags.all %} {{ tag }}{% if not forloop.last %},{% endif %} {% endfor %}</p>
             <p class="cs-year">{{ case_study.date_added.year }}</p>
         </div>
         <div class="cs-content__text">
