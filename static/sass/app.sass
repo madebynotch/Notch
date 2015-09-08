@@ -72,7 +72,6 @@ html.home
 
 body
 	margin: 0
-	padding-top: $nav-mobile-height
 	position: relative
 	font-family: $body-font-family
 	color: #616265
@@ -81,10 +80,6 @@ body
 	&.lock
 		height: 100%
 		overflow-y: hidden
-
-@include media('lg')
-	body
-		padding-top: $nav-desktop-height
 
 .dribbble-icon
 	.fa-stack-1x
@@ -119,20 +114,23 @@ body
 
 .hero
 	@include row
-	padding-top: $gutter-width*2
-	padding-bottom: $gutter-width*2
+	padding-top: 40px + $nav-mobile-height
+	padding-bottom: 36px
 	text-align: center
 	p
 		@include column(full)
 
 .hero-wrapper
     @include row(full)
-    background-color: #2daed8
+    background-color: #2fb4e0
     .hero__title,
     .hero__subtitle
         color: white
 
 @include media('lg')
+	.hero
+		padding-top: 100px + $nav-desktop-height
+		padding-bottom: 75px
 	.hero-wrapper
         @include row(full)
         padding-bottom: $gutter-width*6

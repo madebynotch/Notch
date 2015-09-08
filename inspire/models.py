@@ -6,11 +6,11 @@ from imagekit.processors import ResizeToFill
 
 
 class InspireItem(models.Model):
-    DRIBBLE = 'Dribble'
+    DRIBBLE = 'Dribbble'
     INSTAGRAM = 'Instagram'
     LAUNCH = 'Launch'
     CATEGORY = (
-        (DRIBBLE, 'Dribble'),
+        (DRIBBLE, 'Dribbble'),
         (INSTAGRAM, 'Instagram'),
         (LAUNCH, 'Launch'),
     )

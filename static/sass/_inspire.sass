@@ -4,8 +4,7 @@ $show-more-bg: $grey-lighter
 $show-more-color: white
 $show-more-hover-bg: $grey-dark
 
-$show-more-mobile-height: 50px
-$show-more-desktop-height: 76px
+$show-more-height: 50px
 $show-more-top-margin: 68px
 
 
@@ -30,7 +29,8 @@ $show-more-top-margin: 68px
 .in-list__type
     &--image
         .in-list__content
-            display: none
+            // display: none
+            opacity: 0
         .in-list__image
             background-position: 50% 50%
             background-repeat: no-repeat
@@ -41,7 +41,15 @@ $show-more-top-margin: 68px
 
 
 .in-list__content
-    padding: $gutter-width/2
+    padding: 15px 28px
+    overflow: hidden
+    position: relative
+    z-index: 10
+
+@include media('lg')
+    .in-list__content
+        padding: 42px 30px
+
 .in-list__cat
     @include font($font-family-gibson, 600, 10px, initial)
     color: $notch-blue
@@ -49,7 +57,7 @@ $show-more-top-margin: 68px
     display: inline
 .in-list__date
     @include font($font-family-gibson, 400, 10px, initial)
-    color: $grey-medium
+    color: #616265
     display: inline
     span
         padding-right: 4px
@@ -60,7 +68,7 @@ $show-more-top-margin: 68px
     color: black
 .in-list__desc
     @include font($emphasis-font-family, 400, 12px, 20px)
-    color: $grey-medium
+    color: #616265
 
 
 .in-list__image
@@ -69,6 +77,7 @@ $show-more-top-margin: 68px
     overflow: hidden
     position: absolute
     top: 0
+    z-index: 1
     img
         height: auto
         width: 100%
@@ -77,12 +86,14 @@ $show-more-top-margin: 68px
 .in-show-more
     padding-bottom: $show-more-top-margin / 2
 #show-more
+    transition: background-color 0.2s $notch-transition
     display: block
     width: 100%
     border: none
     background: $show-more-bg
     color: $show-more-color
-    line-height: $show-more-mobile-height
+    font-size: 18px
+    line-height: $show-more-height
     outline: none !important
     &:hover
         background: $show-more-hover-bg
@@ -92,21 +103,32 @@ $show-more-top-margin: 68px
     $article-height: 300px
 
     #inspire-list
-        margin-top: -$gutter-width*6
+        margin-top: -$gutter-width * 6
 
+    .in-list__content
+        height: inherit
+        transition: opacity 0.2s $notch-transition, background-color 0.2s $notch-transition
+        background: white
+    .in-list__type--image .in-list__content
+        background: black
+        opacity: 0
+        display: block
+    .in-list__cat, .in-list__date, .in-list__title, .in-list__desc
+        transition: color 0.2s $notch-transition
 
     .in-list__article
         @include column(3)
         padding: 0
         height: $article-height
+        background: white
         &:hover
-            background: black
-            .in-list__type--image .in-list__content
-                display: block
-            .in-list__cat, .in-list__date, .in-list__title, .in-list__desc
+            .in-list__content
+                background: black
                 color: white
-            .in-list__image
-                z-index: -5
+            .in-list__type--image .in-list__content
+                opacity: 1
+            .in-list__cat, .in-list__date, .in-list__title, .in-list__desc
+                color: inherit
         &:nth-child(14n + 1),
         &:nth-child(14n + 10)
             @include column(6)
@@ -136,5 +158,4 @@ $show-more-top-margin: 68px
         padding-bottom: $show-more-top-margin * 2
     #show-more
         margin: $show-more-top-margin auto 0
-        width: $show-more-desktop-height
-        line-height: $show-more-desktop-height
+        width: $show-more-height + 10

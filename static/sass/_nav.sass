@@ -19,13 +19,17 @@
 	padding: 0
 
 .nav-logo
+	transition: opacity 0.2s $notch-transition
 	display: inline-block
 	line-height: $nav-mobile-height
+		opacity: 1
 	img
 		height: $logo-mobile-height
 		width: auto
 		position: relative
 		vertical-align: middle
+	&:hover
+		opacity: 0.6
 
 .nav-toggle
 	display: block
