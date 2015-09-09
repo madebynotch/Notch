@@ -240,8 +240,8 @@ $cs-share-popup-border-width: 2px
 
 @include media('lg')
     .cs-nav
-        padding-top: 30px
-        padding-bottom: 100px
+        padding-top: 20px
+        padding-bottom: 85px
 
 .cs-nav-previous,
 .cs-nav-next
@@ -254,8 +254,10 @@ $cs-share-popup-border-width: 2px
     @include font($body-font-family, 700, 8px, 14px)
     text-transform: uppercase
     color: $notch-blue
+    margin-bottom: 5px
+    display: inline-block
 .cs-nav-title
-    @include font($font-family-gibson, 600, 17px, 28px)
+    @include font($font-family-gibson, 600, 16px, 22px)
     transition: color 0.1s $notch-transition
     color: #171719
 .cs-nav-disabled
@@ -265,8 +267,9 @@ $cs-share-popup-border-width: 2px
 
 @include media('lg')
     .cs-nav-link
-        font-size: 12px
+        font-size: 11px
         line-height: 16px
+        margin-bottom: 10px
     .cs-nav-title
         font-size: 30px
         line-height: 32px

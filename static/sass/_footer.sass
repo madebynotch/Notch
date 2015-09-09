@@ -23,20 +23,23 @@ footer
     @include row(full)
     max-width: 1170px
 
+.footer-social
+    padding: 65px 0 70px
+
 .footer-contact,
 .footer-social
     text-align: center
     background: $grey-darker
-    padding: 65px 0 70px
     a
         display: inline-block
         line-height: 40px
 
 .footer-contact
+    padding: 47px 0 36px
     .footer-contact-link
         transition: color 0.2s $notch-transition
         color: white
-        @include font($emphasis-font-family, 400, 20px, 30px)
+        @include font($emphasis-font-family, 400, 15px, 30px)
         .footer-contact-link-arrow
             transition: left 0.2s $notch-transition
             position: relative
@@ -77,11 +80,11 @@ footer
 
     .footer-contact
         padding-top: 40px
-        padding-bottom: 40px
+        padding-bottom: 35px
+        .footer-contact-link
+            font-size: 20px
+            line-height: 80px
 
-    .footer-contact-link
-        font-size: 20px
-        line-height: 80px
     .footer-contact-link-arrow
         font-size: 16px
 
