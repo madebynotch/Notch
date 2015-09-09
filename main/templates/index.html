@@ -2,6 +2,10 @@
 {% load staticfiles %}
 {% block htmlClass %}home{% endblock %}
 
+{% block imports %}
+<script type="text/javascript" src="{% static 'hammerjs/hammer.min.js' %}"></script>
+{% endblock %}
+
 {% block content %}
     <div class="slider vertical">
         <div class="slider-wrapper">

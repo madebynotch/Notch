@@ -75,7 +75,6 @@ $(document).ready(function(){
 
 		self.scrollToSlide = function(i,method) {
 			// Set `sliding` to `true`, preventing unecessary events
-			console.log(self.sliding);
 			self.sliding = true;
 			// If the slider is horizontal, allow it to loop
 			if (self.direction == "horizontal") {
@@ -451,6 +450,46 @@ $(document).ready(function(){
 				sliders[i].resizeImgs();
 			}
 		});
+
+		// Attach Hammer event handlers
+		console.log(Hammer);
+		if (Hammer) {
+			hammers = [];
+			// body = document.getElementsByTagName('body')[0];
+			// bodyHammer = new Hammer(body);
+			// bodyHammer.on('swipe',function(e){
+			// 	alert(e.type)
+			// });
+
+			for(var i=0;i<sliders.length;i++) {
+				var slider = sliders[i];
+				var hammer = new Hammer(slider.element[0]);
+				directions = {
+					'swipeup': 1,
+					'swipeleft': 1,
+					'swipedown': -1,
+					'swiperight': -1,
+				}
+				if (slider.direction == "vertical") {
+					hammer.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+					hammer.on('swipeup swipedown',function(e){
+						slider.scrollToSlide(slider.active_slide + directions[e.type]);
+					});
+				}
+				else {
+					hammer.get('swipe').set({ direction: Hammer.DIRECTION_HORIZONTAL });
+					hammer.on('swipeleft swiperight',function(e){
+						var method;
+						if (e.type == 'swipeleft') {
+							method = "right";
+						} else if (e.type == 'swiperight') {
+							method = "left";
+						}
+						slider.scrollToSlide(slider.active_slide + directions[e.type], method);
+					});
+				}
+			}
+		}
 	}
 	// END Slider logic
 
