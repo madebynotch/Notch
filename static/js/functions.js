@@ -1,4 +1,3 @@
-// The functionality still needs to optimized, specifically by using "transform(translate)" to adjust the position of the slides rather than animating the "top" property, as the current method will expend more resources as the browser re-renders (or may not need to worry about it because it's using jQuery's "animate", not any CSS transitions or animations?). Could most likely optimize the selectors, such as storing them to be re-used whenever possible.
 $(document).ready(function(){
 
 	var win = $(window);
@@ -310,8 +309,8 @@ $(document).ready(function(){
 			img.css('width', self.element.width());
 			// If the image height is less than the window height,
 			// scale the image up until the image covers the window area
-			if (img.height() < self.element.height()) {
-				img.css('width', img.width() * self.element.height() / img.height());
+			if (img.height() < self.realHeight()) {
+				img.css('width', img.width() * (self.realHeight()) / img.height());
 			}
 			// Adjust the image's left property to center the image in the window
 			img.css('left', ($(window).width() - img.width()) / 2);
