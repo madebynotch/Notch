@@ -27,13 +27,23 @@ $emphasis-font-family: "Droid Serif",serif
 $body-font-family: 'Helvetica Neue', Helvetica, 'Helvetica', 'Arial', sans-serif
 
 // Nav Variables
-$logo-mobile-height: 20px
+$logo-mobile-height: 19px
 $logo-desktop-height: 19px
 $nav-link-color: white
 $nav-link-hover-color: #9fdbef
 $nav-link-desktop-shift: 5px
-$nav-mobile-height: 60px
+$nav-mobile-height: 50px
 $nav-desktop-height: 50px
+
+// Global Variables
+$mobile-pad: 5px
+
+@mixin mobile-pad($existing:0)
+	padding-left: $mobile-pad + $existing
+	padding-right: $mobile-pad + $existing
+	@include media('lg')
+		padding-left: $existing
+		padding-right: $existing
 
 // Footer Variables
 $homepage-footer-bg: white
@@ -71,6 +81,7 @@ html.home
 		padding-top: 0
 
 body
+	-webkit-font-smoothing: antialiased
 	margin: 0
 	position: relative
 	font-family: $body-font-family
@@ -114,6 +125,7 @@ body
 
 .hero
 	@include row
+	@include mobile-pad
 	padding-top: 40px + $nav-mobile-height
 	padding-bottom: 36px
 	text-align: center
@@ -171,7 +183,7 @@ body
 
 // Buttons
 .btn-blue
-	@include font($body-font-family, 400, 12px, 18px)
+	@include font($body-font-family, 500, 12px, 18px)
 	transition: background-color 0.1s $notch-transition
 	padding: 19px 40px
 	background-color: #2fb4e0
@@ -209,9 +221,6 @@ body
 			font-size: 12px
 	.footer-right
 		display: none
-
-.homepage-footer
-	.footer-right
 		text-align: right
 		.footer-social-link
 			position: relative
@@ -227,6 +236,7 @@ body
 
 @include media('lg')
 	.homepage-footer
+		padding: 0 ($side-pad-lg - ($gutter-width / 2))
 		.footer-left,
 		.footer-right
 			@include column(half)

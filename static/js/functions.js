@@ -451,7 +451,6 @@ $(document).ready(function(){
 		});
 
 		// Attach Hammer event handlers
-		console.log(Hammer);
 		if (Hammer) {
 			hammers = [];
 			// body = document.getElementsByTagName('body')[0];
@@ -518,6 +517,7 @@ $(document).ready(function(){
 	var openNav = function() {
 		nav = $('.nav-right');
 		nav.addClass('fading');
+		$('.nav-toggle').addClass('open');
 		bodyScroll.addClass('lock');
 		var timeout = setTimeout(function(){
 			nav.addClass('fading-in');
@@ -528,6 +528,7 @@ $(document).ready(function(){
 	var closeNav = function() {
 		nav = $('.nav-right');
 		nav.addClass('fading');
+		$('.nav-toggle').removeClass('open');
 		var timeout = setTimeout(function(){
 			nav.addClass('fading-out');
 			nav.removeClass('open');

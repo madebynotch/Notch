@@ -24,11 +24,13 @@
 
 .about-process__title
     @include font($font-family-gibson, 600, 28px, 32px)
+    @include mobile-pad($gutter-width / 2)
     margin-bottom: 75px
 
 .about-process__list
     padding-left: 0
     padding-right: 0
+    @include mobile-pad
     list-style: none
 .about-process__list-item
     @include column(full)
@@ -41,6 +43,7 @@
     padding-bottom: 60px
 .about-services__title
     @extend .about-process__title
+    @include mobile-pad($gutter-width / 2)
     text-align: center
 
 .about-services__list
