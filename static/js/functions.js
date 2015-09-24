@@ -73,6 +73,7 @@ $(document).ready(function(){
         }
 
         self.scrollToSlide = function(i,method) {
+            console.log("running scroll to slide");
             // Set `sliding` to `true`, preventing unecessary events
             self.sliding = true;
             // If the slider is horizontal, allow it to loop
@@ -146,6 +147,13 @@ $(document).ready(function(){
                                 'transition-delay': "0.2s",
                             });
                         }
+
+                        var delayedStop = window.setTimeout(function(){
+                            if (self.sliding) {
+                                self.pseudoY = self.active_slide * self.realHeight();
+                                self.sliding = false;
+                            }
+                        }, self.slideDuration);
                     }
                     // self.wrapper.animate({
                     //     'top': (0 - (i * self.realHeight())) + "px"
@@ -330,6 +338,16 @@ $(document).ready(function(){
             }
         }
 
+        // Returns the transition duration of a specific property in milliseconds
+        self.getPropertyDuration = function(elem, property) {
+            var duration = window.getComputedStyle(elem)['transition-duration'].split(', ');
+            var properties = window.getComputedStyle(elem)['transition-property'].split(', ');
+            if (properties.indexOf(property) > 0) {
+                duration = duration[properties.indexOf(property)].replace('s','');
+                return duration * 1000
+            }
+        }
+
         self.initSlides = function() {
             for(var i=0;i<self.slides.length;i++){
                 $(self.slides[i]).attr('id','slide'+i);
@@ -337,6 +355,8 @@ $(document).ready(function(){
                     $(self.navigation_links[i]).attr('id','slide_link'+i);
                 }
                 if (i==0) {
+                    // Store the transition time for slides
+                    self.slideDuration = self.getPropertyDuration(self.slides[i],'transform');
                     $(self.slides[i]).addClass('active');
                     if (self.navigation_links != null) {
                         $(self.navigation_links[i]).addClass('active');
@@ -378,16 +398,16 @@ $(document).ready(function(){
             self.initSlides();
 
             if (self.direction == "vertical") {
-                $(window).on("scroll",function(e){
-                    e.preventDefault();
-                });
+                // $(window).on("scroll",function(e){
+                //     e.preventDefault();
+                // });
                 document.addEventListener("touchmove",function(e){
                     e.preventDefault();
                 });
 
                 var transitionEvent = whichTransitionEvent();
                 transitionEvent && self.element[0].addEventListener(transitionEvent, function(e){
-                    if ($(e.target).hasClass('slide')) {
+                    if ($(e.target).hasClass('slide') && self.sliding) {
                         self.pseudoY = self.active_slide * self.realHeight();
                         self.sliding = false;
                     }
