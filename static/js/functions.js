@@ -122,7 +122,10 @@ $(document).ready(function(){
                             slide.css({
                                 // 'top': (0 - self.realHeight()) + "px",
                                 // 'height': "0px",
-                                'transform': "translateY(" + (0 - self.realHeight()) + "px)"
+                                'transform': "translateY(" + (0 - self.realHeight()) + "px)",
+                            });
+                            slide.children('img').css({
+                                'transform': "translateY(" + self.realHeight() + "px)",
                             });
                             slide.children('.slide-wrapper').css({
                                 'opacity': 0,
@@ -133,6 +136,9 @@ $(document).ready(function(){
                             slide.css({
                                 // 'top': 0,
                                 // 'height': self.realHeight() + "px",
+                                'transform': "translateY(0px)"
+                            });
+                            slide.children('img').css({
                                 'transform': "translateY(0px)"
                             });
                             slide.children('.slide-wrapper').css({

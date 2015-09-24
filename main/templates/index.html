@@ -10,10 +10,11 @@
     <div class="slider vertical">
         <div class="slider-wrapper">
             {% for case in case_list %}
-                <div class="slide" style="{% if case.get_showcase %}background-image: url({{ case.get_showcase }});{% endif %}">
-                    <!-- {% if case.get_showcase %}
+                <!-- <div class="slide" style="{% if case.get_showcase %}background-image: url({{ case.get_showcase }});{% endif %}"> -->
+                <div class="slide">
+                    {% if case.get_showcase %}
                         <img class="slide-image" src="{{ case.get_showcase }}" style="width:100%">
-                    {% endif %} -->
+                    {% endif %}
                     <div class="slide-wrapper">
                         <div class="slide-content">
                             <h1>{{ case.title }}.</h1>
