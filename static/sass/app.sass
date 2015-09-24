@@ -39,11 +39,11 @@ $nav-desktop-height: 50px
 $mobile-pad: 5px
 
 @mixin mobile-pad($existing:0)
-	padding-left: $mobile-pad + $existing
-	padding-right: $mobile-pad + $existing
-	@include media('lg')
-		padding-left: $existing
-		padding-right: $existing
+    padding-left: $mobile-pad + $existing
+    padding-right: $mobile-pad + $existing
+    @include media('lg')
+        padding-left: $existing
+        padding-right: $existing
 
 // Footer Variables
 $homepage-footer-bg: white
@@ -52,20 +52,20 @@ $homepage-footer-size: 16px
 $homepage-footer-color: $grey-medium
 $homepage-footer-offset: 10px
 @mixin homepage-footer-font
-	@include font($body-font-family, 700, $homepage-footer-size, $homepage-footer-height)
+    @include font($body-font-family, 700, $homepage-footer-size, $homepage-footer-height)
 
 @mixin headers
-	h1,h2,h3,h4,h5,h6
-		@content
+    h1,h2,h3,h4,h5,h6
+        @content
 
 $notch-transition: cubic-bezier(.41,.41,.62,.86)
 
 *
-	box-sizing: border-box
+    box-sizing: border-box
 *
-	text-rendering: optimizeLegibility
-	margin: 0
-	padding: 0
+    text-rendering: optimizeLegibility
+    margin: 0
+    padding: 0
 
 a
     text-decoration: none
@@ -74,63 +74,64 @@ html, body
     height: 100%
 
 html.home
-	&, & body
-		overflow-y: hidden
-		overflow-x: hidden
-	body
-		padding-top: 0
+    &, & body
+        overflow-y: hidden
+        overflow-x: hidden
+    body
+        padding-top: 0
 
 body
-	-webkit-font-smoothing: antialiased
-	margin: 0
-	position: relative
-	font-family: $body-font-family
-	color: #616265
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    margin: 0
+    position: relative
+    font-family: $body-font-family
+    color: #616265
 
 #body-scroll-wrapper
-	&.lock
-		height: 100%
-		overflow-y: hidden
+    &.lock
+        height: 100%
+        overflow-y: hidden
 
 .dribbble-icon
-	.fa-stack-1x
-		font-size: 1.35em
+    .fa-stack-1x
+        font-size: 1.35em
 
 .twitter-icon
-	.fa-stack-1x
-		font-size: 1.12em
+    .fa-stack-1x
+        font-size: 1.12em
 
 .linkedin-icon
-	.fa-stack-1x
-		font-size: 1.12em
+    .fa-stack-1x
+        font-size: 1.12em
 
 .email-icon
-	.fa-stack-1x
-		font-size: 0.85em
+    .fa-stack-1x
+        font-size: 0.85em
 
 .facebook-icon
-	.fa-stack-1x
-		position: relative
-		top: 1px
+    .fa-stack-1x
+        position: relative
+        top: 1px
 
 
 // Main Styles
 .text--blue
-	color: $notch-blue
+    color: $notch-blue
 
 .bg--grey
     background: #efefef
 .bg--white
-	background: white
+    background: white
 
 .hero
-	@include row
-	@include mobile-pad
-	padding-top: 40px + $nav-mobile-height
-	padding-bottom: 36px
-	text-align: center
-	p
-		@include column(full)
+    @include row
+    @include mobile-pad
+    padding-top: 40px + $nav-mobile-height
+    padding-bottom: 36px
+    text-align: center
+    p
+        @include column(full)
 
 .hero-wrapper
     @include row(full)
@@ -140,42 +141,42 @@ body
         color: white
 
 @include media('lg')
-	.hero
-		padding-top: 85px + $nav-desktop-height
-		padding-bottom: 60px
-	.hero-wrapper
+    .hero
+        padding-top: 85px + $nav-desktop-height
+        padding-bottom: 60px
+    .hero-wrapper
         @include row(full)
         padding-bottom: $gutter-width*6
 
 .hero__title
-	@include column(full)
-	@include font($font-family-gibson, 600, 31px, 31px)
-	margin-bottom: 8px
-	color: $header-color
+    @include column(full)
+    @include font($font-family-gibson, 600, 31px, 31px)
+    margin-bottom: 8px
+    color: $header-color
 .hero__title--emphasis
-	font-family: $emphasis-font-family
-	font-weight: 400
-	font-style: italic
+    font-family: $emphasis-font-family
+    font-weight: 400
+    font-style: italic
 
 .hero__subtitle
-	@include column(full)
-	@include font($emphasis-font-family, 400, 14px, 24px)
-	color: #c3c3c3
+    @include column(full)
+    @include font($emphasis-font-family, 400, 14px, 24px)
+    color: #c3c3c3
 
 @include media('lg')
-	.hero__title
-		font-size: 50px
-		line-height: 50px
-		margin-bottom: 13px
+    .hero__title
+        font-size: 50px
+        line-height: 50px
+        margin-bottom: 13px
 
-	.hero__subtitle
-		font-size: 17px
-		line-height: 25px
+    .hero__subtitle
+        font-size: 17px
+        line-height: 25px
 
 .main-subheader
-	@include font($font-family-gibson, 600, 18px, 22px)
-	padding-bottom: $gutter-width/4
-	color: $header-color
+    @include font($font-family-gibson, 600, 18px, 22px)
+    padding-bottom: $gutter-width/4
+    color: $header-color
 .main-text
     @include font($font-family-gibson, 400, 12px, 18px)
     color: #616265
@@ -183,67 +184,73 @@ body
 
 // Buttons
 .btn-blue
-	@include font($body-font-family, 500, 12px, 18px)
-	transition: background-color 0.1s $notch-transition
-	padding: 19px 40px
-	background-color: #2fb4e0
-	border-radius: 5px
-	color: white
-	width: 100%
-	display: block
-	text-align: center
-	&:hover
+    @include font($body-font-family, 500, 12px, 18px)
+    transition: background-color 0.1s $notch-transition
+    padding: 19px 40px
+    background-color: #2fb4e0
+    border-radius: 5px
+    color: white
+    width: 100%
+    display: block
+    text-align: center
+    &:hover,
+    &.active
         background-color: black
 
 @include media('lg')
-	.btn-blue
-		padding: 10px 25px
+    .btn-blue
+        padding: 10px 25px
 
 
 // Homepage Footer
 .homepage-footer
-	@include homepage-footer-font
-	@include row(full)
-	position: fixed
-	z-index: 100
-	left: 0
-	bottom: 0
-	width: 100%
-	background: $homepage-footer-bg
-	a
-		color: $homepage-footer-color
+    @include homepage-footer-font
+    @include row(full)
+    position: fixed
+    z-index: 100
+    left: 0
+    bottom: 0
+    width: 100%
+    background: $homepage-footer-bg
+    a
+        color: $homepage-footer-color
 
-	.footer-left
-		@include column(full)
-		text-align: center
-		a
-			display: block
-			font-size: 12px
-	.footer-right
-		display: none
-		text-align: right
-		.footer-social-link
-			position: relative
-			font-size: 14px
-			margin-left: 13px
-			.fa-stack-2x
-				color: $grey-lighter
-			.fa-stack-1x
-				color: white
-			&:hover
-				.fa-stack-2x
-					color: $grey-dark
+    .footer-left
+        @include column(full)
+        text-align: center
+        a
+            display: block
+            font-size: 12px
+    .footer-right
+        display: none
+        text-align: right
+        .footer-social-link
+            position: relative
+            font-size: 14px
+            margin-left: 13px
+            .fa-stack-2x
+                color: $grey-lighter
+            .fa-stack-1x
+                color: white
+            &:hover
+                .fa-stack-2x
+                    color: $grey-dark
 
 @include media('lg')
-	.homepage-footer
-		padding: 0 ($side-pad-lg - ($gutter-width / 2))
-		.footer-left,
-		.footer-right
-			@include column(half)
-		.footer-left
-			text-align: left
-			a
-				font-size: 14px
+    .homepage-footer
+        padding: 0 ($side-pad-lg - ($gutter-width / 2))
+        .footer-left,
+        .footer-right
+            @include column(half)
+        .footer-left
+            text-align: left
+            a
+                display: inline-block
+                font-size: 14px
+                .text--blue
+                    transition: color 0.1s ease
+                &:hover .text--blue
+                    color: #50bce3
 
 @import nav
 @import slider

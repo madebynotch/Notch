@@ -1,158 +1,158 @@
 // NAVIGATION
 #nav
-	position: fixed
-	top: 0
-	left: 0
-	width: 100%
-	height: $nav-mobile-height
-	background: #25a5cf
-	background: $nav-bg
-	padding: 0 $side-pad-sm
-	z-index: 500
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: $nav-mobile-height
+    background: #25a5cf
+    background: $nav-bg
+    padding: 0 $side-pad-sm
+    z-index: 500
 
 .nav-wrapper
-	@include row(full)
+    @include row(full)
 
 .nav-head,
 .nav-right
-	@include column(12)
-	padding: 0
+    @include column(12)
+    padding: 0
 
 .nav-logo
-	transition: opacity 0.2s $notch-transition
-	display: inline-block
-	line-height: $nav-mobile-height
-		opacity: 1
-	img
-		height: $logo-mobile-height
-		width: auto
-		position: relative
-		vertical-align: middle
-	&:hover
-		opacity: 0.6
+    transition: opacity 0.2s $notch-transition
+    display: inline-block
+    line-height: $nav-mobile-height
+        opacity: 1
+    img
+        height: $logo-mobile-height
+        width: auto
+        position: relative
+        top: -2px
+        vertical-align: middle
+    &:hover
+        opacity: 0.6
 
 .nav-toggle
-	display: block
-	position: absolute
-	right: 0
-	top: 0
-	width: (10px + $side-pad-sm) * 2
-	height: $nav-mobile-height
-	padding: 13px $side-pad-sm
-	border: 0
-	outline: none
-	background: transparent
-	&-bar
-		transition: transform 0.3s ease, opacity 0.3s ease
-		display: block
-		width: 100%
-		height: 3px
-		margin-bottom: 3px
-		background: $nav-link-color
-		&:last-child
-			margin-bottom: 0
-			opacity: 1
-	&.open
-		.nav-toggle-bar
-			margin-bottom: 0
-			transform: translateY(-2px) rotate(45deg)
-			&:first-child
-				transform: translateY(1px) rotate(-45deg)
-			&:last-child
-				opacity: 0
+    display: block
+    position: absolute
+    right: 0
+    top: 0
+    width: (10px + $side-pad-sm) * 2
+    height: $nav-mobile-height
+    padding: 13px $side-pad-sm
+    border: 0
+    outline: none
+    background: transparent
+    &-bar
+        transition: transform 0.3s ease, opacity 0.3s ease
+        display: block
+        width: 100%
+        height: 3px
+        margin-bottom: 3px
+        background: $nav-link-color
+        &:last-child
+            margin-bottom: 0
+            opacity: 1
+    &.open
+        .nav-toggle-bar
+            margin-bottom: 0
+            transform: translateY(-2px) rotate(45deg)
+            &:first-child
+                transform: translateY(1px) rotate(-45deg)
+            &:last-child
+                opacity: 0
 
 .nav-right
-	transition: opacity 0.3s ease
-	display: none
-	opacity: 0
-	position: fixed
-	top: $nav-mobile-height
-	left: 0
-	bottom: 0
-	right: 0
-	z-index: 1000
-	padding: 80px 0 0
-	text-align: center
-	background: $notch-blue
-	background: $nav-bg
-	.nav-links
-		list-style: none
-		position: absolute
-		top: 45%
-		left: 0
-		right: 0
-		transform: translateY(-50%)
-		li
-			a
-				transition: color 0.1s $notch-transition
-				font-size: 25px
-				font-family: $emphasis-font-family
-				display: inline-block
-				color: $nav-link-color
-				line-height: $nav-mobile-height
-				&:hover
-					color: $nav-link-hover-color
-				&:active
-					color: $nav-link-color
-	&.fading
-		display: block
-	&.fading-in
-		opacity: 1
-	&.fading-out
-		opacity: 0
-	&.open
-		display: block
-		opacity: 1
+    transition: opacity 0.3s ease
+    display: none
+    opacity: 0
+    position: fixed
+    top: $nav-mobile-height
+    left: 0
+    bottom: 0
+    right: 0
+    z-index: 1000
+    padding: 80px 0 0
+    text-align: center
+    background: $notch-blue
+    background: $nav-bg
+    .nav-links
+        list-style: none
+        position: absolute
+        top: 45%
+        left: 0
+        right: 0
+        transform: translateY(-50%)
+        li
+            a
+                transition: color 0.1s $notch-transition
+                font-size: 25px
+                font-family: $emphasis-font-family
+                display: inline-block
+                color: $nav-link-color
+                line-height: $nav-mobile-height
+                &:hover
+                    color: $nav-link-hover-color
+                &:active
+                    color: $nav-link-color
+    &.fading
+        display: block
+    &.fading-in
+        opacity: 1
+    &.fading-out
+        opacity: 0
+    &.open
+        display: block
+        opacity: 1
 
 .nav__social-links
-	margin-top: 40px
-	.nav-social-link
-		transition: color 0.2s $notch-transition
-		color: white
-		font-size: 28px
-		padding: 0 3px
-		.fa-stack-1x
-			color: $notch-blue
-		&:hover,
-		&:active
-			color: $nav-link-hover-color
+    margin-top: 40px
+    .nav-social-link
+        transition: color 0.2s $notch-transition
+        color: white
+        font-size: 28px
+        padding: 0 3px
+        .fa-stack-1x
+            color: $notch-blue
+        &:hover,
+        &:active
+            color: $nav-link-hover-color
 
 @include media('lg')
-	#nav
-		padding-left: $side-pad-lg
-		padding-right: $side-pad-lg
-		height: $nav-desktop-height
-	.nav-toggle
-		display: none
-	.nav-head
-		@include column(3)
-		padding: 0
-		line-height: $nav-desktop-height
-	.nav-logo
-		line-height: $logo-desktop-height
-		img
-			top: -2px
-			height: $logo-desktop-height
-	.nav-right
-		@include column(9)
-		display: block
-		opacity: 1
-		position: relative
-		padding: 0
-		background: transparent
-		top: 0
-		.nav-links
-			list-style: none
-			float: right
-			position: relative
-			top: 0
-			transform: translateY(0)
-			li
-				float: left
-				margin-left: 40px
-				a
-					font-size: 14px
-					padding-top: $nav-link-desktop-shift
-					line-height: $nav-desktop-height - $nav-link-desktop-shift
-	.nav__social-links
-		display: none
+    #nav
+        padding-left: $side-pad-lg
+        padding-right: $side-pad-lg
+        height: $nav-desktop-height
+    .nav-toggle
+        display: none
+    .nav-head
+        @include column(3)
+        padding: 0
+        line-height: $nav-desktop-height
+    .nav-logo
+        line-height: $logo-desktop-height
+        img
+            height: $logo-desktop-height
+    .nav-right
+        @include column(9)
+        display: block
+        opacity: 1
+        position: relative
+        padding: 0
+        background: transparent
+        top: 0
+        .nav-links
+            list-style: none
+            float: right
+            position: relative
+            top: 0
+            transform: translateY(0)
+            li
+                float: left
+                margin-left: 40px
+                a
+                    font-size: 14px
+                    padding-top: $nav-link-desktop-shift
+                    line-height: $nav-desktop-height - $nav-link-desktop-shift
+    .nav__social-links
+        display: none
