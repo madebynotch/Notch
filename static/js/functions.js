@@ -121,7 +121,8 @@ $(document).ready(function(){
                         if (j < i) {
                             slide.css({
                                 // 'top': (0 - self.realHeight()) + "px",
-                                'height': "0px",
+                                // 'height': "0px",
+                                'transform': "translateY(" + (0 - self.realHeight()) + "px)"
                             });
                             slide.children('.slide-wrapper').css({
                                 'opacity': 0,
@@ -131,7 +132,8 @@ $(document).ready(function(){
                         else {
                             slide.css({
                                 // 'top': 0,
-                                'height': self.realHeight() + "px",
+                                // 'height': self.realHeight() + "px",
+                                'transform': "translateY(0px)"
                             });
                             slide.children('.slide-wrapper').css({
                                 'opacity': 1,
