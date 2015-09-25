@@ -73,7 +73,7 @@ $(document).ready(function(){
         }
 
         self.scrollToSlide = function(i,method) {
-            console.log("running scroll to slide");
+            console.log("running scroll to slide", self.sliding);
             // Set `sliding` to `true`, preventing unecessary events
             self.sliding = true;
             // If the slider is horizontal, allow it to loop
@@ -123,10 +123,10 @@ $(document).ready(function(){
                             slide.css({
                                 // 'top': (0 - self.realHeight()) + "px",
                                 // 'height': "0px",
-                                'transform': "translateY(" + (0 - self.realHeight()) + "px)",
+                                'transform': "translateY(" + (0 - self.realHeight() - 2) + "px)",
                             });
                             slide.children('img').css({
-                                'transform': "translateY(" + self.realHeight() + "px)",
+                                'transform': "translateY(" + (self.realHeight() + 2) + "px)",
                             });
                             slide.children('.slide-wrapper').css({
                                 'opacity': 0,
@@ -144,12 +144,14 @@ $(document).ready(function(){
                             });
                             slide.children('.slide-wrapper').css({
                                 'opacity': 1,
-                                'transition-delay': "0.2s",
+                                'transition-duration': (self.slideDuration * 0.8) + "ms",
+                                'transition-delay': (self.slideDuration * 0.2) + "ms",
                             });
                         }
 
-                        var delayedStop = window.setTimeout(function(){
+                        self.delayedStop = window.setTimeout(function(){
                             if (self.sliding) {
+                                console.log("timer stopped: ", self.slideDuration)
                                 self.pseudoY = self.active_slide * self.realHeight();
                                 self.sliding = false;
                             }
@@ -342,8 +344,9 @@ $(document).ready(function(){
         self.getPropertyDuration = function(elem, property) {
             var duration = window.getComputedStyle(elem)['transition-duration'].split(', ');
             var properties = window.getComputedStyle(elem)['transition-property'].split(', ');
-            if (properties.indexOf(property) > 0) {
-                duration = duration[properties.indexOf(property)].replace('s','');
+            if (properties.indexOf(property) > -1) {
+                duration = parseFloat(duration[properties.indexOf(property)].replace('s',''));
+                console.log(duration);
                 return duration * 1000
             }
         }
@@ -392,6 +395,24 @@ $(document).ready(function(){
             }
         }
 
+        self.addSlideEndListener = function(slide) {
+            // Get the right transition event
+            var transitionEvent = whichTransitionEvent();
+            // Attach an event listener to the specific slide
+            transitionEvent && slide.addEventListener(transitionEvent, function(e){
+                if (e.target == slide && self.sliding) {
+                    // Kill the timer if it's running
+                    if (self.delayedStop) {
+                        window.clearTimeout(self.delayedStop);
+                    }
+                    // Reset the pseudoY
+                    self.pseudoY = self.active_slide * self.realHeight();
+                    // Mark slider as finished sliding
+                    self.sliding = false;
+                }
+            });
+        }
+
         self.init = function() {
             self.initNavigation();
             self.resizeSlider();
@@ -405,13 +426,17 @@ $(document).ready(function(){
                     e.preventDefault();
                 });
 
-                var transitionEvent = whichTransitionEvent();
-                transitionEvent && self.element[0].addEventListener(transitionEvent, function(e){
-                    if ($(e.target).hasClass('slide') && self.sliding) {
-                        self.pseudoY = self.active_slide * self.realHeight();
-                        self.sliding = false;
-                    }
-                });
+                // var transitionEvent = whichTransitionEvent();
+                // transitionEvent && self.element[0].addEventListener(transitionEvent, function(e){
+                //     if ($(e.target).hasClass('slide') && self.sliding) {
+                //         console.log("transition end",self.delayedStop);
+                //         if (self.delayedStop) {
+                //             window.clearTimeout(self.delayedStop);
+                //         }
+                //         self.pseudoY = self.active_slide * self.realHeight();
+                //         self.sliding = false;
+                //     }
+                // });
             }
         }
     }

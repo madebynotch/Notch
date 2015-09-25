@@ -30,6 +30,8 @@ $slide-link-hover-bg: $grey-dark
 $slide-link-hover-color: white
 $slider-controls-offset: 45px
 
+$slide-transition-duration: 1s
+
 
 // HOMEPAGE SLIDER
 .slider
@@ -70,7 +72,7 @@ $slider-controls-offset: 45px
     .slide-wrapper
         @include row(full)
         opacity: 1
-        transition: opacity 0.8s cubic-bezier(.7,.7,.19,1)
+        transition: opacity $slide-transition-duration cubic-bezier(.7,.7,.19,1)
         float: none
         position: relative
 
@@ -210,9 +212,9 @@ $slider-controls-offset: 45px
             background: transparent
 
     .slide
-        transition: height 1s cubic-bezier(.6,.6,.19,1), transform 1s cubic-bezier(.6,.6,.19,1)
+        transition: transform $slide-transition-duration cubic-bezier(.6,.6,.19,1)
         img
-            transition: transform 1s cubic-bezier(.6,.6,.19,1)
+            transition: transform $slide-transition-duration cubic-bezier(.6,.6,.19,1)
 
 @include media('lg')
     .slider.vertical
