@@ -7,7 +7,7 @@ $side-pad-lg: 65px
 @include set-breakpoint('sm')
 @include set-breakpoint('lg',900px,850 - $side-pad-lg)
 @include set-breakpoint('xl',1200px,1000 - $side-pad-lg)
-@include set-breakpoint('xxl',1800px,1100 - $side-pad-lg)
+@include set-breakpoint('xxl',1800px,1200 - $side-pad-lg)
 
 // Colors
 $notch-blue: #2aaed9
@@ -152,6 +152,10 @@ body
         @include row(full)
         padding-bottom: $gutter-width*6
 
+@include media('xxl')
+    .hero
+        padding-top: 90px + $nav-xxl-height
+
 .hero__title
     @include column(full)
     @include font($font-family-gibson, 600, 31px, 31px)
@@ -177,6 +181,11 @@ body
         font-size: 17px
         line-height: 25px
 
+@include media('xxl')
+    .hero__subtitle
+        font-size: 24px
+        line-height: 36px
+
 .main-subheader
     @include font($font-family-gibson, 600, 18px, 22px)
     padding-bottom: $gutter-width/4
@@ -184,6 +193,15 @@ body
 .main-text
     @include font($font-family-gibson, 400, 12px, 18px)
     color: #616265
+
+@include media('xxl')
+    .main-subheader
+        font-size: 28px
+        line-height: 30px
+        padding-bottom: 10px
+    .main-text
+        font-size: 18px
+        line-height: 28px
 
 
 // Buttons

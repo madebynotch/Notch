@@ -1,5 +1,7 @@
 $cs-side-nav-link-height: 50px
+$cs-side-nav-link-height-xxl: 70px
 $cs-side-nav-link-width: 240px
+$cs-side-nav-link-width-xxl: 280px
 
 $cs-share-popup-width: 200px
 $cs-share-popup-height: 60px
@@ -47,6 +49,13 @@ $cs-share-popup-border-width: 2px
         padding-left: 0px
         padding-right: 0px
 
+@include media('xxl')
+    .hero--cs
+        padding-bottom: 40px
+    .hero--cs__title
+        font-size: 80px
+        line-height: 100px
+
 
 .cs-side-nav-link
     display: none
@@ -76,6 +85,17 @@ $cs-share-popup-border-width: 2px
     .cs-side-nav-link
         display: inline-block
 
+@include media('xxl')
+    .cs-side-nav-link
+        font-size: 16px
+        line-height: $cs-side-nav-link-height-xxl
+        width: $cs-side-nav-link-width-xxl
+        top: 280px
+        &.prev
+            left: -1 - (($cs-side-nav-link-width-xxl - $cs-side-nav-link-height-xxl) / 2)
+        &.next
+            right: -1 - (($cs-side-nav-link-width-xxl - $cs-side-nav-link-height-xxl) / 2)
+
 
 .cs-gameplan
     @include row
@@ -84,6 +104,13 @@ $cs-share-popup-border-width: 2px
 .cs-approach
     @include column(12)
     padding-top: 40px
+
+@include media('xxl')
+    .cs-task,
+    .cs-approach
+        padding-top: 70px
+    .cs-gameplan
+        padding-bottom: 100px
 
 
 .cs-content
@@ -142,6 +169,28 @@ $cs-share-popup-border-width: 2px
     .cs-content__text
         .cs-approach-content
             padding-bottom: 50px
+
+@include media('xxl')
+    .cs-content__meta
+        .main-subheader
+            font-size: 24px
+        .cs-tags,
+        .cs-year
+            font-size: 14px
+            line-height: 24px
+
+    .cs-content__share
+        padding-top: 30px
+        .btn-blue
+            font-size: 20px
+            line-height: 34px
+            padding: 10px 30px
+
+    .cs-content__text
+        .cs-approach-content
+            font-size: 24px
+            line-height: 38px
+            padding-bottom: 60px
 
 .share__popup
     transition: opacity 0.2s ease, transform 0.3s ease
@@ -237,6 +286,13 @@ $cs-share-popup-border-width: 2px
         right: 45px
         margin-right: 0
 
+@include media('xxl')
+    .popup__social-links
+        width: 220px
+        height: 70px
+        line-height: 64px
+        .popup__social-link
+            font-size: 16px
 
 
 
@@ -258,6 +314,11 @@ $cs-share-popup-border-width: 2px
     .cs-nav
         padding-top: 20px
         padding-bottom: 85px
+
+@include media('xxl')
+    .cs-nav
+        padding-top: 45px
+        padding-bottom: 135px
 
 .cs-nav-previous,
 .cs-nav-next
@@ -310,3 +371,11 @@ $cs-share-popup-border-width: 2px
         @include offset(0.5)
         float: right
         clear: right
+
+@include media('xxl')
+    .cs-nav-link
+        font-size: 16px
+        margin-bottom: 15px
+    .cs-nav-title
+        font-size: 42px
+        line-height: 48px
