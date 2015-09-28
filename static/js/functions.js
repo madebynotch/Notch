@@ -73,7 +73,7 @@ $(document).ready(function(){
         }
 
         self.scrollToSlide = function(i,method) {
-            console.log("running scroll to slide", self.sliding);
+            // console.log("running scroll to slide", self.sliding);
             // Set `sliding` to `true`, preventing unecessary events
             self.sliding = true;
             // If the slider is horizontal, allow it to loop
@@ -151,7 +151,7 @@ $(document).ready(function(){
 
                         self.delayedStop = window.setTimeout(function(){
                             if (self.sliding) {
-                                console.log("timer stopped: ", self.slideDuration)
+                                // console.log("timer stopped: ", self.slideDuration);
                                 self.pseudoY = self.active_slide * self.realHeight();
                                 self.sliding = false;
                             }
@@ -346,7 +346,7 @@ $(document).ready(function(){
             var properties = window.getComputedStyle(elem)['transition-property'].split(', ');
             if (properties.indexOf(property) > -1) {
                 duration = parseFloat(duration[properties.indexOf(property)].replace('s',''));
-                console.log(duration);
+                // console.log(duration);
                 return duration * 1000
             }
         }
