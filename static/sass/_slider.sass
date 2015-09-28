@@ -2,6 +2,7 @@
 $slider-header-font-family: $header-font-family
 $slider-header-size-mobile: 29px
 $slider-header-size-desktop: 54px
+$slider-header-size-xxl: 80px
 $slider-header-line-height: 1.11
 @mixin slider-header-font
     @include font($slider-header-font-family, 600, $slider-header-size-mobile, $slider-header-line-height)
@@ -9,7 +10,9 @@ $slider-header-line-height: 1.11
 $slider-desc-font-family: $emphasis-font-family
 $slider-desc-size-mobile: 14px
 $slider-desc-size-desktop: 20px
+$slider-desc-size-xxl: 30px
 $slider-desc-line-height: 1.5
+$slider-desc-line-height-xxl: 48px
 @mixin slider-desc-font
     @include font($slider-desc-font-family, 400, $slider-desc-size-mobile, $slider-desc-line-height)
 
@@ -80,7 +83,7 @@ $slide-transition-duration: 1s
         position: absolute
         left: 0
         bottom: 50%
-        margin-bottom: -100px
+        transform: translateY(50%)
 
         vertical-align: middle
         color: white
@@ -133,6 +136,13 @@ $slide-transition-duration: 1s
             transition: all 0.1s ease
         &.active
             box-shadow: $slider-nav-link-alt-border-active
+
+@include media('xxl')
+    .slider-nav
+        li
+            width: $slider-nav-link-diam + 3
+            height: $slider-nav-link-diam + 3
+            border-radius: (($slider-nav-link-diam + 3) / 2)
 
 .slider-controls
     position: absolute
@@ -239,3 +249,17 @@ $slide-transition-duration: 1s
         font-size: 16px
         line-height: 54px
         padding: 0 25px
+
+@include media('xxl')
+    .slide
+        .slide-wrapper
+            @include headers
+                font-size: $slider-header-size-xxl
+            p
+                font-size: $slider-desc-size-xxl
+                line-height: $slider-desc-line-height-xxl
+                margin-bottom: 70px
+            .slide-link
+                font-size: 20px
+                line-height: 70px
+                padding: 0 35px

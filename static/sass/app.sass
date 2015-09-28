@@ -7,6 +7,7 @@ $side-pad-lg: 65px
 @include set-breakpoint('sm')
 @include set-breakpoint('lg',900px,850 - $side-pad-lg)
 @include set-breakpoint('xl',1200px,1000 - $side-pad-lg)
+@include set-breakpoint('xxl',1800px,1100 - $side-pad-lg)
 
 // Colors
 $notch-blue: #2aaed9
@@ -29,11 +30,13 @@ $body-font-family: 'Helvetica Neue', Helvetica, 'Helvetica', 'Arial', sans-serif
 // Nav Variables
 $logo-mobile-height: 19px
 $logo-desktop-height: 19px
+$logo-xxl-height: 26px
 $nav-link-color: white
 $nav-link-hover-color: #9fdbef
 $nav-link-desktop-shift: 5px
 $nav-mobile-height: 50px
 $nav-desktop-height: 50px
+$nav-xxl-height: 72px
 
 // Global Variables
 $mobile-pad: 5px
@@ -48,6 +51,7 @@ $mobile-pad: 5px
 // Footer Variables
 $homepage-footer-bg: white
 $homepage-footer-height: 50px
+$homepage-footer-height-xxl: 70px
 $homepage-footer-size: 16px
 $homepage-footer-color: $grey-medium
 $homepage-footer-offset: 10px
@@ -251,6 +255,18 @@ body
                     transition: color 0.1s ease
                 &:hover .text--blue
                     color: #50bce3
+
+@include media('xxl')
+    .homepage-footer
+        height: $homepage-footer-height-xxl
+        line-height: $homepage-footer-height-xxl
+        .footer-left
+            a
+                font-size: 22px
+        .footer-right
+            .footer-social-link
+                top: -1px
+                font-size: 17px
 
 @import nav
 @import slider

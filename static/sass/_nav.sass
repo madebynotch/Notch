@@ -62,6 +62,32 @@
             &:last-child
                 opacity: 0
 
+@include media('lg')
+    #nav
+        padding-left: $side-pad-lg
+        padding-right: $side-pad-lg
+        height: $nav-desktop-height
+    .nav-toggle
+        display: none
+    .nav-head
+        @include column(3)
+        padding: 0
+        line-height: $nav-desktop-height
+    .nav-logo
+        line-height: $logo-desktop-height
+        img
+            height: $logo-desktop-height
+
+@include media('xxl')
+    #nav
+        height: $nav-xxl-height
+    .nav-head
+        line-height: $nav-xxl-height
+    .nav-logo
+        line-height: $nav-xxl-height
+        img
+            height: $logo-xxl-height
+
 .nav-right
     transition: opacity 0.3s ease
     display: none
@@ -119,20 +145,6 @@
             color: $nav-link-hover-color
 
 @include media('lg')
-    #nav
-        padding-left: $side-pad-lg
-        padding-right: $side-pad-lg
-        height: $nav-desktop-height
-    .nav-toggle
-        display: none
-    .nav-head
-        @include column(3)
-        padding: 0
-        line-height: $nav-desktop-height
-    .nav-logo
-        line-height: $logo-desktop-height
-        img
-            height: $logo-desktop-height
     .nav-right
         @include column(9)
         display: block
@@ -156,3 +168,11 @@
                     line-height: $nav-desktop-height - $nav-link-desktop-shift
     .nav__social-links
         display: none
+
+@include media('xxl')
+    .nav-right
+        .nav-links
+            li
+                a
+                    font-size: 20px
+                    line-height: $nav-xxl-height - $nav-link-desktop-shift

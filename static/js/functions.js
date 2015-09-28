@@ -300,9 +300,9 @@ $(document).ready(function(){
                     });
                     var wrapper = $(self.slides[i]).children('.slide-wrapper');
                     // console.log(wrapper.css('margin-bottom'));
-                    var delay = setTimeout(function(){
-                        wrapper.css('margin-bottom',(10 - (wrapper[0].clientHeight) / 2) + "px");
-                    },5);
+                    // var delay = setTimeout(function(){
+                    //     wrapper.css('margin-bottom',(10 - (wrapper[0].clientHeight) / 2) + "px");
+                    // },5);
                     // console.log(wrapper.css('margin-bottom'));
                     self.navigation.css('margin-top',0 - (self.navigation.height() / 2) + "px");
                 }
