@@ -18,6 +18,11 @@ footer
         &:not(:first-child)
             margin-left: 20px
 
+@include media('xxl')
+    footer
+        .footer-social-link
+            font-size: 26px
+
 
 .footer-wrapper
     @include row(full)
@@ -119,3 +124,6 @@ footer
 
     .footer-lower
         font-size: 14px
+
+    .footer-social
+        padding: 58px 0

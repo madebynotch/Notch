@@ -1,7 +1,10 @@
 $contact-map-mobile-height: 300px
 $contact-map-desktop-height: 550px
+$contact-map-xxl-height: 784px
 $contact-map-location-mobile-width: 154px
 $contact-map-location-desktop-width: 174px
+$contact-map-location-xxl-width: 250px
+$contact-map-location-xxl-font-size: 24px
 $contact-map-location-font-size: 16px
 $contact-map-location-line-height: 24px
 
@@ -110,3 +113,34 @@ textarea
         padding-top: ($contact-map-location-desktop-width / 2) - ($contact-map-location-line-height)
         margin-top: (0 - ($contact-map-location-desktop-width / 2))
         margin-left: (0 - ($contact-map-location-desktop-width / 2))
+
+@include media('xxl')
+    .hero--contact
+        max-width: 810px
+        .hero__subtitle
+            font-size: 24px
+        .contact-required
+            font-size: 14px
+
+    .contact-form
+        max-width: 770px
+        padding-bottom: 200px
+        input
+            height: 70px
+        .contact-input
+            font-size: 20px
+            padding-left: 25px
+            padding-right: 25px
+        .btn-blue
+            font-size: 22px
+
+    .contact-map
+        height: $contact-map-xxl-height
+    .contact-map__location
+        font-size: $contact-map-location-xxl-font-size
+        line-height: 38px
+        width: $contact-map-location-xxl-width
+        height: $contact-map-location-xxl-width
+        padding-top: ($contact-map-location-xxl-width / 2) - (38px)
+        margin-top: (0 - ($contact-map-location-xxl-width / 2))
+        margin-left: (0 - ($contact-map-location-xxl-width / 2))
