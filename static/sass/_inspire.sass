@@ -1,4 +1,6 @@
 $article-height: 240px
+$article-height-lg: 300px
+$article-height-xxl: 560px
 
 $show-more-bg: $grey-lighter
 $show-more-color: white
@@ -10,6 +12,10 @@ $show-more-top-margin: 68px
 
 #inspire-list
     @include row
+
+@include media('xxl')
+    #inspire-list
+        max-width: 1550px
 
 
 .in-list__article
@@ -98,7 +104,6 @@ $show-more-top-margin: 68px
 
 
 @include media('lg')
-    $article-height: 300px
 
     #inspire-list
         margin-top: -$gutter-width * 6
@@ -117,7 +122,7 @@ $show-more-top-margin: 68px
     .in-list__article
         @include column(3)
         padding: 0
-        height: $article-height
+        height: $article-height-lg
         background: white
         &:hover
             .in-list__content
@@ -149,7 +154,7 @@ $show-more-top-margin: 68px
 
 
     .in-list__image
-        height: $article-height
+        height: $article-height-lg
 
 
     .in-show-more
@@ -157,3 +162,26 @@ $show-more-top-margin: 68px
     #show-more
         margin: $show-more-top-margin auto 0
         width: $show-more-height + 10
+
+@include media('xxl')
+    .in-list__article
+        height: $article-height-xxl
+
+    .in-list__image
+        height: $article-height-xxl
+
+    .in-list__cat,
+    .in-list__date
+        font-size: 16px
+
+    .in-list__title
+        font-size: 42px
+        line-height: 48px
+    .in-list__desc
+        font-size: 18px
+        line-height: 28px
+
+    #show-more
+        width: 88px
+        line-height: 76px
+        font-size: 30px
