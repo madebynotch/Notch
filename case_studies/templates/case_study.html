@@ -11,7 +11,7 @@
 {% if case_study.get_main_images.count > 1 %}
     {% for image in case_study.get_main_images %}
         {% if forloop.counter == 1 %}
-            <meta property="og:image" content="https://notch.bixly.com{{image.image.url}}">
+            <meta property="og:image" content="http://madebynotch.com{{image.image.url}}">
         {% endif %}
     {% endfor %}
 {% endif %}
@@ -84,25 +84,25 @@
                 <div class="share__popup closed" id="share__popup">
                     <span class="popup__arrow"></span>
                     <div class="popup__social-links">
-                        <a class="popup__social-link facebook-icon" href="//www.facebook.com/sharer/sharer.php?u=https://notch.bixly.com{% url 'case_study' case_study.pk %}&title={{case_study.title}}">
+                        <a class="popup__social-link facebook-icon" href="//www.facebook.com/sharer/sharer.php?u=http://madebynotch.com{% url 'case_study' case_study.pk %}&title={{case_study.title}}">
                             <span class="fa-stack">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
-                        <a class="popup__social-link email-icon" href="mailto:?subject=Notch Interactive - {{case_study.title}}&body=https://notch.bixly.com{% url 'case_study' case_study.pk %}">
+                        <a class="popup__social-link email-icon" href="mailto:?subject=Notch Interactive - {{case_study.title}}&body=http://madebynotch.com{% url 'case_study' case_study.pk %}">
                             <span class="fa-stack">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
-                        <a class="popup__social-link twitter-icon" href="http://twitter.com/intent/tweet?status={{case_study.title}}+by+Notch+Interactive.+https://notch.bixly.com{% url 'case_study' case_study.pk %}+via+@madebynotch">
+                        <a class="popup__social-link twitter-icon" href="http://twitter.com/intent/tweet?status={{case_study.title}}+by+Notch+Interactive.+http://madebynotch.com{% url 'case_study' case_study.pk %}+via+@madebynotch">
                             <span class="fa-stack">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
-                        <a class="popup__social-link linkedin-icon" href="https://www.linkedin.com/shareArticle?mini=true&url=https://notch.bixly.com{% url 'case_study' case_study.pk %}&title={{case_study.title}}&summary=&source=">
+                        <a class="popup__social-link linkedin-icon" href="https://www.linkedin.com/shareArticle?mini=true&url=http://madebynotch.com{% url 'case_study' case_study.pk %}&title={{case_study.title}}&summary=&source=">
                             <span class="fa-stack">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-linkedin-square fa-stack-1x fa-inverse"></i>
