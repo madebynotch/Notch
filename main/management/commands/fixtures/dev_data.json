@@ -1,436 +1,436 @@
 [
-  {
-    "fields": {
-      "name": "Tag1"
+    {
+        "fields": {
+            "name": "Dribble"
+        },
+        "model": "inspire.blogtag",
+        "pk": 1
     },
-    "model": "main.tag",
-    "pk": 1
-  },
-  {
-    "fields": {
-      "name": "Tag2"
+    {
+        "fields": {
+            "name": "Dribbble"
+        },
+        "model": "inspire.blogtag",
+        "pk": 2
     },
-    "model": "main.tag",
-    "pk": 2
-  },
-  {
-    "fields": {
-      "description": "This is a description for 1",
-      "title": "Inspire Item 1",
-      "url": "http:\/\/google.com",
-      "image": "dev\/inspire\/1821449_y5YLCAg.jpg",
-      "tag": "Dribble",
-      "date_added": "2015-07-16"
+    {
+        "fields": {
+            "description": "This is a description for 1",
+            "title": "Inspire Item 1",
+            "url": "http://google.com",
+            "image": "dev/inspire/1821449_y5YLCAg.jpg",
+            "tag": 2,
+            "date_added": "2015-07-16"
+        },
+        "model": "inspire.inspireitem",
+        "pk": 100
     },
-    "model": "inspire.inspireitem",
-    "pk": 100
-  },
-  {
-    "fields": {
-      "description": "This is a description for item 2",
-      "title": "Inspire Item 2",
-      "url": "http:\/\/yahoo.com",
-      "image": "dev\/inspire\/fantasy_space-wide_0BLkjDB.jpg",
-      "tag": "Dribble",
-      "date_added": "2015-07-16"
+    {
+        "fields": {
+            "description": "This is a description for item 2",
+            "title": "Inspire Item 2",
+            "url": "http://yahoo.com",
+            "image": "dev/inspire/fantasy_space-wide_0BLkjDB.jpg",
+            "tag": 2,
+            "date_added": "2015-07-16"
+        },
+        "model": "inspire.inspireitem",
+        "pk": 101
     },
-    "model": "inspire.inspireitem",
-    "pk": 101
-  },
-  {
-    "fields": {
-      "description": "This is a description for item 3",
-      "title": "Inspire Item 3",
-      "url": "http:\/\/facebook.com",
-      "image": "dev\/inspire\/featured-space-policy.jpg",
-      "tag": "Dribble",
-      "date_added": "2015-07-16"
+    {
+        "fields": {
+            "description": "This is a description for item 3",
+            "title": "Inspire Item 3",
+            "url": "http://facebook.com",
+            "image": "dev/inspire/featured-space-policy.jpg",
+            "tag": 2,
+            "date_added": "2015-07-16"
+        },
+        "model": "inspire.inspireitem",
+        "pk": 102
     },
-    "model": "inspire.inspireitem",
-    "pk": 102
-  },
-  {
-    "fields": {
-      "description": "This is a description for 1",
-      "title": "Inspire Item 1",
-      "url": "http:\/\/google.com",
-      "image": "dev\/inspire\/1821449_y5YLCAg.jpg",
-      "tag": "Dribble",
-      "date_added": "2015-07-16"
+    {
+        "fields": {
+            "description": "This is a description for 1",
+            "title": "Inspire Item 1",
+            "url": "http://google.com",
+            "image": "dev/inspire/1821449_y5YLCAg.jpg",
+            "tag": 2,
+            "date_added": "2015-07-16"
+        },
+        "model": "inspire.inspireitem",
+        "pk": 103
     },
-    "model": "inspire.inspireitem",
-    "pk": 103
-  },
-  {
-    "fields": {
-      "description": "This is a description for item 2",
-      "title": "Inspire Item 2",
-      "url": "http:\/\/yahoo.com",
-      "image": "dev\/inspire\/fantasy_space-wide_0BLkjDB.jpg",
-      "tag": "Dribble",
-      "date_added": "2015-07-16"
+    {
+        "fields": {
+            "description": "This is a description for item 2",
+            "title": "Inspire Item 2",
+            "url": "http://yahoo.com",
+            "image": "dev/inspire/fantasy_space-wide_0BLkjDB.jpg",
+            "tag": 2,
+            "date_added": "2015-07-16"
+        },
+        "model": "inspire.inspireitem",
+        "pk": 104
     },
-    "model": "inspire.inspireitem",
-    "pk": 104
-  },
-  {
-    "fields": {
-      "description": "This is a description for item 3",
-      "title": "Inspire Item 3",
-      "url": "http:\/\/facebook.com",
-      "image": "dev\/inspire\/featured-space-policy.jpg",
-      "tag": "Dribble",
-      "date_added": "2015-07-16"
+    {
+        "fields": {
+            "description": "This is a description for item 3",
+            "title": "Inspire Item 3",
+            "url": "http://facebook.com",
+            "image": "dev/inspire/featured-space-policy.jpg",
+            "tag": 2,
+            "date_added": "2015-07-16"
+        },
+        "model": "inspire.inspireitem",
+        "pk": 105
     },
-    "model": "inspire.inspireitem",
-    "pk": 105
-  },
-  {
-    "fields": {
-      "description": "This is a description for 1",
-      "title": "Inspire Item 1",
-      "url": "http:\/\/google.com",
-      "image": "dev\/inspire\/1821449_y5YLCAg.jpg",
-      "tag": "Dribble",
-      "date_added": "2015-07-16"
+    {
+        "fields": {
+            "description": "This is a description for 1",
+            "title": "Inspire Item 1",
+            "url": "http://google.com",
+            "image": "dev/inspire/1821449_y5YLCAg.jpg",
+            "tag": 2,
+            "date_added": "2015-07-16"
+        },
+        "model": "inspire.inspireitem",
+        "pk": 106
     },
-    "model": "inspire.inspireitem",
-    "pk": 106
-  },
-  {
-    "fields": {
-      "description": "This is a description for item 2",
-      "title": "Inspire Item 2",
-      "url": "http:\/\/yahoo.com",
-      "image": "dev\/inspire\/fantasy_space-wide_0BLkjDB.jpg",
-      "tag": "Dribble",
-      "date_added": "2015-07-16"
+    {
+        "fields": {
+            "description": "This is a description for item 2",
+            "title": "Inspire Item 2",
+            "url": "http://yahoo.com",
+            "image": "dev/inspire/fantasy_space-wide_0BLkjDB.jpg",
+            "tag": 2,
+            "date_added": "2015-07-16"
+        },
+        "model": "inspire.inspireitem",
+        "pk": 107
     },
-    "model": "inspire.inspireitem",
-    "pk": 107
-  },
-  {
-    "fields": {
-      "description": "This is a description for item 3",
-      "title": "Inspire Item 3",
-      "url": "http:\/\/facebook.com",
-      "image": "dev\/inspire\/featured-space-policy.jpg",
-      "tag": "Dribble",
-      "date_added": "2015-07-16"
+    {
+        "fields": {
+            "description": "This is a description for item 3",
+            "title": "Inspire Item 3",
+            "url": "http://facebook.com",
+            "image": "dev/inspire/featured-space-policy.jpg",
+            "tag": 2,
+            "date_added": "2015-07-16"
+        },
+        "model": "inspire.inspireitem",
+        "pk": 108
     },
-    "model": "inspire.inspireitem",
-    "pk": 108
-  },
-  {
-    "fields": {
-      "description": "This is a description for 1",
-      "title": "Inspire Item 1",
-      "url": "http:\/\/google.com",
-      "image": "dev\/inspire\/1821449_y5YLCAg.jpg",
-      "tag": "Dribble",
-      "date_added": "2015-07-16"
+    {
+        "fields": {
+            "description": "This is a description for 1",
+            "title": "Inspire Item 1",
+            "url": "http://google.com",
+            "image": "dev/inspire/1821449_y5YLCAg.jpg",
+            "tag": 2,
+            "date_added": "2015-07-16"
+        },
+        "model": "inspire.inspireitem",
+        "pk": 109
     },
-    "model": "inspire.inspireitem",
-    "pk": 109
-  },
-  {
-    "fields": {
-      "description": "This is a description for item 2",
-      "title": "Inspire Item 2",
-      "url": "http:\/\/yahoo.com",
-      "image": "dev\/inspire\/fantasy_space-wide_0BLkjDB.jpg",
-      "tag": "Dribble",
-      "date_added": "2015-07-16"
+    {
+        "fields": {
+            "description": "This is a description for item 2",
+            "title": "Inspire Item 2",
+            "url": "http://yahoo.com",
+            "image": "dev/inspire/fantasy_space-wide_0BLkjDB.jpg",
+            "tag": 2,
+            "date_added": "2015-07-16"
+        },
+        "model": "inspire.inspireitem",
+        "pk": 110
     },
-    "model": "inspire.inspireitem",
-    "pk": 110
-  },
-  {
-    "fields": {
-      "description": "This is a description for item 3",
-      "title": "Inspire Item 3",
-      "url": "http:\/\/facebook.com",
-      "image": "dev\/inspire\/featured-space-policy.jpg",
-      "tag": "Dribble",
-      "date_added": "2015-07-16"
+    {
+        "fields": {
+            "description": "This is a description for item 3",
+            "title": "Inspire Item 3",
+            "url": "http://facebook.com",
+            "image": "dev/inspire/featured-space-policy.jpg",
+            "tag": 2,
+            "date_added": "2015-07-16"
+        },
+        "model": "inspire.inspireitem",
+        "pk": 111
     },
-    "model": "inspire.inspireitem",
-    "pk": 111
-  },
-  {
-    "fields": {
-      "description": "This is a description for 1",
-      "title": "Inspire Item 1",
-      "url": "http:\/\/google.com",
-      "image": "dev\/inspire\/1821449_y5YLCAg.jpg",
-      "tag": "Dribble",
-      "date_added": "2015-07-16"
+    {
+        "fields": {
+            "description": "This is a description for 1",
+            "title": "Inspire Item 1",
+            "url": "http://google.com",
+            "image": "dev/inspire/1821449_y5YLCAg.jpg",
+            "tag": 2,
+            "date_added": "2015-07-16"
+        },
+        "model": "inspire.inspireitem",
+        "pk": 112
     },
-    "model": "inspire.inspireitem",
-    "pk": 112
-  },
-  {
-    "fields": {
-      "description": "This is a description for item 2",
-      "title": "Inspire Item 2",
-      "url": "http:\/\/yahoo.com",
-      "image": "dev\/inspire\/fantasy_space-wide_0BLkjDB.jpg",
-      "tag": "Dribble",
-      "date_added": "2015-07-16"
+    {
+        "fields": {
+            "description": "This is a description for item 2",
+            "title": "Inspire Item 2",
+            "url": "http://yahoo.com",
+            "image": "dev/inspire/fantasy_space-wide_0BLkjDB.jpg",
+            "tag": 2,
+            "date_added": "2015-07-16"
+        },
+        "model": "inspire.inspireitem",
+        "pk": 113
     },
-    "model": "inspire.inspireitem",
-    "pk": 113
-  },
-  {
-    "fields": {
-      "description": "This is a description for item 3",
-      "title": "Inspire Item 3",
-      "url": "http:\/\/facebook.com",
-      "image": "dev\/inspire\/featured-space-policy.jpg",
-      "tag": "Dribble",
-      "date_added": "2015-07-16"
+    {
+        "fields": {
+            "description": "This is a description for item 3",
+            "title": "Inspire Item 3",
+            "url": "http://facebook.com",
+            "image": "dev/inspire/featured-space-policy.jpg",
+            "tag": 2,
+            "date_added": "2015-07-16"
+        },
+        "model": "inspire.inspireitem",
+        "pk": 114
     },
-    "model": "inspire.inspireitem",
-    "pk": 114
-  },
-  {
-    "fields": {
-      "sub_header": "",
-      "is_visible": true,
-      "subtitle": "Another Study Another Cool",
-      "title": "Some Cool Study 1",
-      "extension_text": "",
-      "tags": [
-        1
-      ],
-      "date_completed": null,
-      "project_link": "http:\/\/www.yahoo.com",
-      "sub_header_content": "",
-      "date_added": "2015-07-17T15:52:22.893Z",
-      "task_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "approach_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    {
+        "fields": {
+            "sub_header": "",
+            "is_visible": true,
+            "subtitle": "Another Study Another Cool",
+            "title": "Some Cool Study 1",
+            "extension_text": "",
+            "tags": [
+                1
+            ],
+            "date_completed": null,
+            "project_link": "http://www.yahoo.com",
+            "sub_header_content": "",
+            "date_added": "2015-07-17T15:52:22.893Z",
+            "task_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "approach_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        "model": "case_studies.casestudy",
+        "pk": 100
     },
-    "model": "case_studies.casestudy",
-    "pk": 100
-  },
-  {
-    "fields": {
-      "sub_header": "",
-      "is_visible": false,
-      "subtitle": "More of the Coolness",
-      "title": "Another Cool Study 2",
-      "extension_text": "",
-      "tags": [
-        1,
-        2
-      ],
-      "date_completed": null,
-      "project_link": "http:\/\/www.google.com",
-      "sub_header_content": "",
-      "date_added": "2015-07-17T15:53:28.919Z",
-      "task_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "approach_content": "The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee."
+    {
+        "fields": {
+            "sub_header": "",
+            "is_visible": false,
+            "subtitle": "More of the Coolness",
+            "title": "Another Cool Study 2",
+            "extension_text": "",
+            "tags": [
+                1,
+                2
+            ],
+            "date_completed": null,
+            "project_link": "http://www.google.com",
+            "sub_header_content": "",
+            "date_added": "2015-07-17T15:53:28.919Z",
+            "task_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "approach_content": "The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee."
+        },
+        "model": "case_studies.casestudy",
+        "pk": 102
     },
-    "model": "case_studies.casestudy",
-    "pk": 102
-  },
-  {
-    "fields": {
-      "sub_header": "",
-      "is_visible": true,
-      "subtitle": "Another Study Another Cool",
-      "title": "Some Cool Study 1",
-      "extension_text": "",
-      "tags": [
-        1
-      ],
-      "date_completed": null,
-      "project_link": "http:\/\/www.yahoo.com",
-      "sub_header_content": "",
-      "date_added": "2015-07-17T15:52:22.893Z",
-      "task_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "approach_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    {
+        "fields": {
+            "sub_header": "",
+            "is_visible": true,
+            "subtitle": "Another Study Another Cool",
+            "title": "Some Cool Study 1",
+            "extension_text": "",
+            "tags": [
+                1
+            ],
+            "date_completed": null,
+            "project_link": "http://www.yahoo.com",
+            "sub_header_content": "",
+            "date_added": "2015-07-17T15:52:22.893Z",
+            "task_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "approach_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        "model": "case_studies.casestudy",
+        "pk": 103
     },
-    "model": "case_studies.casestudy",
-    "pk": 103
-  },
-  {
-    "fields": {
-      "sub_header": "",
-      "is_visible": false,
-      "subtitle": "More of the Coolness",
-      "title": "Another Cool Study 2",
-      "extension_text": "",
-      "tags": [
-        1,
-        2
-      ],
-      "date_completed": null,
-      "project_link": "http:\/\/www.google.com",
-      "sub_header_content": "",
-      "date_added": "2015-07-17T15:53:28.919Z",
-      "task_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "approach_content": "The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee."
+    {
+        "fields": {
+            "sub_header": "",
+            "is_visible": false,
+            "subtitle": "More of the Coolness",
+            "title": "Another Cool Study 2",
+            "extension_text": "",
+            "tags": [
+                1,
+                2
+            ],
+            "date_completed": null,
+            "project_link": "http://www.google.com",
+            "sub_header_content": "",
+            "date_added": "2015-07-17T15:53:28.919Z",
+            "task_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "approach_content": "The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee."
+        },
+        "model": "case_studies.casestudy",
+        "pk": 104
     },
-    "model": "case_studies.casestudy",
-    "pk": 104
-  },
-  {
-    "fields": {
-      "sub_header": "",
-      "is_visible": true,
-      "subtitle": "Another Study Another Cool",
-      "title": "Some Cool Study 1",
-      "extension_text": "",
-      "tags": [
-        1
-      ],
-      "date_completed": null,
-      "project_link": "http:\/\/www.yahoo.com",
-      "sub_header_content": "",
-      "date_added": "2015-07-17T15:52:22.893Z",
-      "task_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "approach_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    {
+        "fields": {
+            "sub_header": "",
+            "is_visible": true,
+            "subtitle": "Another Study Another Cool",
+            "title": "Some Cool Study 1",
+            "extension_text": "",
+            "tags": [
+                1
+            ],
+            "date_completed": null,
+            "project_link": "http://www.yahoo.com",
+            "sub_header_content": "",
+            "date_added": "2015-07-17T15:52:22.893Z",
+            "task_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "approach_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        "model": "case_studies.casestudy",
+        "pk": 105
     },
-    "model": "case_studies.casestudy",
-    "pk": 105
-  },
-  {
-    "fields": {
-      "sub_header": "",
-      "is_visible": false,
-      "subtitle": "More of the Coolness",
-      "title": "Another Cool Study 2",
-      "extension_text": "",
-      "tags": [
-        1,
-        2
-      ],
-      "date_completed": null,
-      "project_link": "http:\/\/www.google.com",
-      "sub_header_content": "",
-      "date_added": "2015-07-17T15:53:28.919Z",
-      "task_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "approach_content": "The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee."
+    {
+        "fields": {
+            "sub_header": "",
+            "is_visible": false,
+            "subtitle": "More of the Coolness",
+            "title": "Another Cool Study 2",
+            "extension_text": "",
+            "tags": [
+                1,
+                2
+            ],
+            "date_completed": null,
+            "project_link": "http://www.google.com",
+            "sub_header_content": "",
+            "date_added": "2015-07-17T15:53:28.919Z",
+            "task_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "approach_content": "The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee."
+        },
+        "model": "case_studies.casestudy",
+        "pk": 106
     },
-    "model": "case_studies.casestudy",
-    "pk": 106
-  },
-  {
-    "fields": {
-      "image": "dev\/case_studies\/1821449.jpg",
-      "is_showcase": true,
-      "case_study": 100
+    {
+        "fields": {
+            "image": "dev/case_studies/1821449.jpg",
+            "is_showcase": true,
+            "case_study": 100
+        },
+        "model": "case_studies.casestudyimage",
+        "pk": 100
     },
-    "model": "case_studies.casestudyimage",
-    "pk": 100
-  },
-  {
-    "fields": {
-      "image": "dev\/case_studies\/fantasy_space-wide.jpg",
-      "is_showcase": false,
-      "case_study": 100
+    {
+        "fields": {
+            "image": "dev/case_studies/fantasy_space-wide.jpg",
+            "is_showcase": false,
+            "case_study": 100
+        },
+        "model": "case_studies.casestudyimage",
+        "pk": 102
     },
-    "model": "case_studies.casestudyimage",
-    "pk": 102
-  },
-  {
-    "fields": {
-      "image": "dev\/case_studies\/featured-space-policy.jpg",
-      "is_showcase": false,
-      "case_study": 100
+    {
+        "fields": {
+            "image": "dev/case_studies/featured-space-policy.jpg",
+            "is_showcase": false,
+            "case_study": 100
+        },
+        "model": "case_studies.casestudyimage",
+        "pk": 103
     },
-    "model": "case_studies.casestudyimage",
-    "pk": 103
-  },
-  {
-    "fields": {
-      "image": "dev\/case_studies\/space-wallpaper-29.jpg",
-      "is_showcase": true,
-      "case_study": 102
+    {
+        "fields": {
+            "image": "dev/case_studies/space-wallpaper-29.jpg",
+            "is_showcase": true,
+            "case_study": 102
+        },
+        "model": "case_studies.casestudyimage",
+        "pk": 104
     },
-    "model": "case_studies.casestudyimage",
-    "pk": 104
-  },
-  {
-    "fields": {
-      "image": "dev\/case_studies\/images.jpg",
-      "is_showcase": false,
-      "case_study": 102
+    {
+        "fields": {
+            "image": "dev/case_studies/images.jpg",
+            "is_showcase": false,
+            "case_study": 102
+        },
+        "model": "case_studies.casestudyimage",
+        "pk": 105
     },
-    "model": "case_studies.casestudyimage",
-    "pk": 105
-  },
-  {
-    "fields": {
-      "image": "dev\/case_studies\/1821449.jpg",
-      "is_showcase": true,
-      "case_study": 103
+    {
+        "fields": {
+            "image": "dev/case_studies/1821449.jpg",
+            "is_showcase": true,
+            "case_study": 103
+        },
+        "model": "case_studies.casestudyimage",
+        "pk": 106
     },
-    "model": "case_studies.casestudyimage",
-    "pk": 106
-  },
-  {
-    "fields": {
-      "image": "dev\/case_studies\/fantasy_space-wide.jpg",
-      "is_showcase": false,
-      "case_study": 103
+    {
+        "fields": {
+            "image": "dev/case_studies/fantasy_space-wide.jpg",
+            "is_showcase": false,
+            "case_study": 103
+        },
+        "model": "case_studies.casestudyimage",
+        "pk": 107
     },
-    "model": "case_studies.casestudyimage",
-    "pk": 107
-  },
-  {
-    "fields": {
-      "image": "dev\/case_studies\/featured-space-policy.jpg",
-      "is_showcase": false,
-      "case_study": 103
+    {
+        "fields": {
+            "image": "dev/case_studies/featured-space-policy.jpg",
+            "is_showcase": false,
+            "case_study": 103
+        },
+        "model": "case_studies.casestudyimage",
+        "pk": 108
     },
-    "model": "case_studies.casestudyimage",
-    "pk": 108
-  },
-  {
-    "fields": {
-      "image": "dev\/case_studies\/space-wallpaper-29.jpg",
-      "is_showcase": true,
-      "case_study": 104
+    {
+        "fields": {
+            "image": "dev/case_studies/space-wallpaper-29.jpg",
+            "is_showcase": true,
+            "case_study": 104
+        },
+        "model": "case_studies.casestudyimage",
+        "pk": 109
     },
-    "model": "case_studies.casestudyimage",
-    "pk": 109
-  },
-  {
-    "fields": {
-      "image": "dev\/case_studies\/images.jpg",
-      "is_showcase": false,
-      "case_study": 104
+    {
+        "fields": {
+            "image": "dev/case_studies/images.jpg",
+            "is_showcase": false,
+            "case_study": 104
+        },
+        "model": "case_studies.casestudyimage",
+        "pk": 110
     },
-    "model": "case_studies.casestudyimage",
-    "pk": 110
-  },
-  {
-    "fields": {
-      "image": "dev\/case_studies\/1821449.jpg",
-      "is_showcase": true,
-      "case_study": 105
+    {
+        "fields": {
+            "image": "dev/case_studies/1821449.jpg",
+            "is_showcase": true,
+            "case_study": 105
+        },
+        "model": "case_studies.casestudyimage",
+        "pk": 111
     },
-    "model": "case_studies.casestudyimage",
-    "pk": 111
-  },
-  {
-    "fields": {
-      "image": "dev\/case_studies\/fantasy_space-wide.jpg",
-      "is_showcase": false,
-      "case_study": 105
+    {
+        "fields": {
+            "image": "dev/case_studies/fantasy_space-wide.jpg",
+            "is_showcase": false,
+            "case_study": 105
+        },
+        "model": "case_studies.casestudyimage",
+        "pk": 112
     },
-    "model": "case_studies.casestudyimage",
-    "pk": 112
-  },
-  {
-    "fields": {
-      "image": "dev\/case_studies\/featured-space-policy.jpg",
-      "is_showcase": false,
-      "case_study": 105
-    },
-    "model": "case_studies.casestudyimage",
-    "pk": 113
-  }
+    {
+        "fields": {
+            "image": "dev/case_studies/featured-space-policy.jpg",
+            "is_showcase": false,
+            "case_study": 105
+        },
+        "model": "case_studies.casestudyimage",
+        "pk": 113
+    }
 ]

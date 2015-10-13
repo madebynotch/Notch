@@ -1,5 +1,11 @@
 from django.contrib import admin
-from models import InspireItem
+from models import InspireItem, BlogTag
+
+class BlogTagAdmin(admin.ModelAdmin):
+    list_display = [
+        'id',
+        'name'
+    ]
 
 
 class InspireItemAdmin(admin.ModelAdmin):
@@ -14,3 +20,4 @@ class InspireItemAdmin(admin.ModelAdmin):
 
 
 admin.site.register(InspireItem, InspireItemAdmin)
+admin.site.register(BlogTag, BlogTagAdmin)

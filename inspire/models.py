@@ -4,6 +4,12 @@ from django.db import models
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
 
+class BlogTag(models.Model):
+    name = models.CharField(max_length=30)
+
+    def __unicode__(self):
+        return self.name
+
 
 class InspireItem(models.Model):
     DRIBBBLE = 'Dribbble'
@@ -14,8 +20,7 @@ class InspireItem(models.Model):
         (INSTAGRAM, 'Instagram'),
         (LAUNCH, 'Launch'),
     )
-    tag = models.CharField(max_length=25,
-                           choices=CATEGORY)
+    tag = models.ForeignKey(BlogTag,null=True)
     url = models.URLField()
     image = models.ImageField(upload_to='inspire', blank=True)
     resized_image = ImageSpecField(source='image',
