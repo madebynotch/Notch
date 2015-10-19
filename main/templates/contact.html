@@ -8,7 +8,7 @@
     <p class="contact-required">All fields are required.</p>
 </section>
 <section class="contact-form">
-    <form action="" method="post">
+    <form action="" id="contact-form" method="post">
         {% csrf_token %}
         {% for field in form %}
         <div class="form-group {% if field.errors %}error{% endif %}">
@@ -21,6 +21,15 @@
 <section class="contact-map">
     <section class="contact-map__location"><span>Saint Louis,<br>Missouri 63119<span></section>
 </section>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#contact-form').on('submit', function(e){
+            // e.preventDefault();
+            // console.log("submit");
+        });
+    });
+</script>
 
 {% include "footer-contact.html" %}
 {% endblock %}
