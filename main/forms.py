@@ -11,7 +11,7 @@ class ContactForm(forms.ModelForm):
             'content'
         ]
         widgets = {
-            'name': forms.TextInput(attrs={'placeholder': 'Your Name', 'class': 'contact-input'}),
-            'email': forms.TextInput(attrs={'placeholder': 'Email Address', 'class': 'contact-input'}),
-            'content': forms.Textarea(attrs={'placeholder': 'Describe your project here. Keep it short and sweet, we can talk specifics later...', 'class': 'contact-input'}),
+            'name': forms.TextInput(attrs={'placeholder': 'Your Name', 'class': 'contact-input', 'required': 'true'}),
+            'email': forms.TextInput(attrs={'placeholder': 'Email Address', 'class': 'contact-input', 'required': 'true'}),
+            'content': forms.Textarea(attrs={'placeholder': 'Describe your project here. Keep it short and sweet, we can talk specifics later...', 'class': 'contact-input', 'required': 'true'}),
         }

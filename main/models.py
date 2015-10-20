@@ -43,7 +43,7 @@ class ContactItem(models.Model):
                 (
                     'A new contact request from %s' % self.name,
                     message,
-                    'contact@notch.com',
+                    'contact@madebynotch.com',
                     list(recipients)
                 ),
             ))
