@@ -11,4 +11,5 @@ media/case_studies
 media/inspire
 media/CACHE
 local_settings.py
+prod_settings.py
 npm-debug.log

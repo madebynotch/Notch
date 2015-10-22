@@ -123,3 +123,8 @@ try:
     from local_settings import *
 except ImportError:
     print 'local_settings.py not found'
+
+try:
+    from prod_settings import *
+except ImportError:
+    print 'prod_settings.py not found'
