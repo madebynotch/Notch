@@ -1,0 +1,104 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" class="{% block htmlClass %}{% endblock %}">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="{% static 'favicon.ico' %}">
+    <title>Notch</title>
+    <meta property="og:site_name" content="Made by Notch">
+    {% block og_tags %}
+    <meta property="og:title" content="Interactive Web Design">
+    <meta property="og:description" content="Notch is an interactive design agency based in St. Louis.">
+    <meta property="og:image" content="http://madebynotch.com{% static 'images/notch_fb_img.png' %}">
+    <meta property="og:type" content="website">
+    {% endblock %}
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <!-- Scripts -->
+    <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'js/modernizr.full.js' %}"></script>
+    <!-- Adobe Typekit -->
+    <script src="//use.typekit.net/asa6cbo.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+    {% block imports %}
+
+    {% endblock %}
+    <!--[if lt IE 9]>
+        <script src="{% static 'js/respond.min.js' %}"></script>
+        <script src="{% static 'js/selectivizr.min.js' %}"></script>
+        <script>
+            document.createElement('header');
+            document.createElement('nav');
+            document.createElement('section');
+            document.createElement('article');
+            document.createElement('aside');
+            document.createElement('footer');
+        </script>
+    <![endif]-->
+</head>
+<body>
+    <!-- Nav Block -->
+    <nav id="nav">
+        <div class="nav-wrapper">
+            <div class="nav-head">
+                <a href="/" title="logo" class="nav-logo">
+                    <img src="/static/images/notchLogo.svg" alt="">
+                </a>
+                <button class="nav-toggle">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+            </div>
+            <div class="nav-right" id="nav-right">
+                <ul class="nav-links">
+                    <li><a href="/">Work.</a></li>
+                    <li><a href="{% url 'about' %}">About.</a></li>
+                    <li><a href="{% url 'inspire' %}">Blog.</a></li>
+                    <li><a href="{% url 'contact' %}">Contact.</a></li>
+                    <div class="nav__social-links">
+                        <a class="nav-social-link dribbble-icon" href="https://dribbble.com/notchinteractive" target="_blank">
+                            <span class="fa-stack">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-dribbble fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                        <a class="nav-social-link instagram-icon" href="https://instagram.com/madebynotch/" target="_blank">
+                            <span class="fa-stack">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                        <a class="nav-social-link twitter-icon" href="https://twitter.com/madebynotch" target="_blank">
+                            <span class="fa-stack">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="body-scroll-wrapper">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    <script src="{% static 'js/functions.js' %}"></script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!-- Please call pinit.js only once per page -->
+    <script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=871737632915633";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+</body>
+</html>

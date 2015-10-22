@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<section class="hero--contact">
+    <h1 class="hero__title">Let’s Talk.</h1>
+    <h3 class="hero__subtitle">Thank you for your interest in working with notch. Getting started is easy – just fill in the blanks below and we'll get back to you ASAP.</h3>
+    <p class="contact-required">All fields are required.</p>
+</section>
+<section class="contact-form">
+    <form action="{% url 'contact' %}" id="contact-form" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group {% if field.errors %}error{% endif %}">
+            {{ field }}
+        </div>
+        {% endfor %}
+        <button action="submit" class="btn-blue">Submit Message</button>
+    </form>
+    <p id="success-message" class="contact__success-message" style="display:none;">Your message has been sent!</p>
+</section>
+<section class="contact-map">
+    <section class="contact-map__location"><span>Saint Louis,<br>Missouri 63119<span></section>
+</section>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var clearForm = function(elem) {
+            console.log(elem);
+            var form = $(elem);
+            form.find('input, textarea').each(function(){
+                console.log(this);
+                $(this).val('');
+            });
+        }
+        $('#contact-form').on('submit', function(e){
+            e.preventDefault();
+            var formData = new FormData ($(this)[0]);
+            var form = this;
+            $.ajax({
+                type: "POST",
+                url: $(this).attr('action'),
+                data: formData,
+                dataType: 'json',
+                encode: true,
+                cache: false,
+                processData: false,
+                contentType: false,
+            }).success(function(response){
+                // console.log("success");
+                // console.log(response);
+                // $(form).children('button').attr('disabled','true');
+                clearForm(form);
+                $('#success-message').fadeIn();
+            }).fail(function(response){
+                console.log("fail");
+                console.log(response);
+            });
+        });
+    });
+</script>
+
+{% include "footer-contact.html" %}
+{% endblock %}

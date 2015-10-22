@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="bg--white">
+    <section class="hero-wrapper">
+        <section class="hero">
+            <h1 class="hero__title">Usability meets <span class="hero__title--emphasis">beauty.</span></h1>
+            <p class="hero__subtitle">We take your ideas and execute them bringing your brand into the digital world.</p>
+        </section>
+    </section>
+    <section class="about-process-wrapper">
+        <section class="about-process">
+            <div class="about-process__header-img"></div>
+            <h3 class="about-process__title"><span class="text--blue">Top-notch</span> Process.</h3>
+            <ul class="about-process__list">
+                <li class="about-process__list-item">
+                    <h4 class="main-subheader">Discover and plan.</h4>
+                    <p class="main-text">A detailed research and discovery phase will set great brands apart from their competition. We aim to understand your business goals and examine industry competitors. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </li>
+                <li class="about-process__list-item">
+                    <h4 class="main-subheader">Wireframe.</h4>
+                    <p class="main-text">We take into account your users, the wide array of devices and screen resolutions in order to create user friendly experiences for websites and mobile applications. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                </li>
+                <li class="about-process__list-item">
+                    <h4 class="main-subheader">Branding and user interface.</h4>
+                    <p class="main-text">We work closely with our clients to craft simple, beautiful and functional brands that are tailered towards their users and translate consistently accross all devices. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </li>
+            </ul>
+        </section>
+    </section>
+</div>
+<div class="bg--grey">
+    <section class="about-services">
+        <h3 class="about-services__title">Services we specialize in.</h3>
+        <ul class="about-services__list">
+            <li class="about-services__list-item">
+                <img class="list-item__icon" width="50" height="50" src="{% static 'images/icons/icon_user_research.svg' %}">
+                <h4 class="list-item__title">User Research</h4>
+            </li>
+            <li class="about-services__list-item">
+                <img class="list-item__icon" width="50" height="50" src="{% static 'images/icons/icon_business_strategy.svg' %}">
+                <h4 class="list-item__title">Business Strategy</h4>
+            </li>
+            <li class="about-services__list-item">
+                <img class="list-item__icon" width="50" height="50" src="{% static 'images/icons/icon_wireframing.svg' %}">
+                <h4 class="list-item__title">Wireframing</h4>
+            </li>
+            <li class="about-services__list-item">
+                <img class="list-item__icon" width="50" height="50" src="{% static 'images/icons/icon_brand_art_direction.svg' %}">
+                <h4 class="list-item__title">Brand &amp; Art Direction</h4>
+            </li>
+            <li class="about-services__list-item">
+                <img class="list-item__icon" width="50" height="50" src="{% static 'images/icons/icon_social_media.svg' %}">
+                <h4 class="list-item__title">Social Media</h4>
+            </li>
+            <li class="about-services__list-item">
+                <img class="list-item__icon" width="50" height="50" src="{% static 'images/icons/icon_app_design.svg' %}">
+                <h4 class="list-item__title">Application Design</h4>
+            </li>
+            <li class="about-services__list-item">
+                <img class="list-item__icon" width="50" height="50" src="{% static 'images/icons/icon_responsive_design.svg' %}">
+                <h4 class="list-item__title">Responsive Design</h4>
+            </li>
+            <li class="about-services__list-item">
+                <img class="list-item__icon" width="50" height="50" src="{% static 'images/icons/icon_illustration.svg' %}">
+                <h4 class="list-item__title">Illustration</h4>
+            </li>
+        </ul>
+    </section>
+</div>
+
+{% include "footer.html" %}
+{% endblock %}

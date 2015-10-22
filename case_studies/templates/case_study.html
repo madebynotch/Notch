@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block imports %}
+<script type="text/javascript" src="{% static 'hammerjs/hammer.min.js' %}"></script>
+{% endblock %}
+
+{% block og_tags %}
+<meta property="og:title" content="{{case_study.title}}">
+<meta property="og:description" content="{{case_study.subtitle}}">
+{% if case_study.get_main_images.count > 1 %}
+    {% for image in case_study.get_main_images %}
+        {% if forloop.counter == 1 %}
+            <meta property="og:image" content="http://madebynotch.com{{image.image.url}}">
+        {% endif %}
+    {% endfor %}
+{% endif %}
+<meta property="og:type" content="article">
+{% endblock %}
+
+{% block content %}
+
+<section class="cs-wrapper">
+    {% if case_study.get_prev_pk %}
+        <a class="cs-side-nav-link prev" href="{% url 'case_study' case_study.get_prev_pk %}">Prev Case Study</a>
+    {% endif %}
+    {% if case_study.get_next_pk %}
+        <a class="cs-side-nav-link next" href="{% url 'case_study' case_study.get_next_pk %}">Next Case Study</a>
+    {% endif %}
+    <section class="hero--cs">
+        <h1 class="hero--cs__title">{{case_study.title}}</h1>
+        <h3 class="hero__subtitle">{{case_study.subtitle}}</h3>
+    </section>
+    <section class="cs-gameplan">
+        <div class="cs-task">
+            <h4 class="main-subheader">The Task</h4>
+            <p class="main-text">{{case_study.task_content}}</p>
+        </div>
+        <div class="cs-approach">
+            <h4 class="main-subheader">Our Approach</h4>
+            <p class="main-text">{{case_study.approach_content}}</p>
+        </div>
+    </section>
+    <section class="cs-slider">
+        {% if case_study.get_main_images.count > 1 %}
+            <div class="slider">
+                <div class="slider-wrapper">
+                    {% for image in case_study.get_main_images %}
+                        <div class="slide">
+                            <img class="slide-image" src="{{ image.image.url }}" style="width:100%">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            {% for image in case_study.get_main_images %}
+                <img src="{{image.image.url}}" style='width:100%'>
+            {% endfor %}
+        {% endif %}
+    </section>
+    <section class="cs-content">
+        <div class="cs-content__meta">
+            <h4 class="main-subheader">{{case_study.title}}</h4>
+            <p class="cs-tags">{% for tag in case_study.tags.all %} {{ tag }}{% if not forloop.last %} ,{% endif %} {% endfor %}</p>
+            <p class="cs-year">{{ case_study.date_added.year }}</p>
+        </div>
+        <div class="cs-content__text">
+            {% if case_study.extension_text %}
+                <p class="cs-approach-content">{{case_study.extension_text}}</p>
+            {% endif %}
+
+            {% if case_study.sub_header %}
+                <h4 class="main-subheader">{{case_study.sub_header}}</h4>
+                <p class="main-text">{{case_study.sub_header_content}}</p>
+            {% endif %}
+
+            {% for image in case_study.get_sub_images %}
+                <img src="{{image.image.url}}" style='width:100%'>
+            {% endfor %}
+        </div>
+        <div class="cs-content__share">
+            <div class="share-button-wrapper">
+                <a href="#" id="share-button" title="" class="btn-blue">Share Case Study</a>
+                <div class="share__popup closed" id="share__popup">
+                    <span class="popup__arrow"></span>
+                    <div class="popup__social-links">
+                        <a class="popup__social-link facebook-icon" href="//www.facebook.com/sharer/sharer.php?u=http://madebynotch.com{% url 'case_study' case_study.pk %}&title={{case_study.title}}">
+                            <span class="fa-stack">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                        <a class="popup__social-link email-icon" href="mailto:?subject=Notch Interactive - {{case_study.title}}&body=http://madebynotch.com{% url 'case_study' case_study.pk %}">
+                            <span class="fa-stack">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                        <a class="popup__social-link twitter-icon" href="http://twitter.com/intent/tweet?status={{case_study.title}}+by+Notch+Interactive.+http://madebynotch.com{% url 'case_study' case_study.pk %}+via+@madebynotch">
+                            <span class="fa-stack">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                        <a class="popup__social-link linkedin-icon" href="https://www.linkedin.com/shareArticle?mini=true&url=http://madebynotch.com{% url 'case_study' case_study.pk %}&title={{case_study.title}}&summary=&source=">
+                            <span class="fa-stack">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin-square fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="cs-nav">
+        <div class="cs-nav-previous">
+            {% if case_study.get_prev_pk %}
+                <a href="{% url 'case_study' case_study.get_prev_pk %}">
+                    <span class="cs-nav-link">Previous</span>
+                    <h1 class="cs-nav-title">{{ case_study.get_prev_title }}</h1>
+                </a>
+            {% else %}
+                <p class="cs-nav-disabled">Previous</p>
+            {% endif %}
+        </div>
+        <div class="cs-nav-next">
+            {% if case_study.get_next_pk %}
+                <a href="{% url 'case_study' case_study.get_next_pk %}">
+                    <span class="cs-nav-link">Next</span>
+                    <h1 class="cs-nav-title">{{ case_study.get_next_title }}</h1>
+                </a>
+            {% else %}
+                <p class="cs-nav-disabled">Next</p>
+            {% endif %}
+        </div>
+    </section>
+</section>
+
+
+{% include "footer.html" %}
+{% endblock %}

@@ -1,0 +1,129 @@
+$footer-bg: $grey-dark
+$footer-text-color: #929a9c
+$footer-lower-stroke: #3c3e41
+
+footer
+    background: $grey-dark
+    color: $footer-text-color
+    .footer-social-link
+        font-size: 17px
+        .fa-stack-2x
+            transition: color 0.2s $notch-transition
+            color: white
+        .fa-stack-1x
+            color: $grey-darker
+        &:hover
+            .fa-stack-2x
+                color: #696c6d
+        &:not(:first-child)
+            margin-left: 20px
+
+@include media('xxl')
+    footer
+        .footer-social-link
+            font-size: 26px
+
+
+.footer-wrapper
+    @include row(full)
+    max-width: 1170px
+
+.footer-social
+    padding: 39px 0 34px
+
+.footer-contact,
+.footer-social
+    text-align: center
+    background: $grey-darker
+    a
+        display: inline-block
+        line-height: 40px
+
+.footer-contact
+    padding: 44px 0 40px
+    .footer-contact-link
+        transition: color 0.2s $notch-transition
+        color: white
+        @include font($emphasis-font-family, 400, 15px, 30px)
+        .footer-contact-link-arrow
+            transition: left 0.2s $notch-transition
+            position: relative
+            left: 2px
+        &:hover
+            color: #696c6d
+            .footer-contact-link-arrow
+                left: 12px
+
+
+.footer-lower
+    @include row
+    font-size: 12px
+    line-height: 20px
+    padding-top: 25px
+    padding-bottom: 25px
+    padding-left: 0
+    text-align: center
+    a
+        display: block
+        color: inherit
+        &:hover
+            text-decoration: underline
+
+.footer-lower-left,
+.footer-lower-right
+    @include column(full)
+    padding: 0 !important
+
+
+@include media('lg')
+    footer
+        padding: 0 25px
+
+    .footer-contact,
+    .footer-social
+        background: transparent
+
+    .footer-contact
+        padding-top: 40px
+        padding-bottom: 35px
+        .footer-contact-link
+            font-size: 20px
+            line-height: 36px
+
+    .footer-contact-link-arrow
+        font-size: 16px
+
+    .footer-lower
+        text-align: left
+        padding-top: 34px
+        padding-bottom: 34px
+        border-top: 1px solid $footer-lower-stroke
+        a
+            float: left
+
+    .footer-lower-left,
+    .footer-lower-right
+        @include column(half)
+
+    .footer-lower-right
+        text-align: right
+
+    .footer__tel-link
+        display: inline-block
+        @include offset(2)
+
+@include media('xxl')
+    .footer-contact
+        padding-top: 65px
+        padding-bottom: 65px
+        .footer-contact-link
+            font-size: 28px
+            line-height: 36px
+        .footer-contact-link-arrow
+            font-size: 22px
+
+    .footer-lower
+        font-size: 14px
+
+    .footer-social
+        padding: 58px 0

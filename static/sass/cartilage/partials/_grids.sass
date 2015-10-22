@@ -58,7 +58,7 @@ $word-ratios: ('half':0.5,'one-half':0.5,'third':0.3333333,'one-third':0.3333333
         @return $part / $whole
 
 @mixin set-col-width($width)
-    @debug type-of($width)
+    // @debug type-of($width)
     $ratio: 0
     @if type-of($width) == number
         $ratio: get-ratio($width, $column-number)
@@ -70,18 +70,18 @@ $word-ratios: ('half':0.5,'one-half':0.5,'third':0.3333333,'one-third':0.3333333
 
 
 @mixin set-breakpoint($prefix, $prefix-break: 0, $prefix-width: none)
-    @debug $prefix
-    @debug $prefix-break
-    @debug $prefix-width
+    // @debug $prefix
+    // @debug $prefix-break
+    // @debug $prefix-width
     $breakpoint: ('prefix': $prefix, 'breakpoint-width': $prefix-break, 'wrapper-width': $prefix-width)
     $breakpoints: append($breakpoints, $breakpoint, comma) !global
     @if $prefix-break > 0
-        @debug "create wrapper placeholder (with media)"
+        // @debug "create wrapper placeholder (with media)"
         @media screen and (min-width: $prefix-break)
             %wrapper
                 max-width: $prefix-width
     @else
-        @debug "create wrapper placeholder"
+        // @debug "create wrapper placeholder"
         %wrapper
             max-width: $prefix-width
 

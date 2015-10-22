@@ -1,21 +1,33 @@
 // Load Gulp Requirements
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
+var exec = require('child_process').exec;
 
 
 // Custom Variables
 var SASSinput = 'static/sass/*.sass';
-var HTMLinput = 'templates/*.html';
+var HTMLinput = ['templates/*.html','*/templates/*.html'];
+var JSinput = ['static/js/*.js'];
 var SASSoutput = 'static/css';
+var localhostPort = '8888';
 
 
-// Static server
-gulp.task('browser-sync', function() {
+// Django server
+gulp.task('django-server', function() {
+    var proc = exec('PYTHONUNBUFFERED=1 python manage.py runserver ' + localhostPort);
+    proc.stderr.on('data',function(data){
+        process.stdout.write(data);
+    });
+});
+
+
+// Django server and Browser Sync
+gulp.task('django-sync', ['django-server'], function() {
     browserSync.init({
-        server: {
-            baseDir: "./",
-            index: "templates/index.html"
+        proxy: {
+            target: "localhost:" + localhostPort
         }
     });
 });
@@ -28,6 +40,8 @@ gulp.task('sass', function () {
     .src(SASSinput)
     // Run Sass on those files
     .pipe(sass().on('error', sass.logError))
+    // Add relevant prefixes to the stylesheets
+    .pipe(autoprefixer('last 3 version'))
     // Write the resulting CSS in the output folder
     .pipe(gulp.dest(SASSoutput))
     // Reload browsers
@@ -44,12 +58,20 @@ gulp.task('watch-sass', function() {
 
 
 // HTML Watch
-gulp.task('watch-html', ['browser-sync'], function() {
+gulp.task('watch-html', ['django-sync'], function() {
   return gulp
     // Watch templates folder (HTMLinput) for change
-    .watch('templates/*.html').on('change', browserSync.reload);
+    .watch(HTMLinput).on('change', browserSync.reload);
 });
 
 
+// JS Watch
+gulp.task('watch-js', function() {
+    return gulp
+    // Watch js files for change
+    .watch(JSinput).on('change', browserSync.reload);
+})
+
+
 // Main Task to run all sub-tasks
-gulp.task('connect', ['sass', 'watch-sass', 'watch-html']);
+gulp.task('connect', ['sass', 'watch-sass', 'watch-html', 'watch-js']);

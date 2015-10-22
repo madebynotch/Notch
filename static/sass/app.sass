@@ -1,57 +1,75 @@
 @import fonts
 @import cartilage/cartilage
 
-$side-pad-sm: 15px
+$side-pad-sm: 20px
 $side-pad-lg: 65px
 
 @include set-breakpoint('sm')
-@include set-breakpoint('lg',900px,900 - $side-pad-lg)
+@include set-breakpoint('lg',900px,850 - $side-pad-lg)
+@include set-breakpoint('xl',1200px,1000 - $side-pad-lg)
+@include set-breakpoint('xxl',1800px,1200 - $side-pad-lg)
 
 // Colors
 $notch-blue: #2aaed9
-$grey-lighter: #e4e4e4
+$grey-lightest: #e4e4e4
+$grey-lighter: #d0d0d0
 $grey-light: #c2c2c2
 $grey-medium: #626365
 $grey-dark: #27282a
-$nav-bg: rgba($notch-blue,0.9)
+$grey-darker: #1e1e21
+$nav-bg: rgba(#25a5cf,0.9)
 $body-text-color: $grey-medium
-$header-color: $grey-dark
+$header-color: #26272a
 
 // Fonts
-$header-font-family: "Helvetica Neue","Helvetica",Arial,sans-serif
+$font-family-gibson: "canada-type-gibson", sans-serif
+$header-font-family: $font-family-gibson
 $emphasis-font-family: "Droid Serif",serif
+$body-font-family: 'Helvetica Neue', Helvetica, 'Helvetica', 'Arial', sans-serif
 
 // Nav Variables
+$logo-mobile-height: 19px
+$logo-desktop-height: 19px
+$logo-xxl-height: 26px
 $nav-link-color: white
-$nav-desktop-height: 73px
+$nav-link-hover-color: #9fdbef
+$nav-link-desktop-shift: 5px
+$nav-mobile-height: 50px
+$nav-desktop-height: 50px
+$nav-xxl-height: 72px
 
-// Slider Variables
-$slider-header-font-family: $header-font-family
-$slider-header-size: 60px
-$slider-header-line-height: 72px
-@mixin slider-header-font
-	@include font($slider-header-font-family, 800, $slider-header-size, $slider-header-line-height)
+// Global Variables
+$mobile-pad: 5px
 
-$slider-desc-font-family: $emphasis-font-family
-$slider-desc-size: 20px
-$slider-desc-line-height: 30px
-@mixin slider-desc-font
-	@include font($slider-desc-font-family, 400, $slider-desc-size, $slider-desc-line-height)
+@mixin mobile-pad($existing:0)
+    padding-left: $mobile-pad + $existing
+    padding-right: $mobile-pad + $existing
+    @include media('lg')
+        padding-left: $existing
+        padding-right: $existing
 
-$slider-nav-link-diam: 14px
-$slider-nav-link-margin: 30px
-$slider-nav-link-border: inset 0 0 0 3px white
+// Footer Variables
+$homepage-footer-bg: white
+$homepage-footer-height: 50px
+$homepage-footer-height-xxl: 70px
+$homepage-footer-size: 16px
+$homepage-footer-color: $grey-medium
+$homepage-footer-offset: 10px
+@mixin homepage-footer-font
+    @include font($body-font-family, 700, $homepage-footer-size, $homepage-footer-height)
 
 @mixin headers
-	h1,h2,h3,h4,h5,h6
-		@content
+    h1,h2,h3,h4,h5,h6
+        @content
 
+$notch-transition: cubic-bezier(.41,.41,.62,.86)
 
 *
-	margin: 0
-	padding: 0
-    text-rendering: optimizeLegibility
     box-sizing: border-box
+*
+    text-rendering: optimizeLegibility
+    margin: 0
+    padding: 0
 
 a
     text-decoration: none
@@ -60,139 +78,221 @@ html, body
     height: 100%
 
 html.home
-	&, & body
-		overflow: hidden
+    &, & body
+        overflow-y: hidden
+        overflow-x: hidden
+    body
+        padding-top: 0
 
 body
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
     margin: 0
     position: relative
+    font-family: $body-font-family
+    color: #616265
 
-// NAVIGATION
-#nav
-	position: absolute
-	top: 0
-	left: 0
-	width: 100%
-	background: $nav-bg
-	padding: 0 $side-pad-sm
-	z-index: 50
+#body-scroll-wrapper
+    &.lock
+        height: 100%
+        overflow-y: hidden
 
-.nav-wrapper
-	@include row(full)
+.dribbble-icon
+    .fa-stack-1x
+        font-size: 1.35em
 
-.nav-head,
-.nav-right
-	@include column(12)
-	padding: 0
+.twitter-icon
+    .fa-stack-1x
+        font-size: 1.12em
 
-.nav-toggle
-	width: 26px
-	height: 23px
-	border: 0
-	outline: none
-	background: transparent
-	&-bar
-		display: block
-		width: 100%
-		height: 5px
-		margin-bottom: 4px
-		background: $nav-link-color
+.linkedin-icon
+    .fa-stack-1x
+        font-size: 1.12em
 
-// HOMEPAGE SLIDES
-.slider
-	max-height: 100%
-	width: 100%
-	position: absolute
-	top: 0
-	left: 0
-.slide
-	width: 100%
-	height: 100%
-	display: table
-	background: grey
-	position: absolute
-	.slide-image
-		position: absolute
-		top: 0
-		left: 0
-	.slide-wrapper
-		@include row(full)
-		float: none
-		display: table-cell
-		vertical-align: middle
-		color: white
-		@include headers
-			@include slider-header-font
-			margin-bottom: 20px
-		p
-			@include slider-desc-font
-			margin-bottom: 40px
-		.slide-content
-			@include column(5)
-			@include offset(3)
-.slide-link
-	border-radius: 6px
-	border: 2px solid white
-	display: inline-block
-	font-size: 20px
-	line-height: 68px
-	padding: 0 30px
-	color: white
-	.slide-link-arrow
-		margin-left: 10px
-	&:hover
-		background: white
-		color: $grey-medium
+.email-icon
+    .fa-stack-1x
+        font-size: 0.85em
 
-.slider-nav
-	position: fixed
-	top: 50%
-	left: $side-pad-sm
-	z-index: 5
-	li
-		display: block
-		height: $slider-nav-link-diam
-		width: $slider-nav-link-diam
-		margin-bottom: $slider-nav-link-margin
-		background: transparent
-		box-shadow: $slider-nav-link-border
-		border-radius: 50%
-		cursor: pointer
-		-webkit-transition: all 0.2s ease
-		-moz-transition: all 0.2s ease
-		transition: all 0.2s ease
-		&:hover
-			box-shadow: inset 0 0 0 5px #fff
-			-webkit-transition: all 0.1s ease
-			-moz-transition: all 0.1s ease
-			transition: all 0.1s ease
-		&.active
-			box-shadow: inset 0 0 0 12px #fff
+.facebook-icon
+    .fa-stack-1x
+        position: relative
+        top: 1px
+
+
+// Main Styles
+.text--blue
+    color: $notch-blue
+
+.bg--grey
+    background: #efefef
+.bg--white
+    background: white
+
+.hero
+    @include row
+    @include mobile-pad
+    padding-top: 40px + $nav-mobile-height
+    padding-bottom: 36px
+    text-align: center
+    p
+        @include column(full)
+
+.hero-wrapper
+    @include row(full)
+    background-color: #2fb4e0
+    .hero__title,
+    .hero__subtitle
+        color: white
 
 @include media('lg')
-	.slider-nav
-		left: $side-pad-lg
-	#nav
-		padding-left: $side-pad-lg
-		padding-right: $side-pad-lg
-	.nav-toggle
-		display: none
-	.nav-head
-		@include column(3)
-		padding: 0
-		line-height: $nav-desktop-height
-	.nav-right
-		@include column(9)
-		padding: 0
-		.nav-links
-			list-style: none
-			float: right
-			li
-				float: left
-				margin-left: 60px
-				a
-					font-size: 14px
-					font-family: $emphasis-font-family
-					display: inline-block
-					color: $nav-link-color
-					line-height: $nav-desktop-height
+    .hero
+        padding-top: 85px + $nav-desktop-height
+        padding-bottom: 60px
+    .hero-wrapper
+        @include row(full)
+        padding-bottom: $gutter-width*6
+
+@include media('xxl')
+    .hero
+        padding-top: 90px + $nav-xxl-height
+
+.hero__title
+    @include column(full)
+    @include font($font-family-gibson, 600, 31px, 31px)
+    margin-bottom: 8px
+    color: $header-color
+.hero__title--emphasis
+    font-family: $emphasis-font-family
+    font-weight: 400
+    font-style: italic
+
+.hero__subtitle
+    @include column(full)
+    @include font($emphasis-font-family, 400, 14px, 24px)
+    color: #c3c3c3
+
+@include media('lg')
+    .hero__title
+        font-size: 50px
+        line-height: 50px
+        margin-bottom: 13px
+
+    .hero__subtitle
+        font-size: 17px
+        line-height: 25px
+
+@include media('xxl')
+    .hero__title
+        font-size: 70px
+        line-height: 80px
+    .hero__subtitle
+        font-size: 24px
+        line-height: 36px
+
+.main-subheader
+    @include font($font-family-gibson, 600, 18px, 22px)
+    padding-bottom: $gutter-width/4
+    color: $header-color
+.main-text
+    @include font($font-family-gibson, 400, 12px, 18px)
+    color: #616265
+
+@include media('xxl')
+    .main-subheader
+        font-size: 28px
+        line-height: 30px
+        padding-bottom: 10px
+    .main-text
+        font-size: 18px
+        line-height: 28px
+
+
+// Buttons
+.btn-blue
+    @include font($body-font-family, 500, 12px, 18px)
+    transition: background-color 0.1s $notch-transition
+    padding: 19px 40px
+    background-color: #2fb4e0
+    border-radius: 5px
+    color: white
+    width: 100%
+    display: block
+    text-align: center
+    &:hover,
+    &.active
+        background-color: black
+
+@include media('lg')
+    .btn-blue
+        padding: 10px 25px
+
+
+// Homepage Footer
+.homepage-footer
+    @include homepage-footer-font
+    @include row(full)
+    position: fixed
+    z-index: 100
+    left: 0
+    bottom: 0
+    width: 100%
+    background: $homepage-footer-bg
+    a
+        color: $homepage-footer-color
+
+    .footer-left
+        @include column(full)
+        text-align: center
+        a
+            display: block
+            font-size: 12px
+    .footer-right
+        display: none
+        text-align: right
+        .footer-social-link
+            position: relative
+            font-size: 14px
+            margin-left: 13px
+            .fa-stack-2x
+                color: $grey-lighter
+            .fa-stack-1x
+                color: white
+            &:hover
+                .fa-stack-2x
+                    color: $grey-dark
+
+@include media('lg')
+    .homepage-footer
+        padding: 0 ($side-pad-lg - ($gutter-width / 2))
+        .footer-left,
+        .footer-right
+            @include column(half)
+        .footer-left
+            text-align: left
+            a
+                display: inline-block
+                font-size: 14px
+                .text--blue
+                    transition: color 0.1s ease
+                &:hover .text--blue
+                    color: #50bce3
+
+@include media('xxl')
+    .homepage-footer
+        height: $homepage-footer-height-xxl
+        line-height: $homepage-footer-height-xxl
+        .footer-left
+            a
+                font-size: 22px
+        .footer-right
+            .footer-social-link
+                top: -1px
+                font-size: 17px
+
+@import nav
+@import slider
+@import footer
+@import case-study
+@import inspire
+@import contact
+@import about

@@ -1,0 +1,381 @@
+$cs-side-nav-link-height: 50px
+$cs-side-nav-link-height-xxl: 70px
+$cs-side-nav-link-width: 240px
+$cs-side-nav-link-width-xxl: 280px
+
+$cs-share-popup-width: 200px
+$cs-share-popup-height: 60px
+$cs-share-popup-border-width: 2px
+
+
+.cs-wrapper
+    position: relative
+
+.hero--cs
+    @extend .hero
+    position: relative
+    padding-bottom: 25px
+    &:before
+        content: ""
+        display: block
+        position: absolute
+        bottom: 0
+        left: $gutter-width / 2
+        right: $gutter-width / 2
+        border-bottom: 1px solid #e4e4e4
+
+.hero--cs,
+.cs-gameplan,
+.cs-content,
+.cs-nav
+    @include mobile-pad
+
+.hero--cs__title
+    @extend .hero__title
+    margin-bottom: 5px
+
+@include media('lg')
+    .hero--cs
+        padding-bottom: 21px
+    .hero--cs__title
+        font-size: 54px
+        line-height: 62px
+        margin-bottom: 8px
+
+    .hero--cs,
+    .cs-gameplan,
+    .cs-content,
+    .cs-nav
+        padding-left: 0px
+        padding-right: 0px
+
+@include media('xxl')
+    .hero--cs
+        padding-bottom: 40px
+    .hero--cs__title
+        font-size: 80px
+        line-height: 100px
+
+
+.cs-side-nav-link
+    display: none
+    position: fixed
+    top: 240px
+    line-height: $cs-side-nav-link-height
+    width: $cs-side-nav-link-width
+    text-align: center
+    font-size: 12px
+    font-weight: bold
+    text-transform: uppercase
+    background: #fff
+    color: $grey-dark
+    z-index: 900
+    transition: color 0.2s $notch-transition, background 0.2s $notch-transition
+    &:hover
+        background: $grey-dark
+        color: #fff
+    &.prev
+        left: -1 - (($cs-side-nav-link-width - $cs-side-nav-link-height) / 2)
+        transform: rotate(-90deg)
+    &.next
+        right: -1 - (($cs-side-nav-link-width - $cs-side-nav-link-height) / 2)
+        transform: rotate(90deg)
+
+@include media('lg')
+    .cs-side-nav-link
+        display: inline-block
+
+@include media('xxl')
+    .cs-side-nav-link
+        font-size: 16px
+        line-height: $cs-side-nav-link-height-xxl
+        width: $cs-side-nav-link-width-xxl
+        top: 280px
+        &.prev
+            left: -1 - (($cs-side-nav-link-width-xxl - $cs-side-nav-link-height-xxl) / 2)
+        &.next
+            right: -1 - (($cs-side-nav-link-width-xxl - $cs-side-nav-link-height-xxl) / 2)
+
+
+.cs-gameplan
+    @include row
+    padding-bottom: $gutter-width*2
+.cs-task,
+.cs-approach
+    @include column(12)
+    padding-top: 40px
+
+@include media('xxl')
+    .cs-task,
+    .cs-approach
+        padding-top: 70px
+    .cs-gameplan
+        padding-bottom: 100px
+
+
+.cs-content
+    @include row
+    padding-bottom: $gutter-width*2
+    z-index: 100
+    position: relative
+.cs-content__meta
+    @include column(12)
+    padding-top: $gutter-width
+    padding-bottom: $gutter-width
+    .cs-tags
+        @include font($emphasis-font-family, 400, 10px, 16px)
+        color: $grey-light
+        padding-bottom: $gutter-width/4
+    .cs-year
+        @include font($font-family-gibson, 400, 10px, 16px)
+        font-style: italic
+.cs-content__text
+    @include column(12)
+    padding-top: $gutter-width
+    position: relative
+    &:before
+        content: ""
+        display: block
+        width: $gutter-width
+        background-color: $grey-medium
+        position: absolute
+        top: 0
+        height: 1px
+    .cs-approach-content
+        @include font($emphasis-font-family, 400, 16px, 26px)
+        font-style: italic
+        padding-bottom: 33px
+    .main-text
+        padding-bottom: $gutter-width/2
+
+.cs-content__share
+    @include column(12)
+    padding-top: $gutter-width/2
+    position: relative
+    .btn-blue
+        font-size: 15px
+
+@include media('lg')
+    .share-button-wrapper
+        position: relative
+        display: inline-block
+
+    .cs-content
+        padding-bottom: 50px
+    .cs-content__share .btn-blue
+        font-size: 14px
+        display: inline-block
+        width: auto
+    .cs-content__text
+        .cs-approach-content
+            padding-bottom: 50px
+
+@include media('xxl')
+    .cs-content__meta
+        .main-subheader
+            font-size: 24px
+        .cs-tags,
+        .cs-year
+            font-size: 14px
+            line-height: 24px
+
+    .cs-content__share
+        padding-top: 30px
+        .btn-blue
+            font-size: 20px
+            line-height: 34px
+            padding: 10px 30px
+
+    .cs-content__text
+        .cs-approach-content
+            font-size: 24px
+            line-height: 38px
+            padding-bottom: 60px
+
+.share__popup
+    transition: opacity 0.2s ease, transform 0.3s ease
+    opacity: 0
+    transform: translateY(10px)
+    position: absolute
+    top: 100%
+    margin-top: 15px
+    left: 50%
+    margin-left: 0 - ($cs-share-popup-width / 2)
+    &.closed
+        display: none
+    &.open
+        opacity: 1
+        transition: opacity 0.2s ease 0.1s, transform 0.3s ease
+        transform: translateY(0px)
+
+.popup__arrow
+    position: absolute
+    top: -14px
+    right: 50%
+    margin-right: -10px
+    display: block
+    width: 20px
+    height: 16px
+    z-index: 20
+    overflow: hidden
+    &:before
+        content: ""
+        position: absolute
+        display: block
+        left: 2px
+        top: 9px
+        width: 13px
+        height: 13px
+        border-radius: 3px
+        border: 2px solid $grey-lightest
+        background: white
+        transform: rotate(45deg)
+
+.no-csstransforms .popup__arrow
+    &:before,
+    &:after
+        content: ""
+        position: absolute
+        display: block
+    &:before
+        top: 0
+        left: 50%
+        width: 0px
+        height: 5px
+        border-left: 10px solid transparent
+        border-right: 10px solid transparent
+        border-bottom: 10px solid $grey-lightest
+    &:after
+        top: 4px
+        left: 50%
+        margin-left: 2px
+        width: 0px
+        height: 4px
+        border-left: 9px solid transparent
+        border-right: 9px solid transparent
+        border-bottom: 9px solid white
+
+.popup__social-links
+    position: relative
+    z-index: 10
+    text-align: center
+    height: $cs-share-popup-height - ($cs-share-popup-border-width * 2)
+    width: $cs-share-popup-width
+    background: white
+    border: $cs-share-popup-border-width solid $grey-lightest
+    border-radius: 7px
+    box-shadow: 0 0 15px rgba(#26272a,0.07)
+    padding: 0 16px
+    line-height: $cs-share-popup-height - ($cs-share-popup-border-width * 5)
+    z-index: 5
+    .popup__social-link
+        font-size: 15px
+        margin-left: 10px
+        color: $grey-light
+        &:hover
+            color: $notch-blue
+        &:first-child
+            margin-left: 0
+
+@include media('lg')
+    .share__popup
+        left: auto
+        margin-left: 0
+        right: 0px
+    .popup__arrow
+        right: 45px
+        margin-right: 0
+
+@include media('xxl')
+    .popup__social-links
+        width: 220px
+        height: 70px
+        line-height: 64px
+        .popup__social-link
+            font-size: 16px
+
+
+
+.cs-nav
+    @include row
+    padding-top: 20px
+    padding-bottom: $gutter-width * 2
+    position: relative
+    &:before
+        content: ""
+        display: block
+        position: absolute
+        top: 0
+        left: $gutter-width / 2
+        right: $gutter-width / 2
+        border-top: 1px solid #e4e4e4
+
+@include media('lg')
+    .cs-nav
+        padding-top: 20px
+        padding-bottom: 85px
+
+@include media('xxl')
+    .cs-nav
+        padding-top: 45px
+        padding-bottom: 135px
+
+.cs-nav-previous,
+.cs-nav-next
+    @include column(6)
+    &:hover .cs-nav-title
+        color: lighten(#303135, 5)
+.cs-nav-next
+    text-align: right
+.cs-nav-link
+    @include font($body-font-family, 700, 8px, 14px)
+    text-transform: uppercase
+    color: $notch-blue
+    margin-bottom: 5px
+    display: inline-block
+.cs-nav-title
+    @include font($font-family-gibson, 600, 16px, 22px)
+    transition: color 0.1s $notch-transition
+    color: #171719
+.cs-nav-disabled
+    @extend .cs-nav-link
+    color: $grey-light
+
+
+@include media('lg')
+    .cs-nav-link
+        font-size: 11px
+        line-height: 16px
+        margin-bottom: 10px
+    .cs-nav-title
+        font-size: 30px
+        line-height: 32px
+
+    .cs-task,
+    .cs-approach
+        @include column(6)
+
+    .cs-content__text
+        @include column(8)
+        padding-top: $gutter-width*2
+        &:before
+            display: none
+
+    .cs-content__meta
+        padding-top: $gutter-width*2
+        padding-bottom: $gutter-width/4
+
+    .cs-content__meta,
+    .cs-content__share
+        @include column(3.5)
+        @include offset(0.5)
+        float: right
+        clear: right
+
+@include media('xxl')
+    .cs-nav-link
+        font-size: 16px
+        margin-bottom: 15px
+    .cs-nav-title
+        font-size: 42px
+        line-height: 48px

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block imports %}
+<script src="{% static 'js/inspire.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="bg--grey">
+    <section class="hero-wrapper">
+        <div class="hero">
+            <h1 class="hero__title">Get Inspired.</h1>
+            <p class="hero__subtitle">Work in progress, news, life, inspiration, anything &amp; everything.</p>
+        </div>
+    </section>
+
+    <section id="inspire-list">
+        {% include 'inspire_items.html' %}
+    </section>
+
+    <section class="in-show-more">
+        {% if paginator.num_pages > 1 %}
+            <button id="show-more"><i class="fa fa-long-arrow-down"></i></button>
+        {% endif %}
+    </section>
+</div>
+
+{% include "footer.html" %}
+
+{% csrf_token %}
+{% endblock %}

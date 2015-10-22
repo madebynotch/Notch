@@ -1,0 +1,187 @@
+$article-height: 240px
+$article-height-lg: 300px
+$article-height-xxl: 560px
+
+$show-more-bg: $grey-lighter
+$show-more-color: white
+$show-more-hover-bg: $grey-dark
+
+$show-more-height: 50px
+$show-more-top-margin: 68px
+
+
+#inspire-list
+    @include row
+
+@include media('xxl')
+    #inspire-list
+        max-width: 1550px
+
+
+.in-list__article
+    @include column(6)
+    padding: 0
+    height: $article-height
+    background-color: white
+    &:nth-child(14n + 1),
+    &:nth-child(14n + 10)
+        @include column(12)
+        padding-left: 0
+        padding-right: 0
+.in-list__link
+    position: relative
+    display: block
+    height: 100%
+.in-list__type
+    &--image
+        .in-list__content
+            // display: none
+            opacity: 0
+        .in-list__image
+            background-position: 50% 50%
+            background-repeat: no-repeat
+            background-size: cover
+    &--text
+        .in-list__image
+            display: none
+
+
+.in-list__content
+    padding: 15px 16px
+    overflow: hidden
+    position: relative
+    z-index: 10
+
+@include media('lg')
+    .in-list__content
+        padding: 42px 30px
+
+.in-list__cat
+    @include font($font-family-gibson, 600, 10px, initial)
+    color: $notch-blue
+    text-transform: uppercase
+    display: inline
+.in-list__date
+    @include font($font-family-gibson, 400, 10px, initial)
+    color: #616265
+    display: inline
+    span
+        padding-right: 4px
+.in-list__title
+    @include font($font-family-gibson, 600, 20px, initial)
+    margin-top: $gutter-width/2
+    margin-bottom: $gutter-width/4
+    color: black
+.in-list__desc
+    @include font($emphasis-font-family, 400, 12px, 18px)
+    color: #616265
+
+
+.in-list__image
+    height: $article-height
+    width: 100%
+    overflow: hidden
+    position: absolute
+    top: 0
+    z-index: 1
+    img
+        height: auto
+        width: 100%
+
+
+#show-more
+    transition: background-color 0.2s $notch-transition
+    display: block
+    width: 100%
+    border: none
+    background: $show-more-bg
+    color: $show-more-color
+    font-size: 18px
+    line-height: $show-more-height
+    outline: none !important
+    &:hover
+        background: $show-more-hover-bg
+
+
+@include media('lg')
+
+    #inspire-list
+        margin-top: -$gutter-width * 6
+
+    .in-list__content
+        height: inherit
+        transition: opacity 0.2s $notch-transition, background-color 0.2s $notch-transition
+        background: white
+    .in-list__type--image .in-list__content
+        background: black
+        opacity: 0
+        display: block
+    .in-list__cat, .in-list__date, .in-list__title, .in-list__desc
+        transition: color 0.2s $notch-transition
+
+    .in-list__article
+        @include column(3)
+        padding: 0
+        height: $article-height-lg
+        background: white
+        &:hover
+            .in-list__content
+                background: black
+                color: white
+            .in-list__type--image .in-list__content
+                opacity: 1
+            .in-list__cat, .in-list__date, .in-list__title, .in-list__desc
+                color: inherit
+        &:nth-child(14n + 1),
+        &:nth-child(14n + 10)
+            @include column(6)
+            padding-left: 0
+            padding-right: 0
+
+
+    .in-list__cat
+        @include font($font-family-gibson, 600, 12px, initial)
+    .in-list__date
+        @include font($font-family-gibson, 400, 12px, initial)
+        span
+            padding-right: 4px
+    .in-list__title
+        @include font($font-family-gibson, 600, 24px, initial)
+        margin-top: $gutter-width/1.5
+        margin-bottom: $gutter-width/4
+    .in-list__desc
+        @include font($emphasis-font-family, 400, 12px, 20px)
+
+
+    .in-list__image
+        height: $article-height-lg
+
+
+    .in-show-more
+        padding-bottom: $show-more-top-margin * 2
+    #show-more
+        margin: $show-more-top-margin auto 0
+        width: $show-more-height + 10
+
+@include media('xxl')
+    .in-list__article
+        height: $article-height-xxl
+
+    .in-list__image
+        height: $article-height-xxl
+
+    .in-list__cat,
+    .in-list__date
+        font-size: 16px
+
+    .in-list__title
+        font-size: 42px
+        line-height: 48px
+    .in-list__desc
+        font-size: 18px
+        line-height: 28px
+
+    #show-more
+        width: 88px
+        line-height: 76px
+        font-size: 30px
