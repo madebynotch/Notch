@@ -71,7 +71,7 @@
 
             {% if case_study.sub_header %}
                 <h4 class="main-subheader">{{case_study.sub_header}}</h4>
-                <p class="main-text">{{case_study.sub_header_content}}</p>
+                <p class="main-text">{{case_study.sub_header_content | safe}}</p>
             {% endif %}
 
             {% for image in case_study.get_sub_images %}
